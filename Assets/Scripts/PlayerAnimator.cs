@@ -5,11 +5,9 @@ public class PlayerAnimator : MonoBehaviour {
 
 	public Animator a;
 	public CharacterMotion cm;
-	public Transform player;
 	
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Player").transform;
 		a = GetComponent<Animator>();
 		cm = GetComponent<CharacterMotion>();
 	}
@@ -17,10 +15,6 @@ public class PlayerAnimator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		// face left / right
-		if ( cm.isMovingLeft )	{ player.localScale = new Vector3(-1, 1, 1); }
-		if ( cm.isMovingRight )	{ player.localScale = new Vector3( 1, 1, 1); }
-
 		// Jump ascending / descending
 		if ( rigidbody2D.velocity.y > 0 ){
 			a.SetBool("isCrouching", true);

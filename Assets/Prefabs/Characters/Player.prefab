@@ -49,6 +49,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400016}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -349,13 +350,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28a2f624928c42d0aeef1de3a2869e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   type: 0
+  runSpeed: 105
+  jumpForce: 500
   isMovingLeft: 0
   isMovingRight: 0
   isJumping: 0
   isGrounded: 0
   leftLocked: 0
   rightLocked: 0
+  isKnockingBack: 0
+  shouldKnockBack: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,7 +375,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: {fileID: 0}
   cm: {fileID: 0}
-  player: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1261c30e42ee04a77ba4dc83ca8e8a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHits: 4
+  totalHits: 5
   currentHitsRemaining: 0
   isFlickering: 0
   flickerCounter: 0
@@ -418,6 +423,7 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
   flickerStopTime: 0
+  isImmune: 1
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,6 +457,20 @@ MonoBehaviour:
   lastAttack: 0
   meleeAttackSpeed: .25
   isAttacking: 0
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96698889ebeaa45c08b1eaddf08a9b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultLeft: 0
+  defaultScale: {x: 0, y: 0, z: 0}
+  inverseScale: {x: 0, y: 0, z: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

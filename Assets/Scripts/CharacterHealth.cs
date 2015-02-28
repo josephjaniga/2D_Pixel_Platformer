@@ -17,6 +17,8 @@ public class CharacterHealth : MonoBehaviour {
 
 	public Timer colorTimer;
 
+	public bool isImmune = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -40,7 +42,8 @@ public class CharacterHealth : MonoBehaviour {
 
 		if ( currentHitsRemaining <= 0 ){
 			// die?
-			gameObject.SetActive(false);
+			//gameObject.SetActive(false);
+			Destroy(gameObject);
 		}
 		
 		if ( isFlickering ){
@@ -57,7 +60,9 @@ public class CharacterHealth : MonoBehaviour {
 
 		if ( !isFlickering ){
 			Debug.Log("taking " + damageAmount + " damage");
-			currentHitsRemaining -= damageAmount;
+			if ( !isImmune ){
+				currentHitsRemaining -= damageAmount;
+			}
 			flicker(1f);
 		}
 		

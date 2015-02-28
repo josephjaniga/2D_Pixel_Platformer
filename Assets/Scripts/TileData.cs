@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using MiniJSON;
+using Newtonsoft.Json;
 
 [RequireComponent(typeof(TileMap))]
 public class TileData : MonoBehaviour {
@@ -40,9 +40,13 @@ public class TileData : MonoBehaviour {
 	public void readDataFromJSON(string FileName){
 
 		string text = System.IO.File.ReadAllText(FileName);
-		var dict = Json.Deserialize(text) as Dictionary<string,object>;
-		width = (int)(long)dict["width"];
-		height = (int)(long)dict["height"];
+
+		Map thisLevel = new Map();
+
+		thisLevel = JsonConvert.DeserializeObject<Map>(text);
+
+		width = thisLevel.width;
+		height = thisLevel.height;
 		
 		tile = new byte[width, height];
 		tm.Create();
@@ -50,24 +54,34 @@ public class TileData : MonoBehaviour {
 		// apply the bg
 		int count = 0;
 		for ( int rows=height-1; rows>=0; rows--){
-			List<object> temp = (List<object>)dict["tileBG"];
-			foreach( long el in (List<object>)temp[rows] ){
-				tile[count%width, count/width] = (byte)(long)el;
+			foreach( byte el in thisLevel.tileBG[rows] ){
+				tile[count%width, count/width] = el;
 				count++;
 			}
 		}
 
-		// override fg 
 		count = 0;
 		for ( int rows=height-1; rows>=0; rows--){
-			List<object> temp = (List<object>)dict["tileFG"];
-			foreach( long el in (List<object>)temp[rows] ){
-				if ( (byte)(long)el != (byte)TileTypes.Air ){
-					tile[count%width, count/width] = (byte)(long)el;
+			foreach( byte el in thisLevel.tileFG[rows] ){
+				if ( el != (byte)TileTypes.Air ){
+					tile[count%width, count/width] = el;
 				}
 				count++;
 			}
 		}
+		
+		// override fg 
+//		count = 0;
+//		for ( int rows=height-1; rows>=0; rows--){
+//			List<object> temp = (List<object>)dict["tileFG"];
+//			foreach( long el in (List<object>)temp[rows] ){
+//				if ( (byte)(long)el != (byte)TileTypes.Air ){
+//					tile[count%width, count/width] = (byte)(long)el;
+//				}
+//				count++;
+//			}
+//		}
+
 
 	}
 
