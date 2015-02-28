@@ -54,9 +54,13 @@ public class CharacterHealth : MonoBehaviour {
 	}
 
 	public void TakeDamage(int damageAmount){
-		Debug.Log("taking " + damageAmount + " damage");
-		currentHitsRemaining -= damageAmount;
-		flicker(1f);
+
+		if ( !isFlickering ){
+			Debug.Log("taking " + damageAmount + " damage");
+			currentHitsRemaining -= damageAmount;
+			flicker(1f);
+		}
+		
 	}
 
 	public void flicker(float duration = .5f){

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHealthDisplay : MonoBehaviour {
+public class CharacterHealthDisplay : MonoBehaviour {
 
-	public GameObject player;
+	public GameObject character;
 	public GameObject uiPanel;
 	public CharacterHealth ch;
 
@@ -11,11 +11,12 @@ public class PlayerHealthDisplay : MonoBehaviour {
 
 	public UIResourceContainer[] healthBars;
 
+	public ResourceContainerState healthColor = ResourceContainerState.Red;
+
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Player");
-		ch = player.GetComponent<CharacterHealth>();
 
+		ch = character.GetComponent<CharacterHealth>();
 		healthBars = new UIResourceContainer[ch.totalHits];
 
 		for ( int i=0; i<ch.totalHits; i++ ){
@@ -36,7 +37,7 @@ public class PlayerHealthDisplay : MonoBehaviour {
 		int totalHealth = ch.totalHits;
 		for ( int i=0; i< healthBars.Length; i++ ){
 			if ( i<currentHits ){
-				healthBars[i].state = ResourceContainerState.Red;
+				healthBars[i].state = healthColor;
 			} else {
 				healthBars[i].state = ResourceContainerState.Empty;
 			}

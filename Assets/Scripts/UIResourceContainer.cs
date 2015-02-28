@@ -5,7 +5,10 @@ using System.Collections;
 public enum ResourceContainerState {
 	Empty, 
 	Red,
-	Blue
+	Blue,
+	Green,
+	Purple,
+	Yellow
 }
 
 public class UIResourceContainer : MonoBehaviour {
@@ -16,6 +19,9 @@ public class UIResourceContainer : MonoBehaviour {
 	public Sprite emptySprite;
 	public Sprite redSprite;
 	public Sprite blueSprite;
+	public Sprite greenSprite;
+	public Sprite purpleSprite;
+	public Sprite yellowSprite;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +41,15 @@ public class UIResourceContainer : MonoBehaviour {
 			break;
 			case ResourceContainerState.Blue:
 				i.sprite = blueSprite;
+			break;
+			case ResourceContainerState.Green:
+				i.sprite = greenSprite;
+			break;
+			case ResourceContainerState.Yellow:
+				i.sprite = yellowSprite;
+			break;
+			case ResourceContainerState.Purple:
+				i.sprite = purpleSprite;
 			break;
 		}
 

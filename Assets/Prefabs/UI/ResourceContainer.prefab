@@ -34,6 +34,9 @@ MonoBehaviour:
   emptySprite: {fileID: 21300006, guid: 2c3ee1ca009f34bf091cb66c55086a1b, type: 3}
   redSprite: {fileID: 21300008, guid: 2c3ee1ca009f34bf091cb66c55086a1b, type: 3}
   blueSprite: {fileID: 21300012, guid: 2c3ee1ca009f34bf091cb66c55086a1b, type: 3}
+  greenSprite: {fileID: 21300010, guid: 2c3ee1ca009f34bf091cb66c55086a1b, type: 3}
+  purpleSprite: {fileID: 21300016, guid: 2c3ee1ca009f34bf091cb66c55086a1b, type: 3}
+  yellowSprite: {fileID: 21300014, guid: 2c3ee1ca009f34bf091cb66c55086a1b, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
