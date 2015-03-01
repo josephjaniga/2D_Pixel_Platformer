@@ -6,5 +6,7 @@
 
 	public byte[][] tileFG;
 	public byte[][] tileBG;
+
+	public Door[] doors;
 	
 }

@@ -12,18 +12,19 @@ public class TileData : MonoBehaviour {
 
 	public TileMap tm;
 
-	public static byte[,] tile;
+	public byte[,] tile;
+	public bool[,] collisionData;
 	public int 	width = 3,
 				height = 3;
 
 	private string path = "Assets/MapFiles";
-
 
 	// Use this for initialization
 	void Awake () {
 
 		tm = GetComponent<TileMap>();
 		tile = new byte[width, height];
+		collisionData = new bool[width, height];
 		//fillDataWithType((byte)TileTypes.Brick);
 		readDataFromJSON( path + "/" + levelFileName );
 
@@ -49,6 +50,7 @@ public class TileData : MonoBehaviour {
 		height = thisLevel.height;
 		
 		tile = new byte[width, height];
+		collisionData = new bool[width, height];
 		tm.Create();
 
 		// apply the bg
@@ -56,6 +58,7 @@ public class TileData : MonoBehaviour {
 		for ( int rows=height-1; rows>=0; rows--){
 			foreach( byte el in thisLevel.tileBG[rows] ){
 				tile[count%width, count/width] = el;
+				collisionData[count%width, count/width] = false;
 				count++;
 			}
 		}
@@ -63,35 +66,35 @@ public class TileData : MonoBehaviour {
 		count = 0;
 		for ( int rows=height-1; rows>=0; rows--){
 			foreach( byte el in thisLevel.tileFG[rows] ){
-				if ( el != (byte)TileTypes.Air ){
+				if ( el != (byte)TileTypes.Blank ){
 					tile[count%width, count/width] = el;
+					collisionData[count%width, count/width] = true;
 				}
 				count++;
 			}
 		}
-		
-		// override fg 
-//		count = 0;
-//		for ( int rows=height-1; rows>=0; rows--){
-//			List<object> temp = (List<object>)dict["tileFG"];
-//			foreach( long el in (List<object>)temp[rows] ){
-//				if ( (byte)(long)el != (byte)TileTypes.Air ){
-//					tile[count%width, count/width] = (byte)(long)el;
-//				}
-//				count++;
-//			}
-//		}
-
 
 	}
 
 	public byte getTileAtPosition(int x, int y){
 		return tile[x,y];
 	}
+
+	public bool getCollisionAtPosition(int x, int y){
+		return collisionData[x,y];
+	}
 }
 
 public enum TileTypes : byte {
-	Air=0,
+	Blank=0,
+	BlankOne,
+	BlankTwo,
+	BlankThree,
+	BlankFour,
+	BlankFive,
+	BlankSix,
+	BlankSeven,
+	Air,
 	Brick,
 	Grass,
 	Water,

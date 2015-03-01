@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Timers;
 
-
 // TODO: Split out Visual Rendering
 
 public class CharacterHealth : MonoBehaviour {

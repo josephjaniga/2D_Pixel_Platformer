@@ -50,7 +50,7 @@ public class TileMap : MonoBehaviour {
 		int numTilesPerRow = terrainTiles.width / tileResolution;
 		int numRows = terrainTiles.height / tileResolution;
 
-		// texture the size of the mesh
+		// create a new texture the size of the mesh
 		Texture2D texture = new Texture2D(tileResolution * size_x, tileResolution * size_y);
 
 		int texWidth = size_x * tileResolution;
@@ -59,7 +59,12 @@ public class TileMap : MonoBehaviour {
 		for(int y=0; y<size_y; y++){
 			for(int x=0; x<size_x; x++){
 				//int TileOffset = Random.Range(0,5) * tileResolution;
-				Color[] p = terrainTiles.GetPixels((int)td.getTileAtPosition(x,y)*tileResolution, 0, tileResolution, tileResolution);
+				Color[] p = terrainTiles.GetPixels(
+					((int)td.getTileAtPosition(x,y) % numTilesPerRow ) * tileResolution,			// x start
+					(int)Mathf.Floor((int)td.getTileAtPosition(x,y) / numTilesPerRow ) * tileResolution,	// y start
+					tileResolution,	// width
+					tileResolution	// height
+					);
 				texture.SetPixels(x*tileResolution, y*tileResolution, tileResolution, tileResolution, p);
 			}
 		}
@@ -102,7 +107,7 @@ public class TileMap : MonoBehaviour {
 		int colliderTileCount = 0;
 		for (y=0; y<size_y; y++){
 			for (x=0; x<size_x; x++){
-				if ( td.getTileAtPosition(x, y) != (byte)TileTypes.Air ) {
+				if ( td.getCollisionAtPosition(x, y) ) {
 					colliderTileCount++;
 				}
 			}
@@ -115,8 +120,7 @@ public class TileMap : MonoBehaviour {
 		for (y=0; y<size_y; y++){
 			for (x=0; x<size_x; x++){
 				currentIndex = y * vsize_x + x;
-				if ( 	td.getTileAtPosition(x, y) != (byte)TileTypes.Air &&
-						td.getTileAtPosition(x, y) != (byte)TileTypes.BlackBrickBG ) {
+				if ( td.getCollisionAtPosition(x, y) ) {
 					Vector2[] pointsArray = new Vector2[4];
 					// top left
 					pointsArray[0] = new Vector2(x, y+1);
