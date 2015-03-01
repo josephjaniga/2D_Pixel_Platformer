@@ -29,3 +29,7 @@ table.grid td{
     height:16px;
     border:1px solid black;
 }
+
+.preview.grid td{
+    border:0px solid transparent !important;
+}

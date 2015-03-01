@@ -106,7 +106,9 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#FG" aria-controls="home" role="tab" data-toggle="tab">FG</a></li>
+                <li role="presentation"><a href="#DE" aria-controls="profile" role="tab" data-toggle="tab">DE</a></li>
                 <li role="presentation"><a href="#BG" aria-controls="profile" role="tab" data-toggle="tab">BG</a></li>
+                <li role="presentation"><a href="#Preview" aria-controls="profile" role="tab" data-toggle="tab">PREVIEW</a></li>
                 <li role="presentation"><a href="#OUTPUT" aria-controls="messages" role="tab" data-toggle="tab">OUTPUT</a></li>
             </ul>
 
@@ -135,12 +137,12 @@
                         </tr>
                     </table>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="BG">
-                    <h1>BG</h1>
+                <div role="tabpanel" class="tab-pane" id="DE">
+                    <h1>DE</h1>
                     <table class="grid">
-                        <tr ng-repeat="mapRow in tileMapBG track by $index">
+                        <tr ng-repeat="mapRow in tileMapDE track by $index">
                             <td ng-repeat="tile in mapRow track by $index"
-                                ng-click="paint($parent.$index, $index, 'bg')"
+                                ng-click="paint($parent.$index, $index, 'de')"
                                 style="
                         cursor:pointer;
                         overflow:hidden;
@@ -158,6 +160,79 @@
                         </tr>
                     </table>
                 </div>
+                <div role="tabpanel" class="tab-pane" id="BG">
+                    <h1>BG</h1>
+                    <table class="grid">
+                        <tr ng-repeat="mapRow in tileMapBG track by $index">
+                            <td ng-repeat="tile in mapRow track by $index"
+                                ng-click="paint($parent.$index, $index, 'bg')"
+                                style="
+                            cursor:pointer;
+                            overflow:hidden;
+                            background: url(tiles.png);
+                            width: {{tileWidth * gridScale + 'px'}};
+                            height: {{tileHeight * gridScale + 'px'}};
+                            background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                            background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
+                            background-repeat: no-repeat;">
+                                <!--
+                                <span style="color:red;">{{tile}}</span><br/>
+                                {{ $index }}, {{ mapHeight - $parent.$index - 1 }}
+                                -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="Preview">
+                    <h1>Preview</h1>
+                    <div style="position:relative;">
+                        <table class="preview grid" style="position:absolute; top:0px; left:0px; z-index:-1;">
+                            <tr ng-repeat="mapRow in tileMapFG track by $index">
+                                <td ng-repeat="tile in mapRow track by $index"
+                                    style="
+                            cursor:pointer;
+                            overflow:hidden;
+                            background: url(tiles.png);
+                            width: {{tileWidth * gridScale + 'px'}};
+                            height: {{tileHeight * gridScale + 'px'}};
+                            background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                            background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
+                            background-repeat: no-repeat;">
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="preview grid" style="position:absolute; top:0px; left:0px; z-index:-2;">
+                            <tr ng-repeat="mapRow in tileMapDE track by $index">
+                                <td ng-repeat="tile in mapRow track by $index"
+                                    style="
+                            cursor:pointer;
+                            overflow:hidden;
+                            background: url(tiles.png);
+                            width: {{tileWidth * gridScale + 'px'}};
+                            height: {{tileHeight * gridScale + 'px'}};
+                            background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                            background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
+                            background-repeat: no-repeat;">
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="preview grid" style="position:absolute; top:0px; left:0px; z-index:-3;">
+                            <tr ng-repeat="mapRow in tileMapBG track by $index">
+                                <td ng-repeat="tile in mapRow track by $index"
+                                    style="
+                            cursor:pointer;
+                            overflow:hidden;
+                            background: url(tiles.png);
+                            width: {{tileWidth * gridScale + 'px'}};
+                            height: {{tileHeight * gridScale + 'px'}};
+                            background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                            background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
+                            background-repeat: no-repeat;">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
                 <div role="tabpanel" class="tab-pane" id="OUTPUT">
 <!-- THIS STAYS LEFT ALIGNED BECAUSE OF PRE-FORMATTING -->
 <pre style="overflow: scroll;">
@@ -166,8 +241,10 @@
 	"width": {{mapWidth}},
 	"height": {{mapHeight}},
 	"tileFG": [<div ng-repeat="mapRow in tileMapFG track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
+	"tileDE": [<div ng-repeat="mapRow in tileMapDE track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
 	"tileBG": [<div ng-repeat="mapRow in tileMapBG track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
-	"doors": [ ]
+	"doors": [ ],
+    "stuff": [ ]
 }</pre>
                 </div>
             </div>

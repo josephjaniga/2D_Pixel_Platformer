@@ -16,7 +16,7 @@ var app = angular.module("TileMapEditor", []);
 
         $scope.getNumber = function(num) {
             return new Array(num);
-        }
+        };
 
         /**
          * Map Data Related Information
@@ -27,17 +27,24 @@ var app = angular.module("TileMapEditor", []);
         $scope.mapHeight = 4;
 
         $scope.tileMapFG = [
-            [ 0, 0, 0, 0 ],
-            [ 0, 0, 0, 0 ],
-            [ 0, 0, 0, 0 ],
-            [ 0, 0, 0, 9 ]
+            [ 0, 0, 0, 13 ],
+            [ 13, 0, 0, 13 ],
+            [ 5, 0, 21, 5 ],
+            [ 2, 2, 2, 2 ]
         ];
 
-        $scope.tileMapBG = [
+        $scope.tileMapDE = [
             [ 0, 0, 0, 0 ],
             [ 0, 0, 0, 0 ],
             [ 0, 0, 0, 0 ],
             [ 0, 0, 0, 0 ]
+        ];
+
+        $scope.tileMapBG = [
+            [ 16, 16, 16, 16 ],
+            [ 16, 16, 16, 16 ],
+            [ 16, 16, 16, 16 ],
+            [ 16, 16, 16, 16 ]
         ];
 
         $scope.sizeChange = function (){
@@ -71,10 +78,18 @@ var app = angular.module("TileMapEditor", []);
         $scope.Math = window.Math;
 
         $scope.paint = function(x, y, rel){
-            if (rel.toLowerCase() === "bg")
-                $scope.tileMapBG[x][y] = $scope.selected;
-            else
-                $scope.tileMapFG[x][y] = $scope.selected;
+            switch(rel){
+                default:
+                case "fg":
+                    $scope.tileMapBG[x][y] = $scope.selected;
+                    break;
+                case "de":
+                    $scope.tileMapDE[x][y] = $scope.selected;
+                    break;
+                case "bg":
+                    $scope.tileMapFG[x][y] = $scope.selected;
+                    break;
+            }
         };
 
 
