@@ -60,10 +60,8 @@ public class TileMap : MonoBehaviour {
 			for(int x=0; x<size_x; x++){
 				//int TileOffset = Random.Range(0,5) * tileResolution;
 
-				int startX = ((int)td.getTileAtPosition(x,y) % numTilesPerRow ) * tileResolution;
-				int startY = (int)Mathf.Floor((int)td.getTileAtPosition(x,y) / numTilesPerRow ) * tileResolution;
-
-				Debug.Log ( startX + " " + startY );
+				int startX = ((int)td.getTileAtPosition(x,y,td.layer) % numTilesPerRow ) * tileResolution;
+				int startY = (int)Mathf.Floor((int)td.getTileAtPosition(x,y,td.layer) / numTilesPerRow ) * tileResolution;
 
 				Color[] p = terrainTiles.GetPixels(
 					startX,	// x start
@@ -109,40 +107,44 @@ public class TileMap : MonoBehaviour {
 			}
 		}
 
-		// count the actual collide-able tiles
-		int colliderTileCount = 0;
-		for (y=0; y<size_y; y++){
-			for (x=0; x<size_x; x++){
-				if ( td.getCollisionAtPosition(x, y) ) {
-					colliderTileCount++;
+		if ( td.layer == TileMapLayer.Foreground ){
+
+			// count the actual collide-able tiles
+			int colliderTileCount = 0;
+			for (y=0; y<size_y; y++){
+				for (x=0; x<size_x; x++){
+					if ( td.getCollisionAtPosition(x, y) ) {
+						colliderTileCount++;
+					}
 				}
 			}
-		}
-		// set the number of paths required for the polygon collider
-		pc.pathCount = colliderTileCount;
+			// set the number of paths required for the polygon collider
+			pc.pathCount = colliderTileCount;
 
-		// make the polygon collider
-		colliderTileCount = currentIndex = 0;
-		for (y=0; y<size_y; y++){
-			for (x=0; x<size_x; x++){
-				currentIndex = y * vsize_x + x;
-				if ( td.getCollisionAtPosition(x, y) ) {
-					Vector2[] pointsArray = new Vector2[4];
-					// top left
-					pointsArray[0] = new Vector2(x, y+1);
-					// top right
-					pointsArray[1] = new Vector2(x+1, y+1);
-					// bottom right
-					pointsArray[2] = new Vector2(x+1, y);
-					// bottom left
-					pointsArray[3] = new Vector2(x, y);
-					pc.SetPath(colliderTileCount, pointsArray);
-					colliderTileCount++;
-
+			// make the polygon collider
+			colliderTileCount = currentIndex = 0;
+			for (y=0; y<size_y; y++){
+				for (x=0; x<size_x; x++){
+					currentIndex = y * vsize_x + x;
+					if ( td.getCollisionAtPosition(x, y) ) {
+						Vector2[] pointsArray = new Vector2[4];
+						// top left
+						pointsArray[0] = new Vector2(x, y+1);
+						// top right
+						pointsArray[1] = new Vector2(x+1, y+1);
+						// bottom right
+						pointsArray[2] = new Vector2(x+1, y);
+						// bottom left
+						pointsArray[3] = new Vector2(x, y);
+						pc.SetPath(colliderTileCount, pointsArray);
+						colliderTileCount++;
+					}
 				}
 			}
+
 		}
-		
+
+			
 		// make the triangles
 		for (y=0; y<size_y; y++){
 			for (x=0; x<size_x; x++){

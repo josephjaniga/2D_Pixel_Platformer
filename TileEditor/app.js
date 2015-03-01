@@ -12,7 +12,7 @@ var app = angular.module("TileMapEditor", []);
         $scope.spriteSheetHeight = 3;
 
         $scope.displayScale = 3;
-        $scope.gridScale = 3;
+        $scope.gridScale = 1.5;
 
         $scope.getNumber = function(num) {
             return new Array(num);
@@ -71,7 +71,7 @@ var app = angular.module("TileMapEditor", []);
         $scope.Math = window.Math;
 
         $scope.paint = function(x, y, rel){
-            if ( rel.toLowerCase() === "bg")
+            if (rel.toLowerCase() === "bg")
                 $scope.tileMapBG[x][y] = $scope.selected;
             else
                 $scope.tileMapFG[x][y] = $scope.selected;

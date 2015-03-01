@@ -8,11 +8,15 @@ using Newtonsoft.Json;
 public class TileData : MonoBehaviour {
 	
 	public string levelFileName = "level_one.json";
-	public bool foreground = true;
+
+	public TileMapLayer layer = TileMapLayer.Foreground;
 
 	public TileMap tm;
+	
+	public byte[,] tileBG;
+	public byte[,] tileDE;
+	public byte[,] tileFG;
 
-	public byte[,] tile;
 	public bool[,] collisionData;
 	public int 	width = 3,
 				height = 3;
@@ -23,19 +27,42 @@ public class TileData : MonoBehaviour {
 	void Awake () {
 
 		tm = GetComponent<TileMap>();
-		tile = new byte[width, height];
+		tileBG = new byte[width, height];
+		tileDE = new byte[width, height];
+		tileFG = new byte[width, height];
 		collisionData = new bool[width, height];
-		//fillDataWithType((byte)TileTypes.Brick);
 		readDataFromJSON( path + "/" + levelFileName );
 
 	}
 	
-	public void fillDataWithType(byte tileType){
-		for (int y=0; y<height; y++){
-			for ( int x=0; x<width; x++ ){
-				tile[x,y] = tileType;
+	public void fillDataWithType(byte tileType, TileMapLayer layer = TileMapLayer.Foreground){
+
+		switch(layer){
+		default:
+		case TileMapLayer.Foreground:
+			for (int y=0; y<height; y++){
+				for ( int x=0; x<width; x++ ){
+					tileFG[x,y] = tileType;
+				}
 			}
+			break;
+		case TileMapLayer.Decoration:
+			for (int y=0; y<height; y++){
+				for ( int x=0; x<width; x++ ){
+					tileDE[x,y] = tileType;
+				}
+			}
+			break;
+		case TileMapLayer.Background:
+			for (int y=0; y<height; y++){
+				for ( int x=0; x<width; x++ ){
+					tileBG[x,y] = tileType;
+				}
+			}
+			break;
 		}
+
+
 	}
 
 	public void readDataFromJSON(string FileName){
@@ -49,35 +76,66 @@ public class TileData : MonoBehaviour {
 		width = thisLevel.width;
 		height = thisLevel.height;
 		
-		tile = new byte[width, height];
+		tileBG = new byte[width, height];
+		tileDE = new byte[width, height];
+		tileFG = new byte[width, height];
 		collisionData = new bool[width, height];
 		tm.Create();
 
-		// apply the bg
 		int count = 0;
-		for ( int rows=height-1; rows>=0; rows--){
-			foreach( byte el in thisLevel.tileBG[rows] ){
-				tile[count%width, count/width] = el;
-				collisionData[count%width, count/width] = false;
-				count++;
-			}
-		}
 
-		count = 0;
-		for ( int rows=height-1; rows>=0; rows--){
-			foreach( byte el in thisLevel.tileFG[rows] ){
-				if ( el != (byte)TileTypes.Blank ){
-					tile[count%width, count/width] = el;
-					collisionData[count%width, count/width] = true;
+		switch(layer){
+		default:
+		case TileMapLayer.Foreground:
+			// apply the foreground
+			for ( int rows=height-1; rows>=0; rows--){
+				foreach( byte el in thisLevel.tileFG[rows] ){
+					if ( el != (byte)TileTypes.Blank ){
+						tileFG[count%width, count/width] = el;
+						collisionData[count%width, count/width] = true;
+					}
+					count++;
 				}
-				count++;
 			}
+			break;
+		case TileMapLayer.Decoration:
+			// apply the Decorations
+			for ( int rows=height-1; rows>=0; rows--){
+				foreach( byte el in thisLevel.tileDE[rows] ){
+					tileDE[count%width, count/width] = el;
+					count++;
+				}
+			}
+			break;
+		case TileMapLayer.Background:
+			// apply the bg
+//			for ( int rows=height-1; rows>=0; rows--){
+//				foreach( byte el in thisLevel.tileBG[rows] ){
+//					tileBG[count%width, count/width] = el;
+//					count++;
+//				}
+//			}
+			fillDataWithType((byte)16, TileMapLayer.Background);
+			break;
 		}
 
 	}
 
-	public byte getTileAtPosition(int x, int y){
-		return tile[x,y];
+	public byte getTileAtPosition(int x, int y, TileMapLayer layer = TileMapLayer.Foreground){
+
+		switch(layer){
+		default:
+		case TileMapLayer.Foreground:
+			return tileFG[x,y];
+			break;
+		case TileMapLayer.Decoration:
+			return tileDE[x,y];
+			break;
+		case TileMapLayer.Background:
+			return tileBG[x,y];
+			break;
+		}
+
 	}
 
 	public bool getCollisionAtPosition(int x, int y){
@@ -102,4 +160,10 @@ public enum TileTypes : byte {
 	Test,
 	SmallRedBrick,
 	BlackBrickBG
+}
+
+public enum TileMapLayer : byte {
+	Foreground=0,	// tileFG
+	Decoration,		// tileDE
+	Background		// tileBG
 }
