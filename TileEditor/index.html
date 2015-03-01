@@ -56,7 +56,7 @@
                 <!-- Show the Sprite Sheet individual tiles -->
                 <div ng-repeat="y in getNumber(spriteSheetHeight) track by $index" style="display:inline-block;">
                     <div ng-repeat="x in getNumber(spriteSheetWidth) track by $index"
-                         ng-click="select($parent.$index * spriteSheetWidth + $index)"
+                         ng-click="select( (spriteSheetHeight - 1 - $parent.$index) * spriteSheetWidth + $index )"
                          style="
                             cursor: pointer;
                             display: inline-block;
@@ -68,7 +68,7 @@
                             /* backup
                             background-position: {{ -$index * tileWidth * displayScale }}px {{ -$parent.$index * tileHeight * displayScale }}px;
                             */
-                            background-position: {{ -$index * tileWidth * displayScale }}px {{ ($parent.$index * spriteSheetWidth + $index) tileHeight * displayScale }}px;
+                            background-position: {{ -$index * tileWidth * displayScale }}px {{ -$parent.$index * tileHeight * displayScale  }}px;
                             background-size: {{ spriteSheetWidth * tileWidth * displayScale }}px {{spriteSheetHeight * tileHeight * displayScale}}px;
                             background-repeat: no-repeat;
                             text-align:center;
@@ -76,7 +76,7 @@
                             font-weight: bold;
                             color:white;
                             text-shadow: 3px 3px 1px black, 3px 3px 5px black, 3px 3px 10px black;">
-                        {{ $parent.$index * spriteSheetWidth + $index }}
+                        {{ (spriteSheetHeight - 1 - $parent.$index) * spriteSheetWidth + $index }}
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                         background: url(tiles.png);
                         width: {{tileWidth * gridScale + 'px'}};
                         height: {{tileHeight * gridScale + 'px'}};
-                        background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px {{ - (Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                        background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
                         background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
                         background-repeat: no-repeat;">
                                 <!--
@@ -147,7 +147,7 @@
                         background: url(tiles.png);
                         width: {{tileWidth * gridScale + 'px'}};
                         height: {{tileHeight * gridScale + 'px'}};
-                        background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px {{ - (Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                        background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
                         background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
                         background-repeat: no-repeat;">
                                 <!--

@@ -9,10 +9,10 @@ var app = angular.module("TileMapEditor", []);
         $scope.tileWidth = 16;
         $scope.tileHeight = 16;
         $scope.spriteSheetWidth = 8;
-        $scope.spriteSheetHeight = 2;
+        $scope.spriteSheetHeight = 3;
 
         $scope.displayScale = 3;
-        $scope.gridScale = 1;
+        $scope.gridScale = 3;
 
         $scope.getNumber = function(num) {
             return new Array(num);
@@ -65,7 +65,7 @@ var app = angular.module("TileMapEditor", []);
         $scope.select = function (i){
             $scope.selected = i;
             $scope.selectedXposition = i % $scope.spriteSheetWidth;
-            $scope.selectedYposition = Math.floor( i / $scope.spriteSheetWidth );
+            $scope.selectedYposition = $scope.spriteSheetHeight - 1 - Math.floor( i / $scope.spriteSheetWidth );
         };
 
         $scope.Math = window.Math;
