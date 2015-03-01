@@ -1,0 +1,32 @@
+
+pre,
+pre *{
+    font-family: "Courier New" !important;
+}
+
+body {
+    width:90%;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+pre {
+    font-size: 16px;
+    font-family: 'Courier New' !important;
+    background: darkblue;
+    color: white;
+    padding: 25px;
+    margin: 50px;
+}
+
+table,
+tr {
+    background:transparent;
+}
+
+table.grid td{
+    box-sizing: border-box;
+    width:16px;
+    height:16px;
+    border:1px solid black;
+}

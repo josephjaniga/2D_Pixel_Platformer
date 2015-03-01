@@ -59,9 +59,15 @@ public class TileMap : MonoBehaviour {
 		for(int y=0; y<size_y; y++){
 			for(int x=0; x<size_x; x++){
 				//int TileOffset = Random.Range(0,5) * tileResolution;
+
+				int startX = ((int)td.getTileAtPosition(x,y) % numTilesPerRow ) * tileResolution;
+				int startY = (int)Mathf.Floor((int)td.getTileAtPosition(x,y) / numTilesPerRow ) * tileResolution;
+
+				Debug.Log ( startX + " " + startY );
+
 				Color[] p = terrainTiles.GetPixels(
-					((int)td.getTileAtPosition(x,y) % numTilesPerRow ) * tileResolution,			// x start
-					(int)Mathf.Floor((int)td.getTileAtPosition(x,y) / numTilesPerRow ) * tileResolution,	// y start
+					startX,	// x start
+					startY,	// y start
 					tileResolution,	// width
 					tileResolution	// height
 					);

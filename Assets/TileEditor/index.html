@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TileMapEditor</title>
+
+    <link rel="stylesheet" href="reset.css"/>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="main.css"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="app.js"></script>
+
+
+
+</head>
+<body ng-app="TileMapEditor">
+
+    <section ng-controller="TileMapCtrl">
+
+        <!-- SETTINGS -->
+        <div style="position:fixed; bottom:0px; left:0px; right:0px;">
+            <div style="width:30%; display:block; background: lightpink; bottom:0px; left:0%; position:absolute;">
+                <table style="margin: 0 auto; display:block; text-align:center;">
+                    <tr>
+                        <td>Map Name: <input type="text" value="{{mapName}}" ng-model="mapName"/></td>
+                        <td>Map Width: <input type="text" value="{{mapWidth}}" ng-model="mapWidth" style="color:red;" ng-change="sizeChange()"><br/></td>
+                        <td>Map Height: <input type="text" value="{{mapHeight}}" ng-model="mapHeight" style="color:red;" ng-change="sizeChange()"><br/></td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <input type="range" min="1" max="64" ng-model="mapWidth" ng-change="sizeChange()"/>
+                        </td>
+                        <td>
+                            <input type="range" min="1" max="64" ng-model="mapHeight" ng-change="sizeChange()"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width:60%; display:inline-block; background: lightgreen; bottom:0px; left:30%; position:absolute;">
+                <!-- Show the Sprite Sheet individual tiles -->
+                <div ng-repeat="y in getNumber(spriteSheetHeight) track by $index" style="display:inline-block;">
+                    <div ng-repeat="x in getNumber(spriteSheetWidth) track by $index"
+                         ng-click="select($parent.$index * spriteSheetWidth + $index)"
+                         style="
+                            cursor: pointer;
+                            display: inline-block;
+                            margin: 3px;
+                            overflow:hidden;
+                            background: url(tiles.png);
+                            width: {{tileWidth * displayScale + 'px'}};
+                            height: {{tileHeight * displayScale + 'px'}};
+                            /* backup
+                            background-position: {{ -$index * tileWidth * displayScale }}px {{ -$parent.$index * tileHeight * displayScale }}px;
+                            */
+                            background-position: {{ -$index * tileWidth * displayScale }}px {{ ($parent.$index * spriteSheetWidth + $index) tileHeight * displayScale }}px;
+                            background-size: {{ spriteSheetWidth * tileWidth * displayScale }}px {{spriteSheetHeight * tileHeight * displayScale}}px;
+                            background-repeat: no-repeat;
+                            text-align:center;
+                            font-size: {{displayScale * tileHeight * .8 }}px;
+                            font-weight: bold;
+                            color:white;
+                            text-shadow: 3px 3px 1px black, 3px 3px 5px black, 3px 3px 10px black;">
+                        {{ $parent.$index * spriteSheetWidth + $index }}
+                    </div>
+                </div>
+            </div>
+            <div style="width:10%; display:inline-block; background: lightblue; bottom:0px; left:90%; position:absolute;">
+                <div style=" display: inline-block;
+                        margin: 3px;
+                        overflow:hidden;
+                        background: url(tiles.png);
+                        width: {{tileWidth * displayScale + 'px'}};
+                        height: {{tileHeight * displayScale + 'px'}};
+                        background-position: {{ -selectedXposition * tileWidth * displayScale }}px {{ -selectedYposition * tileHeight * displayScale }}px;
+                        background-size: {{ spriteSheetWidth * tileWidth * displayScale }}px {{spriteSheetHeight * tileHeight * displayScale}}px;
+                        background-repeat: no-repeat;
+                        text-align:center;
+                        font-size: {{displayScale * tileHeight * .8 }}px;
+                        font-weight: bold;
+                        color:white;
+                        text-shadow: 3px 3px 1px black, 3px 3px 5px black, 3px 3px 10px black;">
+                    {{selected}}
+                </div>
+            </div>
+        </div>
+
+        <div style="clear:both;"></div>
+
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#FG" aria-controls="home" role="tab" data-toggle="tab">FG</a></li>
+                <li role="presentation"><a href="#BG" aria-controls="profile" role="tab" data-toggle="tab">BG</a></li>
+                <li role="presentation"><a href="#OUTPUT" aria-controls="messages" role="tab" data-toggle="tab">OUTPUT</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="FG">
+                    <h1>FG</h1>
+                    <table class="grid">
+                        <tr ng-repeat="mapRow in tileMapFG track by $index">
+                            <td ng-repeat="tile in mapRow track by $index"
+                                ng-click="paint($parent.$index, $index, 'fg')"
+                                style="
+                        cursor:pointer;
+                        overflow:hidden;
+                        background: url(tiles.png);
+                        width: {{tileWidth * gridScale + 'px'}};
+                        height: {{tileHeight * gridScale + 'px'}};
+                        background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px {{ - (Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                        background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
+                        background-repeat: no-repeat;">
+                                <!--
+                                <span style="color:red;">{{tile}}</span><br/>
+                                {{ $index }}, {{ mapHeight - $parent.$index - 1 }}
+                                -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="BG">
+                    <h1>BG</h1>
+                    <table class="grid">
+                        <tr ng-repeat="mapRow in tileMapBG track by $index">
+                            <td ng-repeat="tile in mapRow track by $index"
+                                ng-click="paint($parent.$index, $index, 'bg')"
+                                style="
+                        cursor:pointer;
+                        overflow:hidden;
+                        background: url(tiles.png);
+                        width: {{tileWidth * gridScale + 'px'}};
+                        height: {{tileHeight * gridScale + 'px'}};
+                        background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px {{ - (Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                        background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
+                        background-repeat: no-repeat;">
+                                <!--
+                                <span style="color:red;">{{tile}}</span><br/>
+                                {{ $index }}, {{ mapHeight - $parent.$index - 1 }}
+                                -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="OUTPUT">
+<!-- THIS STAYS LEFT ALIGNED BECAUSE OF PRE-FORMATTING -->
+<pre style="overflow: scroll;">
+{
+	mapName: "{{mapName}}",
+	"width": {{mapWidth}},
+	"height": {{mapHeight}},
+	"tileFG": [<div ng-repeat="mapRow in tileMapFG track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
+	"tileBG": [<div ng-repeat="mapRow in tileMapBG track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
+	"doors": [ ]
+}</pre>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
