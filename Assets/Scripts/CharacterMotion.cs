@@ -126,6 +126,12 @@ public class CharacterMotion : MonoBehaviour
 		}
 	}
 
+	public void ClearPhysics(){
+		// DIY Joe physics
+		acceleration = new Vector2(0f, 0f);
+		velocity = new Vector2(0f, 0f);
+		// Unity Physics
+		rigidbody2D.velocity = Vector3.zero;
+	}
+
 }
-
-

@@ -52,13 +52,17 @@ var app = angular.module("TileMapEditor", []);
             $scope.tileMapBG = [];
             $scope.tileMapDE = [];
             for( var y=0; y < $scope.mapHeight; y++){
-                var tempRow = [];
+                var tempRowFG = [],
+                    tempRowDE = [],
+                    tempRowBG = [];
                 for( var x=0; x < $scope.mapWidth; x++){
-                    tempRow.push(0);
+                    tempRowFG.push(0);
+                    tempRowDE.push(0);
+                    tempRowBG.push(0);
                 }
-                $scope.tileMapFG.push(tempRow);
-                $scope.tileMapDE.push(tempRow);
-                $scope.tileMapBG.push(tempRow);
+                $scope.tileMapFG.push(tempRowFG);
+                $scope.tileMapDE.push(tempRowDE);
+                $scope.tileMapBG.push(tempRowBG);
             }
         };
 
@@ -80,18 +84,9 @@ var app = angular.module("TileMapEditor", []);
         $scope.Math = window.Math;
 
         $scope.paint = function(x, y, rel){
-            switch(rel){
-                default:
-                case "fg":
-                    $scope.tileMapBG[x][y] = $scope.selected;
-                    break;
-                case "de":
-                    $scope.tileMapDE[x][y] = $scope.selected;
-                    break;
-                case "bg":
-                    $scope.tileMapFG[x][y] = $scope.selected;
-                    break;
-            }
+            if ( rel === "bg" ) { $scope.tileMapBG[x][y] = $scope.selected; }
+            if ( rel === "de" ) { $scope.tileMapDE[x][y] = $scope.selected; }
+            if ( rel === "fg" ) { $scope.tileMapFG[x][y] = $scope.selected; }
         };
 
 

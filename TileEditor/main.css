@@ -23,11 +23,27 @@ tr {
     background:transparent;
 }
 
+h1 {
+    padding: 0px 50px;
+}
+
+table.grid,
+.preview.grid {
+    margin: 0 auto !important;
+}
+
 table.grid td{
     box-sizing: border-box;
     width:16px;
     height:16px;
     border:1px solid black;
+}
+
+.preview.grid {
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
 }
 
 .preview.grid td{

@@ -25,7 +25,8 @@ public class TileMap : MonoBehaviour {
 	public PolygonCollider2D pc;
 
 	void Start(){
-		Create();
+		// defer this functionality to the scene managing classes
+		// Create();
 	}
 
 	public void Create(){

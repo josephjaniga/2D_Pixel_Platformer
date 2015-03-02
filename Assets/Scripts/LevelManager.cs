@@ -2,7 +2,16 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
-	
+
+	/**
+	 *  This class is responsible for setting the stage and
+	 *  ensuring we have all the objects required to run.
+	 */ 
+
+	/**
+	 *	TODO: Should this class be responsible for dealing with Player Death?
+	 */
+
 	// Game Structure Setup
 	public GameObject camera;
 	public GameObject player;
@@ -10,11 +19,12 @@ public class LevelManager : MonoBehaviour {
 	public GameObject canvas;
 	public GameObject levelMapSystem;
 	public GameObject doors;
-
+	public GameObject levelManager;
+	
 	// Level Specific Info
 	public string levelDisplayName = "";
 	public string levelMapFile = "";
-	public bool playerIsDead = false;
+	public Transform startingPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -22,22 +32,18 @@ public class LevelManager : MonoBehaviour {
 		// Prepare the Environment
 		init();
 
-		// Load the Map Data
+		// Load the Map Data & Render the Map
+		levelMapSystem.GetComponent<LevelMapSystem>().CreateTileMaps(levelMapFile);
 
-
-		// Render the Map
-
-		// Place the Doors
-
-		// Place the "Stuff"
+		// TODO: Place the Doors
+		// TODO: Place the "Stuff"
 
 		// Position the Player
-
+		player.transform.position = startingPosition.position;
 
 	}
 	
 	public void init (){
-
 		// check for the required game structure
 		player 			= _.player;
 		camera 			= _.camera;
@@ -45,7 +51,38 @@ public class LevelManager : MonoBehaviour {
 		canvas 			= _.canvas;
 		levelMapSystem 	= _.levelMapSystem;
 		doors			= _.doors;
+		levelManager	= _.levelManager;
+	}
 
+
+	/**
+	 * EVENT DELEGATION!!!
+	 */ 
+
+	void OnEnable()
+	{
+		CharacterHealth.e_PlayerDeath += PlayerDeath;
 	}
 	
+	void OnDisable()
+	{
+		CharacterHealth.e_PlayerDeath -= PlayerDeath;
+	}
+	
+	public void PlayerDeath()
+	{
+		CharacterHealth playerCharacterHealth = player.GetComponent<CharacterHealth>();
+
+		// clear flickering
+		playerCharacterHealth.isFlickering = false;
+		playerCharacterHealth.resetColor();
+
+		// clear velocity
+		player.GetComponent<CharacterMotion>().ClearPhysics();
+
+		player.transform.position = startingPosition.position;
+		playerCharacterHealth.currentHitsRemaining = playerCharacterHealth.totalHits;
+
+	}
+
 }

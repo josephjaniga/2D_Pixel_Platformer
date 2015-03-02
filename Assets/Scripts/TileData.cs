@@ -31,7 +31,6 @@ public class TileData : MonoBehaviour {
 		tileDE = new byte[width, height];
 		tileFG = new byte[width, height];
 		collisionData = new bool[width, height];
-		readDataFromJSON( path + "/" + levelFileName );
 
 	}
 	
@@ -62,10 +61,13 @@ public class TileData : MonoBehaviour {
 			break;
 		}
 
-
 	}
 
-	public void readDataFromJSON(string FileName){
+	public void readDataFromJSON( string FileName ){
+
+		if ( FileName == null ){
+			FileName = path + "/" + levelFileName;
+		}
 
 		string text = System.IO.File.ReadAllText(FileName);
 
@@ -108,14 +110,14 @@ public class TileData : MonoBehaviour {
 			}
 			break;
 		case TileMapLayer.Background:
-			// apply the bg
-//			for ( int rows=height-1; rows>=0; rows--){
-//				foreach( byte el in thisLevel.tileBG[rows] ){
-//					tileBG[count%width, count/width] = el;
-//					count++;
-//				}
-//			}
-			fillDataWithType((byte)16, TileMapLayer.Background);
+			// apply the background
+			for ( int rows=height-1; rows>=0; rows--){
+				foreach( byte el in thisLevel.tileBG[rows] ){
+					tileBG[count%width, count/width] = el;
+					count++;
+				}
+			}
+			//fillDataWithType((byte)16, TileMapLayer.Background);
 			break;
 		}
 

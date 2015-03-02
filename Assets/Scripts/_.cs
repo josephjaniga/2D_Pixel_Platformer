@@ -10,7 +10,8 @@ public static class _
 	private static GameObject   _mobsGroup;
 	private static GameObject	_levelMapSystem;
 	private static GameObject	_doorsGroup;
-	
+	private static GameObject	_levelManager;
+
 	// player
 	public static GameObject player 
 	{
@@ -113,5 +114,22 @@ public static class _
 		set { _doorsGroup = value; }
 	}
 
+	// LevelManager
+	public static GameObject levelManager
+	{
+		get {
+			GameObject temp = GameObject.Find("LevelManager");
+			if ( _levelManager == null  ){
+				if ( temp == null  ){
+					Debug.LogWarning("Level Manager Not Found... Abandon Ship!");
+				} else {
+					_levelManager = temp;
+				}
+			}
+			return _levelManager;
+		}
+		set { _levelManager = value; }
+	}
+	
 
 }

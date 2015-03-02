@@ -366,6 +366,12 @@ MonoBehaviour:
   Foreground: {fileID: 0}
   Decoration: {fileID: 0}
   Background: {fileID: 0}
+  FG_data: {fileID: 0}
+  DE_data: {fileID: 0}
+  BG_data: {fileID: 0}
+  FG_map: {fileID: 0}
+  DE_map: {fileID: 0}
+  BG_map: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

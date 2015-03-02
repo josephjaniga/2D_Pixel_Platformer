@@ -24,7 +24,6 @@
     <script src="app.js"></script>
 
 
-
 </head>
 <body ng-app="TileMapEditor">
 
@@ -186,7 +185,7 @@
                 <div role="tabpanel" class="tab-pane" id="Preview">
                     <h1>Preview</h1>
                     <div style="position:relative;">
-                        <table class="preview grid" style="position:absolute; top:0px; left:0px; z-index:-1;">
+                        <table class="preview grid" style="position:absolute; top:0px; z-index:-1;">
                             <tr ng-repeat="mapRow in tileMapFG track by $index">
                                 <td ng-repeat="tile in mapRow track by $index"
                                     style="
@@ -201,7 +200,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <table class="preview grid" style="position:absolute; top:0px; left:0px; z-index:-2;">
+                        <table class="preview grid" style="position:absolute; top:0px; z-index:-2;">
                             <tr ng-repeat="mapRow in tileMapDE track by $index">
                                 <td ng-repeat="tile in mapRow track by $index"
                                     style="
@@ -216,7 +215,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <table class="preview grid" style="position:absolute; top:0px; left:0px; z-index:-3;">
+                        <table class="preview grid" style="position:absolute; top:0px; z-index:-3;">
                             <tr ng-repeat="mapRow in tileMapBG track by $index">
                                 <td ng-repeat="tile in mapRow track by $index"
                                     style="
@@ -237,7 +236,7 @@
 <!-- THIS STAYS LEFT ALIGNED BECAUSE OF PRE-FORMATTING -->
 <pre style="overflow: scroll;">
 {
-	mapName: "{{mapName}}",
+	"mapName": "{{mapName}}",
 	"width": {{mapWidth}},
 	"height": {{mapHeight}},
 	"tileFG": [<div ng-repeat="mapRow in tileMapFG track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],

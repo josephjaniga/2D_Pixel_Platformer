@@ -6,17 +6,24 @@ using System.Timers;
 
 public class CharacterHealth : MonoBehaviour {
 
+	// total and current HP
 	public int totalHits = 1;
 	public int currentHitsRemaining;
 
+	// helpers for the flicker effect on taking damage
 	public bool isFlickering = false;
 	public int flickerCounter = 0;
 	public Color[] flickerColors = new Color[5];
 	public float flickerStopTime = 0f;
-
 	public Timer colorTimer;
 
+	// is this character immune to damage
 	public bool isImmune = false;
+	
+	// Player Death Event and Delgate
+	public delegate void PlayerDefeat();
+	public static event PlayerDefeat e_PlayerDeath;
+
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +49,11 @@ public class CharacterHealth : MonoBehaviour {
 		if ( currentHitsRemaining <= 0 ){
 			// die?
 			//gameObject.SetActive(false);
-			Destroy(gameObject);
+			if ( gameObject.name == "Player" ){
+				e_PlayerDeath(); // delegate method to the LevelManager
+			} else {
+				Destroy(gameObject);
+			}
 		}
 		
 		if ( isFlickering ){
@@ -58,7 +69,7 @@ public class CharacterHealth : MonoBehaviour {
 	public void TakeDamage(int damageAmount){
 
 		if ( !isFlickering ){
-			Debug.Log("taking " + damageAmount + " damage");
+			//Debug.Log("taking " + damageAmount + " damage");
 			if ( !isImmune ){
 				currentHitsRemaining -= damageAmount;
 			}
