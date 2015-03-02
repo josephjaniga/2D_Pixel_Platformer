@@ -21,7 +21,7 @@ public class TileData : MonoBehaviour {
 	public int 	width = 3,
 				height = 3;
 
-	private string path = "Assets/MapFiles";
+	private string path = "Assets/Resources/MapFiles";
 
 	// Use this for initialization
 	void Awake () {
@@ -123,18 +123,22 @@ public class TileData : MonoBehaviour {
 
 	public byte getTileAtPosition(int x, int y, TileMapLayer layer = TileMapLayer.Foreground){
 
+		byte temp;
+
 		switch(layer){
 		default:
 		case TileMapLayer.Foreground:
-			return tileFG[x,y];
+			temp = tileFG[x,y];
 			break;
 		case TileMapLayer.Decoration:
-			return tileDE[x,y];
+			temp = tileDE[x,y];
 			break;
 		case TileMapLayer.Background:
-			return tileBG[x,y];
+			temp = tileBG[x,y];
 			break;
 		}
+
+		return temp;
 
 	}
 

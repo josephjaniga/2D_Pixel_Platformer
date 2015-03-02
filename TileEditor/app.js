@@ -50,12 +50,14 @@ var app = angular.module("TileMapEditor", []);
         $scope.sizeChange = function (){
             $scope.tileMapFG = [];
             $scope.tileMapBG = [];
+            $scope.tileMapDE = [];
             for( var y=0; y < $scope.mapHeight; y++){
                 var tempRow = [];
                 for( var x=0; x < $scope.mapWidth; x++){
                     tempRow.push(0);
                 }
                 $scope.tileMapFG.push(tempRow);
+                $scope.tileMapDE.push(tempRow);
                 $scope.tileMapBG.push(tempRow);
             }
         };

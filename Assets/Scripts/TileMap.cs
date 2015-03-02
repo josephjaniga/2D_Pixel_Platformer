@@ -43,18 +43,15 @@ public class TileMap : MonoBehaviour {
 		BuildMesh();
 		BuildTexture();
 		
-		GameObject.Find("Player").rigidbody2D.isKinematic = false;
+		_.player.rigidbody2D.isKinematic = false;
 	}
 
 	void BuildTexture(){
+
 		int numTilesPerRow = terrainTiles.width / tileResolution;
-		int numRows = terrainTiles.height / tileResolution;
 
 		// create a new texture the size of the mesh
 		Texture2D texture = new Texture2D(tileResolution * size_x, tileResolution * size_y);
-
-		int texWidth = size_x * tileResolution;
-		int texHeight = size_y * tileResolution;
 
 		for(int y=0; y<size_y; y++){
 			for(int x=0; x<size_x; x++){

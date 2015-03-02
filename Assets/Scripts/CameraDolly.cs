@@ -8,7 +8,13 @@ public class CameraDolly : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Camera.main.orthographicSize = size;
-		transform.position = Vector3.Lerp(transform.position, target.transform.position, 10f * Time.deltaTime);
+
+		if ( target != null ){
+			Camera.main.orthographicSize = size;
+			transform.position = Vector3.Lerp(transform.position, target.transform.position, 10f * Time.deltaTime);
+		} else {
+			target = _.player;
+		}
+
 	}
 }

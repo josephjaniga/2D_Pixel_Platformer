@@ -40,8 +40,6 @@ public class CharacterMotion : MonoBehaviour
 
 		character = gameObject;
 
-		JsonSerializer x = new JsonSerializer();
-
 		switch(type){
 			case ICharacterInputTypes.CharacterKeyboardInput:
 				characterInput = new CharacterKeyboardInput(this);

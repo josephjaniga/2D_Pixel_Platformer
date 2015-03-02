@@ -1,5 +1,5 @@
 {
-	mapName: "TestTempleOne",
+	"mapName": "TestTempleOne",
 	"width": 100,
 	"height": 16,
 	"tileFG": [
@@ -40,5 +40,5 @@
 	],
 	"tileBG": [],
 	"doors": [],
-	"stuff":[]
+	"stuff": []
 }

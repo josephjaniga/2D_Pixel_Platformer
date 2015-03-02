@@ -16,6 +16,10 @@ public class CharacterHealthDisplay : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		if ( name == "PlayerResources" ){
+			character = _.player;
+		}
+
 		ch = character.GetComponent<CharacterHealth>();
 		healthBars = new UIResourceContainer[ch.totalHits];
 
@@ -34,7 +38,6 @@ public class CharacterHealthDisplay : MonoBehaviour {
 	}
 
 	public void SetHealth(int currentHits){
-		int totalHealth = ch.totalHits;
 		for ( int i=0; i< healthBars.Length; i++ ){
 			if ( i<currentHits ){
 				healthBars[i].state = healthColor;

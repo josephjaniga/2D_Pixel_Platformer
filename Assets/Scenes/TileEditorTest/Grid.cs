@@ -14,7 +14,6 @@ public class Grid : MonoBehaviour {
 	
 	void OnDrawGizmos()
 	{
-		Vector3 pos = Camera.current.transform.position;
 
 		Gizmos.color = Color.black;
 
