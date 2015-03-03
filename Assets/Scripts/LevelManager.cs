@@ -34,13 +34,17 @@ public class LevelManager : MonoBehaviour {
 		// Prepare the Environment
 		init();
 
-		// Load the Map Data & Render the Map
+		// Load the Map Data & Render the Map - Place STUFF & DOORS
 		levelMapSystem.GetComponent<LevelMapSystem>().CreateTileMaps(levelMapFile);
 
-		// TODO: Place the Doors
-
 		// Position the Player
-		player.transform.position = startingPosition.position;
+		if ( player.GetComponent<CharacterMotion>().shouldUseStartingPosition == true ){
+			player.transform.position = startingPosition.position;
+		} else {
+			player.transform.position = player.GetComponent<CharacterMotion>().targetPosition;
+		}
+
+		player.GetComponent<CharacterMotion>().rightLocked = false;
 
 	}
 	

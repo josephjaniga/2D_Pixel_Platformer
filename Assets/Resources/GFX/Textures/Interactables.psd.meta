@@ -4,6 +4,7 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Interactables_0
     21300002: Interactables_1
+    21300004: Interactables_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,6 +63,16 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Interactables_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 32
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

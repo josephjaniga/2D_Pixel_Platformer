@@ -33,7 +33,9 @@ public class CharacterMotion : MonoBehaviour
 	public bool canKnockBack = true;
 	public bool isKnockingBack = false;
 	public bool shouldKnockBack = false;
-	
+
+	public bool shouldUseStartingPosition = true;
+	public Vector3 targetPosition = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {

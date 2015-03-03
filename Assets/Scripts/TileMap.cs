@@ -220,6 +220,20 @@ public class TileMap : MonoBehaviour {
 		Door[] doors = td.doors;
 		for (int i=0; i<doors.Length; i++){
 
+			GameObject temp;
+			Vector3 doorPosition = new Vector3(doors[i].xPosition, doors[i].yPosition, 0f);
+			Vector3 doorScale = new Vector3(doors[i].doorWidth, doors[i].doorHeight, 1f);
+
+			temp = GameObject.Instantiate(
+				Resources.Load("Prefabs/Interactables/Door"), 
+				doorPosition,
+				Quaternion.identity
+				) as GameObject;
+			temp.name = "Door";
+			temp.transform.SetParent(_.doors.transform);
+			temp.transform.localScale = doorScale;
+			temp.GetComponent<DoorTraverser>().doorInformation = doors[i];
+
 			// MAKE THE DOOR HERE
 			Debug.Log ("Found a Door");
 

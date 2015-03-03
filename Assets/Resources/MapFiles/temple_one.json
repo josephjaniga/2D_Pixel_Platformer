@@ -58,13 +58,13 @@
 	],
 	"doors": [
 		{
-			"doorWidth":1,
-			"doorHeight":1,
+			"doorWidth":2,
+			"doorHeight":2,
 			"xPosition":1,
 			"yPosition":1,
 			"targetScene":"TestScene",
-			"targetPositionX":3,
-			"targetPositionY":3
+			"targetPositionX":7,
+			"targetPositionY":2
 		}
 	],
 	"stuff": [
