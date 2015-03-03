@@ -54,6 +54,13 @@ public class LevelMapSystem : MonoBehaviour {
 		DE_map.Create();
 		BG_map.Create();
 
+		// place the STUFF
+		FG_map.BuildStuff();
+
+		// place the DOORS
+		FG_map.BuildDoors();
+
+
 	}
 
 }

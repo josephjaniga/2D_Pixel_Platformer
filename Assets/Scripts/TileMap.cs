@@ -139,9 +139,7 @@ public class TileMap : MonoBehaviour {
 					}
 				}
 			}
-
 		}
-
 			
 		// make the triangles
 		for (y=0; y<size_y; y++){
@@ -172,6 +170,61 @@ public class TileMap : MonoBehaviour {
 		mf = GetComponent<MeshFilter>();
 		mr = GetComponent<MeshRenderer>();
 		mf.mesh = mesh;
+
+	}
+
+	public void BuildStuff() {
+
+		// LOAD THE STUFF
+		PrefabObject[] stuff = td.stuff;
+		for (int i=0; i<stuff.Length; i++){
+			GameObject temp;
+			Vector3 stuffPosition = new Vector3(stuff[i].xPosition, stuff[i].yPosition, 0f);
+			switch( stuff[i].type ){
+			default:
+				break;
+			case (byte)PrefabObjectTypes.RedHead:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Characters/RedHead"), 
+					stuffPosition, 
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "RedHead";
+				temp.transform.SetParent(_.stuff.transform);
+				break;
+			case (byte)PrefabObjectTypes.Spike:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/Spike"), 
+					stuffPosition,
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "Spike";
+				temp.transform.SetParent(_.stuff.transform);
+				break;
+			case (byte)PrefabObjectTypes.Meat:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/Meat"), 
+					stuffPosition,
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "Meat";
+				temp.transform.SetParent(_.stuff.transform);
+				break;
+			}
+		}
+
+	}
+
+	public void BuildDoors() {
+		
+		Door[] doors = td.doors;
+		for (int i=0; i<doors.Length; i++){
+
+			// MAKE THE DOOR HERE
+			Debug.Log ("Found a Door");
+
+		}
+		
 	}
 
 }

@@ -20,6 +20,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject levelMapSystem;
 	public GameObject doors;
 	public GameObject levelManager;
+	public GameObject stuff;
+
 	
 	// Level Specific Info
 	public string levelDisplayName = "";
@@ -36,7 +38,6 @@ public class LevelManager : MonoBehaviour {
 		levelMapSystem.GetComponent<LevelMapSystem>().CreateTileMaps(levelMapFile);
 
 		// TODO: Place the Doors
-		// TODO: Place the "Stuff"
 
 		// Position the Player
 		player.transform.position = startingPosition.position;
@@ -52,6 +53,7 @@ public class LevelManager : MonoBehaviour {
 		levelMapSystem 	= _.levelMapSystem;
 		doors			= _.doors;
 		levelManager	= _.levelManager;
+		stuff			= _.stuff;
 	}
 
 

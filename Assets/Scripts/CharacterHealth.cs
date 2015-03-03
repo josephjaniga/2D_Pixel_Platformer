@@ -78,6 +78,14 @@ public class CharacterHealth : MonoBehaviour {
 		
 	}
 
+	public void Heal(int healAmount){
+		if ( currentHitsRemaining + healAmount >= totalHits ) {
+			currentHitsRemaining = totalHits;
+		} else {
+			currentHitsRemaining += healAmount;
+		}
+	}
+
 	public void flicker(float duration = .5f){
 		isFlickering = true;
 		flickerStopTime = Time.time + duration;

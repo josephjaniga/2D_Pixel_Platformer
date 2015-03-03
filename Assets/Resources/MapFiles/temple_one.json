@@ -56,6 +56,30 @@
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	],
-	"doors": [],
-	"stuff": []
+	"doors": [
+		{
+			"doorWidth":1,
+			"doorHeight":1,
+			"xPosition":1,
+			"yPosition":1,
+			"targetScene":"TestScene",
+			"targetPositionX":3,
+			"targetPositionY":3
+		}
+	],
+	"stuff": [
+		{"type":1, "xPosition":64, "yPosition":1},
+		{"type":1, "xPosition":65, "yPosition":1},
+		{"type":1, "xPosition":66, "yPosition":1},
+		{"type":1, "xPosition":67, "yPosition":1},
+		{"type":1, "xPosition":68, "yPosition":1},
+		{"type":1, "xPosition":70, "yPosition":1},
+		{"type":1, "xPosition":71, "yPosition":1},
+		{"type":1, "xPosition":72, "yPosition":1},
+		{"type":1, "xPosition":73, "yPosition":1},
+		{"type":1, "xPosition":74, "yPosition":1},
+		{"type":1, "xPosition":75, "yPosition":1},
+		{"type":1, "xPosition":76, "yPosition":1},
+		{"type":2, "xPosition":77, "yPosition":2}
+	]
 }

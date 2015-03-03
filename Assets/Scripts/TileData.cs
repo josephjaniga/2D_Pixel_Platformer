@@ -17,6 +17,9 @@ public class TileData : MonoBehaviour {
 	public byte[,] tileDE;
 	public byte[,] tileFG;
 
+	public PrefabObject[] stuff;
+	public Door[] doors;
+
 	public bool[,] collisionData;
 	public int 	width = 3,
 				height = 3;
@@ -99,6 +102,19 @@ public class TileData : MonoBehaviour {
 					count++;
 				}
 			}
+
+			// populate the stuff into the foreground data object
+			stuff = new PrefabObject[thisLevel.stuff.Length];
+			for (int i=0; i<thisLevel.stuff.Length; i++){
+				stuff[i] = thisLevel.stuff[i];
+			}
+
+			// populate the stuff into the foreground data object
+			doors = new Door[thisLevel.doors.Length];
+			for (int i=0; i<thisLevel.doors.Length; i++){
+				doors[i] = thisLevel.doors[i];
+			}
+
 			break;
 		case TileMapLayer.Decoration:
 			// apply the Decorations

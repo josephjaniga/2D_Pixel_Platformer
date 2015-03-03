@@ -11,6 +11,7 @@ public static class _
 	private static GameObject	_levelMapSystem;
 	private static GameObject	_doorsGroup;
 	private static GameObject	_levelManager;
+	private static GameObject	_stuffGroup;
 
 	// player
 	public static GameObject player 
@@ -129,6 +130,23 @@ public static class _
 			return _levelManager;
 		}
 		set { _levelManager = value; }
+	}
+
+	// stuff group
+	public static GameObject stuff 	
+	{
+		get {
+			GameObject temp = GameObject.Find("Stuff");
+			if ( _stuffGroup == null  ){
+				if ( temp == null  ){
+					temp = new GameObject();
+					temp.name = "Stuff";
+					_stuffGroup = temp;
+				}
+			}
+			return _stuffGroup;
+		}
+		set { _stuffGroup = value; }
 	}
 	
 

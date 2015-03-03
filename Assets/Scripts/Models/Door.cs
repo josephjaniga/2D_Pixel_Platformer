@@ -17,7 +17,7 @@
 	 */ 
 
 	// the level this door takes you too
-	public string targetLevel;
+	public string targetScene;
 
 	// the location you come through at on that level
 	public int targetPositionX;

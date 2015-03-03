@@ -53,7 +53,7 @@ GameObject:
   - 114: {fileID: 11400018}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,8 +414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1261c30e42ee04a77ba4dc83ca8e8a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHits: 1
-  currentHitsRemaining: 0
+  totalHits: 12
+  currentHitsRemaining: 3
   isFlickering: 0
   flickerCounter: 0
   flickerColors:
