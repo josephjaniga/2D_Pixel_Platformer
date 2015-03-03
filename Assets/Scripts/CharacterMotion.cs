@@ -89,10 +89,10 @@ public class CharacterMotion : MonoBehaviour
 		velocity += acceleration * Time.deltaTime;		// set the velocity
 
 		// Clamp Y Velocity every frame
-		if ( rigidbody2D.velocity.y >= MAX_Y_VELOCITY )
-			rigidbody2D.velocity = new Vector2( rigidbody2D.velocity.x, MAX_Y_VELOCITY );
-		if ( rigidbody2D.velocity.y <= -MAX_Y_VELOCITY )
-			rigidbody2D.velocity = new Vector2( rigidbody2D.velocity.x, -MAX_Y_VELOCITY );
+		if ( GetComponent<Rigidbody2D>().velocity.y >= MAX_Y_VELOCITY )
+			GetComponent<Rigidbody2D>().velocity = new Vector2( GetComponent<Rigidbody2D>().velocity.x, MAX_Y_VELOCITY );
+		if ( GetComponent<Rigidbody2D>().velocity.y <= -MAX_Y_VELOCITY )
+			GetComponent<Rigidbody2D>().velocity = new Vector2( GetComponent<Rigidbody2D>().velocity.x, -MAX_Y_VELOCITY );
 
 		transform.Translate(velocity * Time.deltaTime);	// translate based on velocity
 		velocity.x *= 0.8f;								// decay x velocity every frame
@@ -101,9 +101,9 @@ public class CharacterMotion : MonoBehaviour
 
 	public void Jump(bool shouldJump = true){
 		if ( shouldJump ){
-			rigidbody2D.AddForce(new Vector3(0f, jumpForce, 0f));
+			GetComponent<Rigidbody2D>().AddForce(new Vector3(0f, jumpForce, 0f));
 		} else {
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, -rigidbody2D.velocity.y);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -GetComponent<Rigidbody2D>().velocity.y);
 		}
 	}
 
@@ -120,9 +120,9 @@ public class CharacterMotion : MonoBehaviour
 	public void KnockBack(){
 		if ( shouldKnockBack ){
 			if ( !isGrounded ){
-				rigidbody2D.velocity = new Vector2( -transform.localScale.x * 5f, rigidbody2D.velocity.y/2f + 6f );
+				GetComponent<Rigidbody2D>().velocity = new Vector2( -transform.localScale.x * 5f, GetComponent<Rigidbody2D>().velocity.y/2f + 6f );
 			} else {
-				rigidbody2D.velocity = new Vector2( -transform.localScale.x * 3f, rigidbody2D.velocity.y + 4f );
+				GetComponent<Rigidbody2D>().velocity = new Vector2( -transform.localScale.x * 3f, GetComponent<Rigidbody2D>().velocity.y + 4f );
 			}
 			shouldKnockBack = false;
 		}
@@ -133,7 +133,7 @@ public class CharacterMotion : MonoBehaviour
 		acceleration = new Vector2(0f, 0f);
 		velocity = new Vector2(0f, 0f);
 		// Unity Physics
-		rigidbody2D.velocity = Vector3.zero;
+		GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 	}
 
 }

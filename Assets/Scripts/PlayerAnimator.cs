@@ -16,18 +16,18 @@ public class PlayerAnimator : MonoBehaviour {
 	void Update () {
 	
 		// Jump ascending / descending
-		if ( rigidbody2D.velocity.y > 0 ){
+		if ( GetComponent<Rigidbody2D>().velocity.y > 0 ){
 			a.SetBool("isCrouching", true);
-		} else if ( rigidbody2D.velocity.y < 0 ) {
+		} else if ( GetComponent<Rigidbody2D>().velocity.y < 0 ) {
 			a.SetBool("isCrouching", false);
 			a.SetBool("isWalking", false);
 		}
 
-		if ( !cm.isGrounded && rigidbody2D.velocity.y < 0  ){
+		if ( !cm.isGrounded && GetComponent<Rigidbody2D>().velocity.y < 0  ){
 			a.SetBool("isFalling", true);
 			a.SetBool("isCrouching", false);
 			a.SetBool("isWalking", false);
-		} else if ( !cm.isGrounded && rigidbody2D.velocity.y > 0  ) {
+		} else if ( !cm.isGrounded && GetComponent<Rigidbody2D>().velocity.y > 0  ) {
 			a.SetBool("isFalling", false);
 			a.SetBool("isCrouching", true);
 			a.SetBool("isWalking", false);
@@ -36,7 +36,7 @@ public class PlayerAnimator : MonoBehaviour {
 		}
 
 		// walking
-		if ( ( cm.isMovingLeft || cm.isMovingRight ) && rigidbody2D.velocity.y == 0  ){
+		if ( ( cm.isMovingLeft || cm.isMovingRight ) && GetComponent<Rigidbody2D>().velocity.y == 0  ){
 			a.SetBool("isWalking", true);
 		} else {
 			a.SetBool("isWalking", false);

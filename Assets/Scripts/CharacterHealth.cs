@@ -57,12 +57,12 @@ public class CharacterHealth : MonoBehaviour {
 		}
 		
 		if ( isFlickering ){
-			renderer.material.color = flickerColors[flickerCounter];
+			GetComponent<Renderer>().material.color = flickerColors[flickerCounter];
 		}
 
 		if ( Time.time >= flickerStopTime ){
 			isFlickering = false;
-			renderer.material.color = Color.white;
+			GetComponent<Renderer>().material.color = Color.white;
 		}
 	}
 
@@ -92,7 +92,7 @@ public class CharacterHealth : MonoBehaviour {
 	}
 
 	public void resetColor(){
-		renderer.material.color = Color.white;
+		GetComponent<Renderer>().material.color = Color.white;
 	}
 
 }

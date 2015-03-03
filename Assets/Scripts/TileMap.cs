@@ -44,7 +44,7 @@ public class TileMap : MonoBehaviour {
 		BuildMesh();
 		BuildTexture();
 		
-		_.player.rigidbody2D.isKinematic = false;
+		_.player.GetComponent<Rigidbody2D>().isKinematic = false;
 	}
 
 	void BuildTexture(){
