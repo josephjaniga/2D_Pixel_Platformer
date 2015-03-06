@@ -9,7 +9,7 @@ var app = angular.module("TileMapEditor", []);
         $scope.tileWidth = 16;
         $scope.tileHeight = 16;
         $scope.spriteSheetWidth = 8;
-        $scope.spriteSheetHeight = 3;
+        $scope.spriteSheetHeight = 4;
 
         $scope.displayScale = 3;
         $scope.gridScale = 1.5;
