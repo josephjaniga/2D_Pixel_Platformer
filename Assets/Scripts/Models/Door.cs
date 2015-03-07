@@ -22,5 +22,10 @@
 	// the location you come through at on that level
 	public int targetPositionX;
 	public int targetPositionY;
+	
+	// float color values
+	public float r;
+	public float g;
+	public float b;
 
 }

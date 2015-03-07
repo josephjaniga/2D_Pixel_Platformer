@@ -57,14 +57,31 @@
 [9,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]
 	],
 	"doors": [
+		// yellow door 1
+		{
+			"doorWidth":1,
+			"doorHeight":1,
+			"xPosition":1,
+			"yPosition":2,
+			"targetScene":"RoomTwo",
+			"targetPositionX":96,
+			"targetPositionY":2,
+			"r":1,
+			"g":1,
+			"b":0
+		},
+		// blue door 2
 		{
 			"doorWidth":1,
 			"doorHeight":1,
 			"xPosition":97,
 			"yPosition":4,
 			"targetScene":"RoomTwo",
-			"targetPositionX":7,
-			"targetPositionY":2
+			"targetPositionX":4,
+			"targetPositionY":2,
+			"r":0.15,
+			"g":0.35,
+			"b":1.0
 		}
 	],
 	"stuff": [ ]

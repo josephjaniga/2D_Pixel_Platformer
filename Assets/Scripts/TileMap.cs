@@ -225,7 +225,7 @@ public class TileMap : MonoBehaviour {
 			GameObject temp;
 			Vector3 doorPosition = new Vector3(doors[i].xPosition, doors[i].yPosition, 0f) * scale;
 			Vector3 doorScale = new Vector3(doors[i].doorWidth, doors[i].doorHeight, 1f) * scale;
-
+			Color doorColor = new Color(doors[i].r, doors[i].g, doors[i].b);
 			temp = GameObject.Instantiate(
 				Resources.Load("Prefabs/Interactables/Door"), 
 				doorPosition,
@@ -237,7 +237,9 @@ public class TileMap : MonoBehaviour {
 			temp.GetComponent<DoorTraverser>().doorInformation = doors[i];
 
 			// MAKE THE DOOR HERE
-			//Debug.Log ("Found a Door");
+			// Debug.Log ("Found a Door");
+
+			temp.GetComponent<SpriteRenderer>().color = doorColor;
 
 		}
 		

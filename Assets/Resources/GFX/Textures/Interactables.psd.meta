@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: e0bdf5cf6d46647f58c7573124a36a9b
+timeCreated: 1425755290
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Interactables_0
     21300002: Interactables_1
     21300004: Interactables_2
+    21300006: Interactables_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,6 +26,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -2
   maxTextureSize: 1024
@@ -33,6 +39,7 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
@@ -76,5 +83,17 @@ TextureImporter:
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Interactables_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

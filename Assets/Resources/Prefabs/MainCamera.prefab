@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  size: 12
+  size: 16
   fixedZ: -10
   fixedY: 12
 --- !u!124 &12400000
