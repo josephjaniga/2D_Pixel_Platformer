@@ -12,7 +12,7 @@ var app = angular.module("TileMapEditor", []);
         $scope.spriteSheetHeight = 4;
 
         $scope.displayScale = 3;
-        $scope.gridScale = 0.5;
+        $scope.gridScale = 4;
 
         $scope.getNumber = function(num) {
             return new Array(num);
@@ -22,47 +22,55 @@ var app = angular.module("TileMapEditor", []);
          * Map Data Related Information
          */
 
-        $scope.mapName = "Something Named Map";
-        $scope.mapWidth = 4;
-        $scope.mapHeight = 4;
+        $scope.map = {
+            "name":   "Something Named Map",
+            "width": 4,
+            "height": 4
+        };
 
-        $scope.tileMapFG = [
-            [ 0, 0, 0, 13 ],
-            [ 13, 0, 0, 13 ],
-            [ 5, 0, 21, 5 ],
-            [ 2, 2, 2, 2 ]
-        ];
+        $scope.tileMapFG = {
+            "data": [
+                [ 0, 0, 0, 13 ],
+                [ 13, 0, 0, 13 ],
+                [ 5, 0, 21, 5 ],
+                [ 2, 2, 2, 2 ]
+            ]
+        };
 
-        $scope.tileMapDE = [
-            [ 0, 0, 0, 0 ],
-            [ 0, 0, 0, 0 ],
-            [ 0, 0, 0, 0 ],
-            [ 0, 0, 0, 0 ]
-        ];
+        $scope.tileMapDE = {
+            "data": [
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+            ]
+        };
 
-        $scope.tileMapBG = [
-            [ 16, 16, 16, 16 ],
-            [ 16, 16, 16, 16 ],
-            [ 16, 16, 16, 16 ],
-            [ 16, 16, 16, 16 ]
-        ];
+        $scope.tileMapBG = {
+            "data": [
+                [16, 16, 16, 16],
+                [16, 16, 16, 16],
+                [16, 16, 16, 16],
+                [16, 16, 16, 16]
+            ]
+        };
 
         $scope.sizeChange = function (){
-            $scope.tileMapFG = [];
-            $scope.tileMapBG = [];
-            $scope.tileMapDE = [];
-            for( var y=0; y < $scope.mapHeight; y++){
+            $scope.tileMapFG.data = [];
+            $scope.tileMapBG.data = [];
+            $scope.tileMapDE.data = [];
+            for( var y=0; y < $scope.map.height; y++){
                 var tempRowFG = [],
                     tempRowDE = [],
                     tempRowBG = [];
-                for( var x=0; x < $scope.mapWidth; x++){
+                for( var x=0; x < $scope.map.width; x++){
                     tempRowFG.push(0);
                     tempRowDE.push(0);
                     tempRowBG.push(0);
                 }
-                $scope.tileMapFG.push(tempRowFG);
-                $scope.tileMapDE.push(tempRowDE);
-                $scope.tileMapBG.push(tempRowBG);
+                $scope.tileMapFG.data.push(tempRowFG);
+                $scope.tileMapDE.data.push(tempRowDE);
+                $scope.tileMapBG.data.push(tempRowBG);
             }
         };
 
@@ -85,43 +93,54 @@ var app = angular.module("TileMapEditor", []);
 
         $scope.brushSize = 0;
 
-        $scope.paint = function(x, y, rel){
+        /**
+         * this one is all 'forked up` - x & y are swapped
+         * @param y
+         * @param x
+         * @param rel
+         */
+        $scope.paint = function(y, x, rel){
 
             if ( $scope.brushSize === "0" ) {
                 if (rel === "bg") {
-                    $scope.tileMapBG[x][y] = $scope.selected;
+                    $scope.tileMapBG.data[x][y] = $scope.selected;
                 }
                 if (rel === "de") {
-                    $scope.tileMapDE[x][y] = $scope.selected;
+                    $scope.tileMapDE.data[x][y] = $scope.selected;
                 }
                 if (rel === "fg") {
-                    $scope.tileMapFG[x][y] = $scope.selected;
+                    $scope.tileMapFG.data[x][y] = $scope.selected;
                 }
             } else {
 
-                var minX = ( x - $scope.brushSize >= 0 ) ? ( x - $scope.brushSize ) : 0,
-                    minY = ( y - $scope.brushSize >= 0 ) ? ( y - $scope.brushSize ) : 0,
-                    maxX = ( x + $scope.brushSize < $scope.mapWidth ) ? ( x + $scope.brushSize ) : $scope.mapWidth-1,
-                    maxY = ( y + $scope.brushSize < $scope.mapHeight ) ? ( y + $scope.brushSize ) : $scope.mapHeight-1;
+                var minX = ( x - parseInt($scope.brushSize) >= 0 ) ? ( x - parseInt($scope.brushSize) ) : 0,
+                    minY = ( y - parseInt($scope.brushSize) >= 0 ) ? ( y - parseInt($scope.brushSize) ) : 0,
+                    maxX = ( x + parseInt($scope.brushSize) < $scope.map.width ) ? x + parseInt($scope.brushSize) : $scope.map.width - 1,
+                    maxY = ( y + parseInt($scope.brushSize) < $scope.map.height ) ? y + parseInt($scope.brushSize) : $scope.map.height - 1;
+
+                //console.log("CLICKED AT " + x + ", " + y);
+                //console.log("brush size" + $scope.brushSize);
+                //console.log("X - min " + minX + ", max " + maxX);
+                //console.log("Y - min " + minY + ", max " + maxY);
 
                 if (rel === "bg") {
                     for (var i = minY; i <= maxY; i++ ){
                         for(var j = minX; j <= maxX; j++ ){
-                            $scope.tileMapBG[j][i] = $scope.selected;
+                            $scope.tileMapBG.data[i][j] = $scope.selected;
                         }
                     }
                 }
                 if (rel === "de") {
                     for (var i = minY; i <= maxY; i++ ){
                         for(var j = minX; j <= maxX; j++ ){
-                            $scope.tileMapDE[j][i] = $scope.selected;
+                            $scope.tileMapDE.data[i][j] = $scope.selected;
                         }
                     }
                 }
                 if (rel === "fg") {
                     for (var i = minY; i <= maxY; i++ ){
                         for(var j = minX; j <= maxX; j++ ){
-                            $scope.tileMapFG[j][i] = $scope.selected;
+                            $scope.tileMapFG.data[i][j] = $scope.selected;
                         }
                     }
                 }

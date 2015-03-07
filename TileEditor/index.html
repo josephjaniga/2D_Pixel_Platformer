@@ -35,15 +35,15 @@
                 <table style="margin: 0 auto; display:block; text-align:center;">
                     <tr>
                         <td>
-                            Map Name: <input type="text" value="{{mapName}}" ng-model="mapName"/>
+                            Map Name: <input type="text" value="{{map.name}}" ng-model="map.name"/>
                         </td>
                         <td>
-                            Map Width: <input type="number" value="{{mapWidth}}" ng-model="mapWidth" style="color:red;" ng-change="sizeChange()" integer><br/>
-                            <input type="range" min="1" max="64" ng-model="mapWidth" ng-change="sizeChange()" integer/>
+                            Map Width: <input type="number" value="{{map.width}}" ng-model="map.width" style="color:red;" ng-change="sizeChange()" integer><br/>
+                            <input type="range" min="1" max="64" ng-model="map.width" ng-change="sizeChange()" integer/>
                         </td>
                         <td>
-                            Map Height: <input type="number" value="{{mapHeight}}" ng-model="mapHeight" style="color:red;" ng-change="sizeChange()" integer><br/>
-                            <input type="range" min="1" max="64" ng-model="mapHeight" ng-change="sizeChange()" integer/>
+                            Map Height: <input type="number" value="{{map.height}}" ng-model="map.height" style="color:red;" ng-change="sizeChange()" integer><br/>
+                            <input type="range" min="1" max="64" ng-model="map.height" ng-change="sizeChange()" integer/>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@
                             Brush Size: <input type="number" value="{{brushSize}}" ng-model="brushSize" integer> <input type="range" min="0" max="3" ng-model="brushSize" integer />
                         </td>
                         <td>
-                            Grid Scale: <input type="range" min="0.25" max="5" ng-model="gridScale" step="0.25" />
+                            Grid Scale: <input type="text" value="{{gridScale}}" ng-model="gridScale">  <input type="range" min="0.25" max="5" ng-model="gridScale" step="0.25" />
                         </td>
                         <td>
 
@@ -124,7 +124,7 @@
                 <div role="tabpanel" class="tab-pane active" id="FG">
                     <h1>FG</h1>
                     <table class="grid">
-                        <tr ng-repeat="mapRow in tileMapFG track by $index">
+                        <tr ng-repeat="mapRow in tileMapFG.data track by $index">
                             <td ng-repeat="tile in mapRow track by $index"
                                 ng-click="paint($parent.$index, $index, 'fg')"
                                 style="
@@ -138,7 +138,7 @@
                         background-repeat: no-repeat;">
                                 <!--
                                 <span style="color:red;">{{tile}}</span><br/>
-                                {{ $index }}, {{ mapHeight - $parent.$index - 1 }}
+                                {{ $index }}, {{ map.height - $parent.$index - 1 }}
                                 -->
                             </td>
                         </tr>
@@ -147,7 +147,7 @@
                 <div role="tabpanel" class="tab-pane" id="DE">
                     <h1>DE</h1>
                     <table class="grid">
-                        <tr ng-repeat="mapRow in tileMapDE track by $index">
+                        <tr ng-repeat="mapRow in tileMapDE.data track by $index">
                             <td ng-repeat="tile in mapRow track by $index"
                                 ng-click="paint($parent.$index, $index, 'de')"
                                 style="
@@ -161,7 +161,7 @@
                         background-repeat: no-repeat;">
                                 <!--
                                 <span style="color:red;">{{tile}}</span><br/>
-                                {{ $index }}, {{ mapHeight - $parent.$index - 1 }}
+                                {{ $index }}, {{ map.height - $parent.$index - 1 }}
                                 -->
                             </td>
                         </tr>
@@ -170,7 +170,7 @@
                 <div role="tabpanel" class="tab-pane" id="BG">
                     <h1>BG</h1>
                     <table class="grid">
-                        <tr ng-repeat="mapRow in tileMapBG track by $index">
+                        <tr ng-repeat="mapRow in tileMapBG.data track by $index">
                             <td ng-repeat="tile in mapRow track by $index"
                                 ng-click="paint($parent.$index, $index, 'bg')"
                                 style="
@@ -184,7 +184,7 @@
                             background-repeat: no-repeat;">
                                 <!--
                                 <span style="color:red;">{{tile}}</span><br/>
-                                {{ $index }}, {{ mapHeight - $parent.$index - 1 }}
+                                {{ $index }}, {{ map.height - $parent.$index - 1 }}
                                 -->
                             </td>
                         </tr>
@@ -194,7 +194,7 @@
                     <h1>Preview</h1>
                     <div style="position:relative;">
                         <table class="preview grid" style="position:absolute; top:0px; z-index:-1;">
-                            <tr ng-repeat="mapRow in tileMapFG track by $index">
+                            <tr ng-repeat="mapRow in tileMapFG.data track by $index">
                                 <td ng-repeat="tile in mapRow track by $index"
                                     style="
                             cursor:pointer;
@@ -209,7 +209,7 @@
                             </tr>
                         </table>
                         <table class="preview grid" style="position:absolute; top:0px; z-index:-2;">
-                            <tr ng-repeat="mapRow in tileMapDE track by $index">
+                            <tr ng-repeat="mapRow in tileMapDE.data track by $index">
                                 <td ng-repeat="tile in mapRow track by $index"
                                     style="
                             cursor:pointer;
@@ -224,7 +224,7 @@
                             </tr>
                         </table>
                         <table class="preview grid" style="position:absolute; top:0px; z-index:-3;">
-                            <tr ng-repeat="mapRow in tileMapBG track by $index">
+                            <tr ng-repeat="mapRow in tileMapBG.data track by $index">
                                 <td ng-repeat="tile in mapRow track by $index"
                                     style="
                             cursor:pointer;
@@ -244,12 +244,12 @@
 <!-- THIS STAYS LEFT ALIGNED BECAUSE OF PRE-FORMATTING -->
 <pre style="overflow: scroll;">
 {
-	"mapName": "{{mapName}}",
-	"width": {{mapWidth}},
-	"height": {{mapHeight}},
-	"tileFG": [<div ng-repeat="mapRow in tileMapFG track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
-	"tileDE": [<div ng-repeat="mapRow in tileMapDE track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
-	"tileBG": [<div ng-repeat="mapRow in tileMapBG track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
+	"map.name": "{{map.name}}",
+	"width": {{map.width}},
+	"height": {{map.height}},
+	"tileFG": [<div ng-repeat="mapRow in tileMapFG.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
+	"tileDE": [<div ng-repeat="mapRow in tileMapDE.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
+	"tileBG": [<div ng-repeat="mapRow in tileMapBG.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
 	"doors": [ ],
 	"stuff": [ ]
 }</pre>
