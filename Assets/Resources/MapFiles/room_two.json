@@ -58,8 +58,8 @@
 	],
 	"doors": [
 		{
-			"doorWidth":2,
-			"doorHeight":2,
+			"doorWidth":1,
+			"doorHeight":1,
 			"xPosition":1,
 			"yPosition":1,
 			"targetScene":"RoomOne",
@@ -67,8 +67,8 @@
 			"targetPositionY":6
 		},
 		{
-			"doorWidth":2,
-			"doorHeight":2,
+			"doorWidth":1,
+			"doorHeight":1,
 			"xPosition":97,
 			"yPosition":1,
 			"targetScene":"RoomOne",

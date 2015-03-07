@@ -54,6 +54,8 @@ public class LevelMapSystem : MonoBehaviour {
 		DE_map.Create();
 		BG_map.Create();
 
+		gameObject.transform.localScale = new Vector3(FG_map.scale, FG_map.scale, FG_map.scale);
+
 		// place the STUFF
 		FG_map.BuildStuff();
 

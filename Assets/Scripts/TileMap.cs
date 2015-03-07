@@ -23,6 +23,8 @@ public class TileMap : MonoBehaviour {
 	public MeshRenderer mr;
 
 	public PolygonCollider2D pc;
+	
+	public float scale = 1.5f;
 
 	void Start(){
 		// defer this functionality to the scene managing classes
@@ -176,10 +178,10 @@ public class TileMap : MonoBehaviour {
 	public void BuildStuff() {
 
 		// LOAD THE STUFF
+		GameObject temp;
 		PrefabObject[] stuff = td.stuff;
 		for (int i=0; i<stuff.Length; i++){
-			GameObject temp;
-			Vector3 stuffPosition = new Vector3(stuff[i].xPosition, stuff[i].yPosition, 0f);
+			Vector3 stuffPosition = new Vector3(stuff[i].xPosition, stuff[i].yPosition, 0f) * scale;
 			switch( stuff[i].type ){
 			default:
 				break;
@@ -221,8 +223,8 @@ public class TileMap : MonoBehaviour {
 		for (int i=0; i<doors.Length; i++){
 
 			GameObject temp;
-			Vector3 doorPosition = new Vector3(doors[i].xPosition, doors[i].yPosition, 0f);
-			Vector3 doorScale = new Vector3(doors[i].doorWidth, doors[i].doorHeight, 1f);
+			Vector3 doorPosition = new Vector3(doors[i].xPosition, doors[i].yPosition, 0f) * scale;
+			Vector3 doorScale = new Vector3(doors[i].doorWidth, doors[i].doorHeight, 1f) * scale;
 
 			temp = GameObject.Instantiate(
 				Resources.Load("Prefabs/Interactables/Door"), 

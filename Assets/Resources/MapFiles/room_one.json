@@ -58,8 +58,8 @@
 	],
 	"doors": [
 		{
-			"doorWidth":2,
-			"doorHeight":2,
+			"doorWidth":1,
+			"doorHeight":1,
 			"xPosition":97,
 			"yPosition":4,
 			"targetScene":"RoomTwo",
