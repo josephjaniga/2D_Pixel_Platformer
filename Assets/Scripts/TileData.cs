@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ public class TileData : MonoBehaviour {
 	public int 	width = 3,
 				height = 3;
 
-	private string path = "Assets/Resources/MapFiles";
+	private string path = "MapFiles";
 
 	// Use this for initialization
 	void Awake () {
@@ -72,7 +73,14 @@ public class TileData : MonoBehaviour {
 			FileName = path + "/" + levelFileName;
 		}
 
-		string text = System.IO.File.ReadAllText(FileName);
+		TextAsset mapDataFile = Resources.Load(FileName) as TextAsset;
+
+		//string text = System.IO.File.ReadAllText(FileName);
+
+		string text = mapDataFile.text;
+
+		// using (StreamReader r = new StreamReader(FileName)){ text = r.ReadToEnd(); }
+
 
 		Map thisLevel = new Map();
 

@@ -57,6 +57,10 @@ public static class _
 					temp = GameObject.Instantiate(Resources.Load("Prefabs/Canvas"), Vector3.zero, Quaternion.identity) as GameObject;
 					temp.name = "Canvas";
 					_canvas = temp;
+
+					// SET THE PLAYER HEALTH DISPLAY
+//					GameObject playerResources = GameObject.Find("PlayerResources");
+//					playerResources.GetComponent<CharacterHealthDisplay>().initHealthDisplay();
 				}
 			}
 			return _canvas;

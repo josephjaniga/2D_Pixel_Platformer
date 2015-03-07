@@ -369,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   type: 0
-  runSpeed: 105
+  runSpeed: 86
   jumpForce: 500
   isMovingLeft: 0
   isMovingRight: 0

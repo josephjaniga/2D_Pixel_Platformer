@@ -47,6 +47,12 @@ public class LevelManager : MonoBehaviour {
 		player.GetComponent<CharacterMotion>().rightLocked = false;
 
 	}
+
+	void Update (){
+		if ( player.transform.localPosition.y < -10f ){
+			PlayerDeath();
+		}
+	}
 	
 	public void init (){
 		// check for the required game structure

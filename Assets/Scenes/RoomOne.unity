@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1283328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 3, z: 0}
+  m_LocalPosition: {x: 13, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -163,7 +163,7 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   stuff: {fileID: 0}
   levelDisplayName: 
-  levelMapFile: room_one.json
+  levelMapFile: room_one
   startingPosition: {fileID: 1283329}
 --- !u!1001 &621288587
 Prefab:

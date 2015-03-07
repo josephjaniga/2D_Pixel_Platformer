@@ -166,7 +166,7 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   stuff: {fileID: 0}
   levelDisplayName: 
-  levelMapFile: room_two.json
+  levelMapFile: room_two
   startingPosition: {fileID: 1361748380}
 --- !u!4 &1009581525
 Transform:

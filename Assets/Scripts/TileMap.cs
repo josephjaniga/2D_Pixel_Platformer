@@ -235,7 +235,7 @@ public class TileMap : MonoBehaviour {
 			temp.GetComponent<DoorTraverser>().doorInformation = doors[i];
 
 			// MAKE THE DOOR HERE
-			Debug.Log ("Found a Door");
+			//Debug.Log ("Found a Door");
 
 		}
 		
