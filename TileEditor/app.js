@@ -12,7 +12,7 @@ var app = angular.module("TileMapEditor", []);
         $scope.spriteSheetHeight = 4;
 
         $scope.displayScale = 3;
-        $scope.gridScale = 1.5;
+        $scope.gridScale = 0.5;
 
         $scope.getNumber = function(num) {
             return new Array(num);
@@ -83,10 +83,50 @@ var app = angular.module("TileMapEditor", []);
 
         $scope.Math = window.Math;
 
+        $scope.brushSize = 0;
+
         $scope.paint = function(x, y, rel){
-            if ( rel === "bg" ) { $scope.tileMapBG[x][y] = $scope.selected; }
-            if ( rel === "de" ) { $scope.tileMapDE[x][y] = $scope.selected; }
-            if ( rel === "fg" ) { $scope.tileMapFG[x][y] = $scope.selected; }
+
+            if ( $scope.brushSize === "0" ) {
+                if (rel === "bg") {
+                    $scope.tileMapBG[x][y] = $scope.selected;
+                }
+                if (rel === "de") {
+                    $scope.tileMapDE[x][y] = $scope.selected;
+                }
+                if (rel === "fg") {
+                    $scope.tileMapFG[x][y] = $scope.selected;
+                }
+            } else {
+
+                var minX = ( x - $scope.brushSize >= 0 ) ? ( x - $scope.brushSize ) : 0,
+                    minY = ( y - $scope.brushSize >= 0 ) ? ( y - $scope.brushSize ) : 0,
+                    maxX = ( x + $scope.brushSize < $scope.mapWidth ) ? ( x + $scope.brushSize ) : $scope.mapWidth-1,
+                    maxY = ( y + $scope.brushSize < $scope.mapHeight ) ? ( y + $scope.brushSize ) : $scope.mapHeight-1;
+
+                if (rel === "bg") {
+                    for (var i = minY; i <= maxY; i++ ){
+                        for(var j = minX; j <= maxX; j++ ){
+                            $scope.tileMapBG[j][i] = $scope.selected;
+                        }
+                    }
+                }
+                if (rel === "de") {
+                    for (var i = minY; i <= maxY; i++ ){
+                        for(var j = minX; j <= maxX; j++ ){
+                            $scope.tileMapDE[j][i] = $scope.selected;
+                        }
+                    }
+                }
+                if (rel === "fg") {
+                    for (var i = minY; i <= maxY; i++ ){
+                        for(var j = minX; j <= maxX; j++ ){
+                            $scope.tileMapFG[j][i] = $scope.selected;
+                        }
+                    }
+                }
+
+            }
         };
 
 
@@ -95,5 +135,17 @@ var app = angular.module("TileMapEditor", []);
     app.filter('commaNotLast', function(){
         return	function(input){
             return input == 1 ? '' : ',';
+        };
+    });
+
+
+    app.directive('integer', function(){
+        return {
+            require: 'ngModel',
+            link: function(scope, ele, attr, ctrl){
+                ctrl.$parsers.unshift(function(viewValue){
+                    return parseInt(viewValue, 10);
+                });
+            }
         };
     });

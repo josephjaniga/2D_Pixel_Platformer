@@ -34,19 +34,27 @@
             <div style="width:30%; display:block; background: lightpink; bottom:0px; left:0%; position:absolute;">
                 <table style="margin: 0 auto; display:block; text-align:center;">
                     <tr>
-                        <td>Map Name: <input type="text" value="{{mapName}}" ng-model="mapName"/></td>
-                        <td>Map Width: <input type="text" value="{{mapWidth}}" ng-model="mapWidth" style="color:red;" ng-change="sizeChange()"><br/></td>
-                        <td>Map Height: <input type="text" value="{{mapHeight}}" ng-model="mapHeight" style="color:red;" ng-change="sizeChange()"><br/></td>
+                        <td>
+                            Map Name: <input type="text" value="{{mapName}}" ng-model="mapName"/>
+                        </td>
+                        <td>
+                            Map Width: <input type="number" value="{{mapWidth}}" ng-model="mapWidth" style="color:red;" ng-change="sizeChange()" integer><br/>
+                            <input type="range" min="1" max="64" ng-model="mapWidth" ng-change="sizeChange()" integer/>
+                        </td>
+                        <td>
+                            Map Height: <input type="number" value="{{mapHeight}}" ng-model="mapHeight" style="color:red;" ng-change="sizeChange()" integer><br/>
+                            <input type="range" min="1" max="64" ng-model="mapHeight" ng-change="sizeChange()" integer/>
+                        </td>
                     </tr>
                     <tr>
                         <td>
+                            Brush Size: <input type="number" value="{{brushSize}}" ng-model="brushSize" integer> <input type="range" min="0" max="3" ng-model="brushSize" integer />
+                        </td>
+                        <td>
+                            Grid Scale: <input type="range" min="0.25" max="5" ng-model="gridScale" step="0.25" />
+                        </td>
+                        <td>
 
-                        </td>
-                        <td>
-                            <input type="range" min="1" max="64" ng-model="mapWidth" ng-change="sizeChange()"/>
-                        </td>
-                        <td>
-                            <input type="range" min="1" max="64" ng-model="mapHeight" ng-change="sizeChange()"/>
                         </td>
                     </tr>
                 </table>
