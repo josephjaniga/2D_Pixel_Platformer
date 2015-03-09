@@ -128,6 +128,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9333623f0f494cb6bc080b7307b65c4, type: 2}
+  m_RootGameObject: {fileID: 1009581523}
   m_IsPrefabParent: 0
 --- !u!1 &1009581523
 GameObject:
@@ -157,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86d5b7f45515485b9a062e824fe5173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  mainCamera: {fileID: 0}
   player: {fileID: 0}
   mobs: {fileID: 0}
   canvas: {fileID: 0}

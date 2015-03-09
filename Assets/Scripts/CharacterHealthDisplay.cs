@@ -38,10 +38,10 @@ public class CharacterHealthDisplay : MonoBehaviour {
 	public void initHealthDisplay(){
 
 		foreach ( Transform child in gameObject.transform ){
-			Destroy(child);
+			Destroy(child.gameObject);
 		}
 
-		if ( name == "PlayerResources" ){
+		if ( name == "PlayerResourcesDisplay" ){
 			character = _.player;
 		}
 		

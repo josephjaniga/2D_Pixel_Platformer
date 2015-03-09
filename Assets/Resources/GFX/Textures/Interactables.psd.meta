@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e0bdf5cf6d46647f58c7573124a36a9b
-timeCreated: 1425755290
+timeCreated: 1425834571
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: Interactables_1
     21300004: Interactables_2
     21300006: Interactables_3
+    21300008: Interactables_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -90,6 +91,16 @@ TextureImporter:
         y: 0
         width: 16
         height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Interactables_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

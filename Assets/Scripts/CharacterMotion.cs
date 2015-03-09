@@ -136,4 +136,10 @@ public class CharacterMotion : MonoBehaviour
 		GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 	}
 
+	public void ClearBlockers(){
+		isGrounded 	= false;
+		leftLocked	= false;
+		rightLocked	= false;
+	}
+
 }

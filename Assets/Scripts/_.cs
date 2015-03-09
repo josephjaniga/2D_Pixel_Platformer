@@ -6,12 +6,14 @@ public static class _
 	
 	private static GameObject 	_player;
 	private static GameObject 	_camera;
-	private static GameObject 	_canvas;
+	private static GameObject 	_canvasOverlay;
+	private static GameObject 	_canvasWorld;
 	private static GameObject   _mobsGroup;
 	private static GameObject	_levelMapSystem;
 	private static GameObject	_doorsGroup;
 	private static GameObject	_levelManager;
 	private static GameObject	_stuffGroup;
+	private static GameObject	_chatManager;
 
 	// player
 	public static GameObject player 
@@ -47,25 +49,38 @@ public static class _
 		set { _camera = value; }
 	}
 
-	// canvas
-	public static GameObject canvas 	
+	// canvas Screen Space Overlay
+	public static GameObject canvasOverlay 	
 	{
 		get {
-			GameObject temp = GameObject.Find("Canvas");
-			if ( _canvas == null  ){
+			GameObject temp = GameObject.Find("Canvas_Overlay");
+			if ( _canvasOverlay == null  ){
 				if ( temp == null  ){
-					temp = GameObject.Instantiate(Resources.Load("Prefabs/Canvas"), Vector3.zero, Quaternion.identity) as GameObject;
-					temp.name = "Canvas";
-					_canvas = temp;
-
-					// SET THE PLAYER HEALTH DISPLAY
-//					GameObject playerResources = GameObject.Find("PlayerResources");
-//					playerResources.GetComponent<CharacterHealthDisplay>().initHealthDisplay();
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/Canvas_Overlay"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp.name = "Canvas_Overlay";
+					_canvasOverlay = temp;
 				}
 			}
-			return _canvas;
+			return _canvasOverlay;
 		}
-		set { _canvas = value; }
+		set { _canvasOverlay = value; }
+	}
+
+	// canvas World Space
+	public static GameObject canvasWorld
+	{
+		get {
+			GameObject temp = GameObject.Find("Canvas_World");
+			if ( _canvasWorld == null  ){
+				if ( temp == null  ){
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/Canvas_World"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp.name = "Canvas_World";
+					_canvasWorld = temp;
+				}
+			}
+			return _canvasWorld;
+		}
+		set { _canvasWorld = value; }
 	}
 
 	// mobsGroup
@@ -152,6 +167,25 @@ public static class _
 		}
 		set { _stuffGroup = value; }
 	}
+
+	// chatManager
+	public static GameObject chatManager
+	{
+		get {
+			GameObject temp = GameObject.Find("ChatManager");
+			if ( _chatManager == null  ){
+				if ( temp == null  ){
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/ChatManager"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp.name = "ChatManager";
+					temp.transform.position = new Vector3(0f, 0f, -1f);
+					_chatManager = temp;
+				}
+			}
+			return _chatManager;
+		}
+		set { _chatManager = value; }
+	}
+
 	
 
 }

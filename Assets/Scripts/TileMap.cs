@@ -178,9 +178,11 @@ public class TileMap : MonoBehaviour {
 	public void BuildStuff() {
 
 		// LOAD THE STUFF
-		GameObject temp;
 		PrefabObject[] stuff = td.stuff;
+
 		for (int i=0; i<stuff.Length; i++){
+		
+			GameObject temp;
 			Vector3 stuffPosition = new Vector3(stuff[i].xPosition, stuff[i].yPosition, 0f) * scale;
 			switch( stuff[i].type ){
 			default:
@@ -212,7 +214,40 @@ public class TileMap : MonoBehaviour {
 				temp.name = "Meat";
 				temp.transform.SetParent(_.stuff.transform);
 				break;
+			case (byte)PrefabObjectTypes.Key:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/Key"), 
+					stuffPosition,
+					Quaternion.identity
+					) as GameObject;
+				// the object name
+				if ( stuff[i].objectName != null ){
+					temp.name = stuff[i].objectName;
+				} else {
+					temp.name = "Key";
+				}
+				temp.transform.SetParent(_.stuff.transform);
+
+				// the key color
+				Color stuffColor = Color.white;
+				if ( stuff[i].r != null && stuff[i].g != null && stuff[i].b != null ) {
+					stuffColor = new Color(stuff[i].r, stuff[i].g, stuff[i].b);
+				}
+				temp.GetComponent<SpriteRenderer>().color = stuffColor;
+				break;
+			case (byte)PrefabObjectTypes.LionBoss:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Characters/LionBoss"), 
+					stuffPosition, 
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "LionBoss";
+				temp.transform.SetParent(_.stuff.transform);
+				break;
 			}
+
+
+
 		}
 
 	}

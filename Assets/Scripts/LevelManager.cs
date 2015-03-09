@@ -13,14 +13,16 @@ public class LevelManager : MonoBehaviour {
 	 */
 
 	// Game Structure Setup
-	public GameObject camera;
+	public GameObject mainCamera;
 	public GameObject player;
 	public GameObject mobs;
-	public GameObject canvas;
+	public GameObject canvasOverlay;
+	public GameObject canvasWorld;
 	public GameObject levelMapSystem;
 	public GameObject doors;
 	public GameObject levelManager;
 	public GameObject stuff;
+	public GameObject chatManager;
 
 	
 	// Level Specific Info
@@ -57,13 +59,15 @@ public class LevelManager : MonoBehaviour {
 	public void init (){
 		// check for the required game structure
 		player 			= _.player;
-		camera 			= _.camera;
+		mainCamera 		= _.camera;
 		mobs 			= _.mobs;
-		canvas 			= _.canvas;
+		canvasOverlay 	= _.canvasOverlay;
+		canvasWorld 	= _.canvasWorld;
 		levelMapSystem 	= _.levelMapSystem;
 		doors			= _.doors;
 		levelManager	= _.levelManager;
 		stuff			= _.stuff;
+		chatManager		= _.chatManager;
 	}
 
 

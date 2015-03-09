@@ -63,12 +63,14 @@
 			"doorHeight":1,
 			"xPosition":1,
 			"yPosition":2,
-			"targetScene":"RoomTwo",
+			"targetScene":"RoomThree",
 			"targetPositionX":96,
-			"targetPositionY":2,
+			"targetPositionY":3,
 			"r":1,
 			"g":1,
-			"b":0
+			"b":0,
+			"isLocked":true,
+			"itemRequired":"Yellow Key"
 		},
 		// blue door 2
 		{
@@ -81,8 +83,12 @@
 			"targetPositionY":2,
 			"r":0.15,
 			"g":0.35,
-			"b":1.0
+			"b":1.0,
+			"isLocked":true,
+			"itemRequired":"Blue Key"
 		}
 	],
-	"stuff": [ ]
+	"stuff": [
+		{"type":3, "xPosition":10, "yPosition":2, "objectName":"Blue Key", "r":0.15, "g":0.35, "b":1},
+	]
 }

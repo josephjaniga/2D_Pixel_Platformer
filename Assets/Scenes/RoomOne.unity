@@ -154,14 +154,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86d5b7f45515485b9a062e824fe5173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  mainCamera: {fileID: 0}
   player: {fileID: 0}
   mobs: {fileID: 0}
-  canvas: {fileID: 0}
+  canvasOverlay: {fileID: 0}
+  canvasWorld: {fileID: 0}
   levelMapSystem: {fileID: 0}
   doors: {fileID: 0}
   levelManager: {fileID: 0}
   stuff: {fileID: 0}
+  chatManager: {fileID: 0}
   levelDisplayName: 
   levelMapFile: room_one
   startingPosition: {fileID: 1283329}

@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -26,6 +24,8 @@ public class TileData : MonoBehaviour {
 				height = 3;
 
 	private string path = "MapFiles";
+
+	//public TextAsset TESTFILE;
 
 	// Use this for initialization
 	void Awake () {
@@ -73,18 +73,17 @@ public class TileData : MonoBehaviour {
 			FileName = path + "/" + levelFileName;
 		}
 
-		TextAsset mapDataFile = Resources.Load(FileName) as TextAsset;
-
-		//string text = System.IO.File.ReadAllText(FileName);
-
-		string text = mapDataFile.text;
-
-		// using (StreamReader r = new StreamReader(FileName)){ text = r.ReadToEnd(); }
-
+		Debug.Log (FileName);
+		string t;
+		//TextAsset mapDataFile = Resources.Load<TextAsset>(FileName) as TextAsset;
+		Object mapDataFile = Resources.Load(FileName);
+		//Debug.Log (mapDataFile);
+		TextAsset temp = (TextAsset)mapDataFile;
+		t = temp.text;
 
 		Map thisLevel = new Map();
 
-		thisLevel = JsonConvert.DeserializeObject<Map>(text);
+		thisLevel = JsonConvert.DeserializeObject<Map>(t);
 
 		width = thisLevel.width;
 		height = thisLevel.height;
