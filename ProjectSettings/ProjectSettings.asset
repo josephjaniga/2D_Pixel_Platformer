@@ -40,7 +40,7 @@ PlayerSettings:
   disableDepthAndStencilBuffers: 0
   defaultIsFullScreen: 1
   defaultIsNativeResolution: 1
-  runInBackground: 1
+  runInBackground: 0
   captureSingleScreen: 0
   Override IPod Music: 0
   Prepare IOS For Recording: 0
@@ -76,8 +76,7 @@ PlayerSettings:
     Others: 1
   bundleIdentifier: com.JoeCorp.AccelTest
   bundleVersion: 1.0
-  preloadedAssets:
-  - {fileID: 4900000, guid: 1444a80e148dc4867869dcf01e06c38b, type: 3}
+  preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
@@ -141,7 +140,7 @@ PlayerSettings:
   - m_BuildTarget: Web
     m_StaticBatching: 0
     m_DynamicBatching: 0
-  webPlayerTemplate: APPLICATION:Black Background
+  webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   actionOnDotNetUnhandledException: 1
   enableInternalProfiler: 0

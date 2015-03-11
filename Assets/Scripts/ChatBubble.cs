@@ -12,15 +12,20 @@ public class ChatBubble : MonoBehaviour {
 	private float lifeTime = 5f;
 	private Color colorFG;
 	private Color colorBG;
+	private int fontSize = 12;
 
 	void Start(){
 		startTime = Time.time;
 		colorFG = foreground.color;
 		colorBG = background.color;
+		Invoke ("Die", (int)lifeTime);
+
 	}
 
 	void Update(){
 
+		background.fontSize = fontSize;
+		foreground.fontSize = fontSize;
 
 		if ( Time.time >= startTime + fadeAfter ){
 
@@ -38,12 +43,10 @@ public class ChatBubble : MonoBehaviour {
 
 		}
 
-		if ( Time.time >= startTime + lifeTime ){
-			Destroy(gameObject);
-		}
+	}
 
-
-
+	public void Die(){
+		Destroy(gameObject);
 	}
 	
 }
