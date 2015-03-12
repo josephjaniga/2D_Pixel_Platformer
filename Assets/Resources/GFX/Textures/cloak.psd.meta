@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 79003952723e84227acefb0aebe675a2
-timeCreated: 1426125952
+timeCreated: 1426136462
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -19,6 +19,10 @@ TextureImporter:
     21300024: cloak_12
     21300026: cloak_13
     21300028: cloak_14
+    21300030: cloak_15
+    21300032: cloak_16
+    21300034: cloak_17
+    21300036: cloak_18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -87,8 +91,8 @@ TextureImporter:
     - name: cloak_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
+        x: 64
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -97,37 +101,37 @@ TextureImporter:
     - name: cloak_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 192
+        x: 96
+        y: 224
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: cloak_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
+        x: 128
+        y: 224
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: cloak_5
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
+        x: 160
+        y: 224
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: cloak_6
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 192
         width: 32
         height: 32
@@ -137,7 +141,7 @@ TextureImporter:
     - name: cloak_7
       rect:
         serializedVersion: 2
-        x: 160
+        x: 32
         y: 192
         width: 32
         height: 32
@@ -147,8 +151,8 @@ TextureImporter:
     - name: cloak_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 64
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -157,8 +161,8 @@ TextureImporter:
     - name: cloak_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
+        x: 96
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -167,8 +171,8 @@ TextureImporter:
     - name: cloak_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
+        x: 128
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -177,8 +181,8 @@ TextureImporter:
     - name: cloak_11
       rect:
         serializedVersion: 2
-        x: 96
-        y: 160
+        x: 160
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -187,7 +191,7 @@ TextureImporter:
     - name: cloak_12
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 160
         width: 32
         height: 32
@@ -197,7 +201,7 @@ TextureImporter:
     - name: cloak_13
       rect:
         serializedVersion: 2
-        x: 160
+        x: 32
         y: 160
         width: 32
         height: 32
@@ -205,6 +209,46 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: cloak_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cloak_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cloak_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cloak_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cloak_18
       rect:
         serializedVersion: 2
         x: 0
