@@ -22,7 +22,13 @@ public class CharacterHealthDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		SetHealth(ch.currentHitsRemaining);
+
+		if ( character == null ){
+			character = _.player;
+		} else {
+			SetHealth(ch.currentHitsRemaining);
+		}
+
 	}
 
 	public void SetHealth(int currentHits){

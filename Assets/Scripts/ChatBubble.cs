@@ -19,7 +19,6 @@ public class ChatBubble : MonoBehaviour {
 		colorFG = foreground.color;
 		colorBG = background.color;
 		Invoke ("Die", (int)lifeTime);
-
 	}
 
 	void Update(){

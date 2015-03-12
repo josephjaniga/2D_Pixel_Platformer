@@ -58,7 +58,10 @@ public class LevelManager : MonoBehaviour {
 	
 	public void init (){
 		// check for the required game structure
-		player 			= _.player;
+		while ( player == null ){
+			player = _.player;
+		}
+
 		mainCamera 		= _.camera;
 		mobs 			= _.mobs;
 		canvasOverlay 	= _.canvasOverlay;

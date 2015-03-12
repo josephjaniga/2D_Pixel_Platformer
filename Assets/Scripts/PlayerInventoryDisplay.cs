@@ -17,6 +17,7 @@ public class PlayerInventoryDisplay : MonoBehaviour {
 	void Start () {
 
 		initInventoryDisplay();
+
 		
 	}
 

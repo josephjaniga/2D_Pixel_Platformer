@@ -11,6 +11,9 @@ public class JumpAttack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player");
+		if ( player == null ){
+			player = gameObject.transform.parent.gameObject;
+		}
 		playerMotion = player.GetComponent<CharacterMotion>();
 	}
 

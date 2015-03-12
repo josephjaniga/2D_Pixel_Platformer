@@ -8,12 +8,22 @@ public class PlayerInventory : MonoBehaviour {
 	public GameObject inventoryDisplay;
 
 	void Start(){
-		inventoryDisplay = GameObject.Find ("PlayerInventoryDisplay");
+		inventoryDisplay = GameObject.Find("PlayerInventoryDisplay");
+	}
+
+	void Update(){
+		if ( inventoryDisplay == null ){
+			inventoryDisplay = GameObject.Find("PlayerInventoryDisplay");
+		} 
 	}
 
 	public void addItem(string itemName){
-		inventory.Add(itemName);
-		inventoryDisplay.SendMessage("RedrawInventoryList", SendMessageOptions.DontRequireReceiver);
+		if ( inventoryDisplay == null ){
+			inventoryDisplay = GameObject.Find("PlayerInventoryDisplay");
+		} else {
+			inventory.Add(itemName);
+			inventoryDisplay.SendMessage("RedrawInventoryList", SendMessageOptions.DontRequireReceiver);
+		}
 	}
 
 	public bool removeItem(string itemName){

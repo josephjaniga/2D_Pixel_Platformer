@@ -22,9 +22,15 @@ public static class _
 			GameObject temp = GameObject.Find("Player");
 			if ( _player == null ){
 				if ( temp == null ){
-					temp = GameObject.Instantiate(Resources.Load("Prefabs/Characters/Player"), Vector3.zero, Quaternion.identity) as GameObject;
-					temp.name = "Player";
-					_player = temp;
+					GameObject cloakTemp = GameObject.Find("Cloak");
+					if ( cloakTemp == null ){
+						temp = GameObject.Instantiate(Resources.Load("Prefabs/Characters/Cloak"), Vector3.zero, Quaternion.identity) as GameObject;
+						temp.name = "Player";
+						_player = temp;
+					} else {
+						cloakTemp.name = "Player";
+						_player = cloakTemp;
+					}
 				}
 			}
 			return _player;

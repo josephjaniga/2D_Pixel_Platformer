@@ -19,7 +19,11 @@ public class MeleeAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		player = GameObject.Find("Player");
+		if ( player == null ){
+			player = gameObject.transform.parent.parent.gameObject;
+		}
 		playerMotion = player.GetComponent<CharacterMotion>();
 
 		weaponAnimator = transform.parent.gameObject.GetComponent<Animator>();
