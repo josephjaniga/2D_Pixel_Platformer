@@ -24,7 +24,7 @@ public static class _
 				if ( temp == null ){
 					GameObject cloakTemp = GameObject.Find("Cloak");
 					if ( cloakTemp == null ){
-						temp = GameObject.Instantiate(Resources.Load("Prefabs/Characters/Player"), Vector3.zero, Quaternion.identity) as GameObject;
+						temp = GameObject.Instantiate(Resources.Load("Prefabs/Characters/Cloak"), Vector3.zero, Quaternion.identity) as GameObject;
 						temp.name = "Player";
 						_player = temp;
 					} else {
