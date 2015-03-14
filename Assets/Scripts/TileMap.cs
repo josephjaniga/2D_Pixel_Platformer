@@ -197,7 +197,7 @@ public class TileMap : MonoBehaviour {
 					Quaternion.identity
 					) as GameObject;
 				temp.name = "RedHead";
-				temp.transform.SetParent(_.stuff.transform);
+				temp.transform.SetParent(_.mobs.transform);
 				break;
 			case (byte)PrefabObjectTypes.Spike:
 				temp = GameObject.Instantiate(
@@ -230,7 +230,6 @@ public class TileMap : MonoBehaviour {
 					temp.name = "Key";
 				}
 				temp.transform.SetParent(_.stuff.transform);
-
 				// the key color
 				Color stuffColor = Color.white;
 				if ( stuff[i].r != null && stuff[i].g != null && stuff[i].b != null ) {
@@ -245,11 +244,9 @@ public class TileMap : MonoBehaviour {
 					Quaternion.identity
 					) as GameObject;
 				temp.name = "LionBoss";
-				temp.transform.SetParent(_.stuff.transform);
+				temp.transform.SetParent(_.mobs.transform);
 				break;
 			}
-
-
 
 		}
 

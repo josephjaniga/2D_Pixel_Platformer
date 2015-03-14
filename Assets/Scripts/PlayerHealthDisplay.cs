@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterHealthDisplay : MonoBehaviour {
+public class PlayerHealthDisplay : MonoBehaviour {
 
 	public GameObject character;
-	public GameObject uiPanel;
 	public CharacterHealth ch;
 
 	public GameObject ResourceContainerPrefab;

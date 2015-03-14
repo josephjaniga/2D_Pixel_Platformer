@@ -1,9 +1,15 @@
 fileFormatVersion: 2
 guid: 8496e4b698b1b4285a221fe4b9e4a3cf
+timeCreated: 1426305495
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: LionBoss_0
     21300002: LionBoss_1
+    21300004: LionBoss_2
+    21300006: LionBoss_3
+    21300008: LionBoss_4
+    21300010: LionBoss_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,12 +63,52 @@ TextureImporter:
         width: 96
         height: 64
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: LionBoss_1
       rect:
         serializedVersion: 2
+        x: 96
+        y: 192
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_3
+      rect:
+        serializedVersion: 2
         x: 0
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_5
+      rect:
+        serializedVersion: 2
+        x: 192
         y: 128
         width: 96
         height: 64

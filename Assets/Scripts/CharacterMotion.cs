@@ -55,6 +55,9 @@ public class CharacterMotion : MonoBehaviour
 			case ICharacterInputTypes.DumbJumpAI:
 				characterInput = new DumbJumpAI(this);
 			break;
+			case ICharacterInputTypes.BlankAI:
+				characterInput = new BlankAI(this);
+			break;
 		}
 
 		characterInput.Start();

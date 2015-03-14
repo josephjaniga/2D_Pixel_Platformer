@@ -15,6 +15,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
+  - 95: {fileID: 9569506}
   m_Layer: 0
   m_Name: LionBoss
   m_TagString: Mob
@@ -105,6 +106,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.25, y: .300000012}
+--- !u!95 &9569506
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09df0014e39de480eb576af2e06588ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  type: 2
+  type: 4
   runSpeed: 33
   jumpForce: 100
   isMovingLeft: 0

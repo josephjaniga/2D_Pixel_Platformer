@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour {
 			player.transform.position = player.GetComponent<CharacterMotion>().targetPosition;
 		}
 
+		// make sure the player doesnt spawn motion locked
 		player.GetComponent<CharacterMotion>().rightLocked = false;
 
 	}

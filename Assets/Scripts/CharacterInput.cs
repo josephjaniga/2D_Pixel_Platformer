@@ -5,7 +5,8 @@ public enum ICharacterInputTypes {
 	CharacterKeyboardInput,
 	CharacterTouchInput,
 	RandomAI,
-	DumbJumpAI
+	DumbJumpAI,
+	BlankAI
 }
 
 public interface ICharacterInput
@@ -169,5 +170,18 @@ public class DumbJumpAI : ICharacterInput
 		cm.isJumping = true;
 		cm.isMovingLeft = false;
 		cm.isMovingRight = false;
+	}
+}
+
+public class BlankAI : ICharacterInput
+{
+	public CharacterMotion cm;
+	public BlankAI(CharacterMotion parentMotion){ cm = parentMotion; }
+	public void Start(){
+		cm.isJumping = false;
+		cm.isMovingLeft = false;
+		cm.isMovingRight = false;
+	}
+	public void Update(){
 	}
 }
