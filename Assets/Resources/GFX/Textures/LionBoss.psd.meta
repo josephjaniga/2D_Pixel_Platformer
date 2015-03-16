@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8496e4b698b1b4285a221fe4b9e4a3cf
-timeCreated: 1426305495
+timeCreated: 1426446835
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: LionBoss_3
     21300008: LionBoss_4
     21300010: LionBoss_5
+    21300012: LionBoss_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -110,6 +111,16 @@ TextureImporter:
         serializedVersion: 2
         x: 192
         y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
         width: 96
         height: 64
       alignment: 0
