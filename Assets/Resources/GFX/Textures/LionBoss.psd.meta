@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8496e4b698b1b4285a221fe4b9e4a3cf
-timeCreated: 1426446835
+timeCreated: 1426559925
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,18 @@ TextureImporter:
     21300008: LionBoss_4
     21300010: LionBoss_5
     21300012: LionBoss_6
+    21300014: LionBoss_7
+    21300016: LionBoss_8
+    21300018: LionBoss_9
+    21300020: LionBoss_10
+    21300022: LionBoss_11
+    21300024: LionBoss_12
+    21300026: LionBoss_13
+    21300028: LionBoss_14
+    21300030: LionBoss_15
+    21300032: LionBoss_16
+    21300034: LionBoss_17
+    21300036: LionBoss_18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -84,7 +96,7 @@ TextureImporter:
         width: 96
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: LionBoss_3
       rect:
@@ -119,7 +131,127 @@ TextureImporter:
     - name: LionBoss_6
       rect:
         serializedVersion: 2
+        x: 288
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_8
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_10
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 128
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_11
+      rect:
+        serializedVersion: 2
         x: 0
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_16
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_17
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 64
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LionBoss_18
+      rect:
+        serializedVersion: 2
+        x: 672
         y: 64
         width: 96
         height: 64
