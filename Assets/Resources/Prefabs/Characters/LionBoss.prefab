@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 95: {fileID: 9569506}
+  - 114: {fileID: 11433892}
   m_Layer: 0
   m_Name: LionBoss
   m_TagString: Mob
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  type: 4
+  type: 2
   runSpeed: 33
   jumpForce: 100
   isMovingLeft: 0
@@ -210,6 +211,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
+  cm: {fileID: 0}
+--- !u!114 &11433892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955084e10b344918bdf14ed08235dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: {fileID: 0}
   cm: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
