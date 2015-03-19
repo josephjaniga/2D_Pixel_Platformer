@@ -75,7 +75,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &149600
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +475,7 @@ MonoBehaviour:
   isMovingLeft: 0
   isMovingRight: 0
   isJumping: 0
+  isAttacking: 0
   isGrounded: 0
   leftLocked: 0
   rightLocked: 0

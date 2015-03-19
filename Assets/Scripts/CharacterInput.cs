@@ -6,7 +6,8 @@ public enum ICharacterInputTypes {
 	CharacterTouchInput,
 	RandomAI,
 	DumbJumpAI,
-	BlankAI
+	BlankAI,
+	LionBossAI
 }
 
 public interface ICharacterInput
@@ -182,6 +183,79 @@ public class BlankAI : ICharacterInput
 		cm.isMovingLeft = false;
 		cm.isMovingRight = false;
 	}
+	public void Update(){}
+}
+
+public class LionBossAI : ICharacterInput
+{
+	private float lastDirectionChange = 0f;
+	private float directionChangeCD = 1f;
+
+	private float lastAttack = 0f;
+	private float attackCD = 5f;
+	private float attackDurationTime = .8f;
+	private float attackCompleteTime = 0f;
+	
+	public CharacterMotion cm;
+	public LionBossAI(CharacterMotion parentMotion){ cm = parentMotion; }
+
+	public void Start(){ 
+		lastDirectionChange = Random.Range(0f, 5f);
+		lastAttack = Random.Range(0f, 5f);
+		Stop();
+	}
+	
 	public void Update(){
+
+		// trigger attack change
+		if ( Time.time >= attackCompleteTime ) {
+			cm.isAttacking = false;
+			if ( Time.time >= lastAttack + attackCD ){
+				if ( !cm.isAttacking ) {
+					lastAttack = Time.time;
+					attackCompleteTime = Time.time + attackDurationTime;
+					cm.isAttacking = true;
+				}
+			}
+		}
+
+		// if attacking stop motion
+		if ( cm.isAttacking ){
+			cm.isMovingLeft = false;
+			cm.isMovingRight = false;
+		} else {
+			// check and change direction
+			if ( Time.time >= lastDirectionChange + directionChangeCD ){
+				lastDirectionChange = Time.time;
+				directionChangeCD = Random.Range(0f, 3f);
+				cm.isMovingLeft = false;
+				cm.isMovingRight = false;
+				ChangeDirection();
+			}
+		}
+
+	}
+	
+	public void ChangeDirection(){
+		int r = Random.Range(0,3);
+		switch (r){
+		default:
+		case 0:
+			cm.isMovingLeft = false;
+			cm.isMovingRight = false;
+			break;
+		case 1:
+			cm.isMovingLeft = true;
+			break;
+		case 2:
+			cm.isMovingRight = true;
+			break;
+		}
+	}
+	
+	public void Stop(){
+		cm.isMovingLeft = false;
+		cm.isMovingRight = false;
+		cm.isJumping = false;
 	}
 }

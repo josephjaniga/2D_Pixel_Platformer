@@ -25,6 +25,9 @@ public class CharacterMotion : MonoBehaviour
 	public bool isMovingRight 	= false;
 	public bool isJumping 		= false;
 
+	// attack target boolean?
+	public bool isAttacking		= false;
+
 	// Collision Indicators
 	public bool isGrounded 		= false;
 	public bool leftLocked		= false;
@@ -57,6 +60,9 @@ public class CharacterMotion : MonoBehaviour
 			break;
 			case ICharacterInputTypes.BlankAI:
 				characterInput = new BlankAI(this);
+			break;
+			case ICharacterInputTypes.LionBossAI:
+				characterInput = new LionBossAI(this);
 			break;
 		}
 
