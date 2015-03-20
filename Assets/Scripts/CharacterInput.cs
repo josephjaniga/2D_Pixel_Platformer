@@ -19,7 +19,12 @@ public interface ICharacterInput
 public class CharacterKeyboardInput : ICharacterInput
 {
 	public CharacterMotion cm;
-	
+
+	private float lastAttack = 0f;
+	private float attackCD = 0.3f;
+	private float attackDurationTime = .3f;
+	private float attackCompleteTime = 0f;
+
 	public CharacterKeyboardInput(CharacterMotion parentMotion){
 		cm = parentMotion;
 	}
@@ -41,6 +46,19 @@ public class CharacterKeyboardInput : ICharacterInput
 			cm.isJumping = true;
 		else 
 			cm.isJumping = false;
+
+		// if should attack
+		if ( !cm.isAttacking && Input.GetKey(KeyCode.LeftShift) ){
+			lastAttack = Time.time;
+			attackCompleteTime = Time.time + attackDurationTime;
+			cm.isAttacking = true;
+		}
+
+		// if the attack animation should end
+		if ( Time.time >= attackCompleteTime ) {
+			cm.isAttacking = false;
+		}
+		
 	}
 }
 

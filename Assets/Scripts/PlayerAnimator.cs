@@ -15,36 +15,48 @@ public class PlayerAnimator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		// Jump ascending / descending
-		if ( GetComponent<Rigidbody2D>().velocity.y > 0 ){
-			a.SetBool("isAscending", true);
-		} else if ( GetComponent<Rigidbody2D>().velocity.y < 0 ) {
+		if ( cm.isAttacking ){
+			a.SetBool("isAttacking", true);
 
-			a.SetBool("isFalling", true);
-
-			a.SetBool("isAscending", false);
-			a.SetBool("isCrouching", false);
-			a.SetBool("isWalking", false);
-		}
-
-		if ( !cm.isGrounded && GetComponent<Rigidbody2D>().velocity.y < 0  ){
-			a.SetBool("isFalling", true);
-			a.SetBool("isCrouching", false);
-			a.SetBool("isWalking", false);
-		} else if ( !cm.isGrounded && GetComponent<Rigidbody2D>().velocity.y > 0  ) {
-			a.SetBool("isFalling", false);
-			a.SetBool("isAscending", true);
-			a.SetBool("isWalking", false);
+			a.SetBool("isFalling", 		false);
+			a.SetBool("isAscending", 	false);
+			a.SetBool("isWalking", 		false);
 		} else {
-			a.SetBool("isFalling", false);
+
+			a.SetBool("isAttacking", false);
+
+			// Jump ascending / descending
+			if ( GetComponent<Rigidbody2D>().velocity.y > 0 ){
+				a.SetBool("isAscending", true);
+			} else if ( GetComponent<Rigidbody2D>().velocity.y < 0 ) {
+				
+				a.SetBool("isFalling", true);
+				
+				a.SetBool("isAscending", false);
+				a.SetBool("isCrouching", false);
+				a.SetBool("isWalking", false);
+			}
+			
+			if ( !cm.isGrounded && GetComponent<Rigidbody2D>().velocity.y < 0  ){
+				a.SetBool("isFalling", true);
+				a.SetBool("isCrouching", false);
+				a.SetBool("isWalking", false);
+			} else if ( !cm.isGrounded && GetComponent<Rigidbody2D>().velocity.y > 0  ) {
+				a.SetBool("isFalling", false);
+				a.SetBool("isAscending", true);
+				a.SetBool("isWalking", false);
+			} else {
+				a.SetBool("isFalling", false);
+			}
+			
+			// walking
+			if ( ( cm.isMovingLeft || cm.isMovingRight ) && GetComponent<Rigidbody2D>().velocity.y == 0  ){
+				a.SetBool("isWalking", true);
+			} else {
+				a.SetBool("isWalking", false);
+			}
 		}
 
-		// walking
-		if ( ( cm.isMovingLeft || cm.isMovingRight ) && GetComponent<Rigidbody2D>().velocity.y == 0  ){
-			a.SetBool("isWalking", true);
-		} else {
-			a.SetBool("isWalking", false);
-		}
 
 	}
 }
