@@ -19,12 +19,14 @@ public class DoorTraverser : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col){
 		if ( col.gameObject.tag == "Player" ){
 
+			_.player.SendMessage("PlayDoorClip", SendMessageOptions.DontRequireReceiver);
+
 			if ( !isLocked ){
 				PlayerPassThroughDoor(col.gameObject);
 			} else {
 				// check if player has the required item
 				if ( _.player.GetComponent<PlayerInventory>().hasItem(itemRequired) ) {
-					_.player.GetComponent<PlayerInventory>().removeItem(itemRequired);
+					//_.player.GetComponent<PlayerInventory>().removeItem(itemRequired);
 					isLocked = false;
 					PlayerPassThroughDoor(col.gameObject);
 				} else {

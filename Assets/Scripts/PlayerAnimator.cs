@@ -5,6 +5,8 @@ public class PlayerAnimator : MonoBehaviour {
 
 	public Animator a;
 	public CharacterMotion cm;
+
+	public float LastYVelocity = 0f;
 	
 	// Use this for initialization
 	void Start () {
@@ -14,7 +16,7 @@ public class PlayerAnimator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 		if ( cm.isAttacking ){
 			a.SetBool("isAttacking", true);
 
@@ -29,9 +31,7 @@ public class PlayerAnimator : MonoBehaviour {
 			if ( GetComponent<Rigidbody2D>().velocity.y > 0 ){
 				a.SetBool("isAscending", true);
 			} else if ( GetComponent<Rigidbody2D>().velocity.y < 0 ) {
-				
 				a.SetBool("isFalling", true);
-				
 				a.SetBool("isAscending", false);
 				a.SetBool("isCrouching", false);
 				a.SetBool("isWalking", false);
@@ -46,7 +46,11 @@ public class PlayerAnimator : MonoBehaviour {
 				a.SetBool("isAscending", true);
 				a.SetBool("isWalking", false);
 			} else {
+				// Landed
 				a.SetBool("isFalling", false);
+				if ( LastYVelocity < 0f ){
+					_.player.SendMessage("PlayBumpClip", SendMessageOptions.DontRequireReceiver);
+				}
 			}
 			
 			// walking
@@ -55,7 +59,10 @@ public class PlayerAnimator : MonoBehaviour {
 			} else {
 				a.SetBool("isWalking", false);
 			}
+
 		}
+
+		LastYVelocity = GetComponent<Rigidbody2D>().velocity.y;
 
 
 	}

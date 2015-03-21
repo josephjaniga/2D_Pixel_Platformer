@@ -47,11 +47,19 @@ public class CharacterHealth : MonoBehaviour {
 	void Update () {
 
 		if ( currentHitsRemaining <= 0 ){
+
 			// die?
 			//gameObject.SetActive(false);
 			if ( gameObject.name == "Player" ){
 				e_PlayerDeath(); // delegate method to the LevelManager
 			} else {
+
+				_.player.SendMessage("ClearBlockers", SendMessageOptions.DontRequireReceiver);
+
+				if ( gameObject.name == "RedHead" ){
+					_.player.SendMessage("PlayRedHeadDeathClip", SendMessageOptions.DontRequireReceiver);
+				}
+
 				Destroy(gameObject);
 			}
 		}
@@ -73,7 +81,12 @@ public class CharacterHealth : MonoBehaviour {
 			if ( !isImmune ){
 				currentHitsRemaining -= damageAmount;
 			}
-			flicker(1f);
+			if ( gameObject.name == "Player" ){
+				flicker(1f);
+			} else {
+				flicker();
+			}
+
 		}
 		
 	}
@@ -86,7 +99,7 @@ public class CharacterHealth : MonoBehaviour {
 		}
 	}
 
-	public void flicker(float duration = .5f){
+	public void flicker(float duration = .33f){
 		isFlickering = true;
 		flickerStopTime = Time.time + duration;
 	}

@@ -18,6 +18,7 @@ public class TriggerHeal : MonoBehaviour {
 	
 	void OnTriggerEnter2D (Collider2D col){
 		if ( col.gameObject.tag == "Player" ){
+			_.player.SendMessage("PlayItemPickUpClip", SendMessageOptions.DontRequireReceiver);
 			col.gameObject.SendMessage("Heal", healValue, SendMessageOptions.DontRequireReceiver);
 			Destroy(gameObject);
 		}

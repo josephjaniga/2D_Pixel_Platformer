@@ -218,24 +218,30 @@ public class TileMap : MonoBehaviour {
 				temp.transform.SetParent(_.stuff.transform);
 				break;
 			case (byte)PrefabObjectTypes.Key:
-				temp = GameObject.Instantiate(
-					Resources.Load("Prefabs/Interactables/Key"), 
-					stuffPosition,
-					Quaternion.identity
-					) as GameObject;
-				// the object name
-				if ( stuff[i].objectName != null ){
-					temp.name = stuff[i].objectName;
-				} else {
-					temp.name = "Key";
+				// if the player doesnt have this key, spawn it in the level
+				if ( !_.player.GetComponent<PlayerInventory>().hasItem(stuff[i].objectName) ){
+
+					temp = GameObject.Instantiate(
+						Resources.Load("Prefabs/Interactables/Key"), 
+						stuffPosition,
+						Quaternion.identity
+						) as GameObject;
+
+					// the object name
+					if ( stuff[i].objectName != null ){
+						temp.name = stuff[i].objectName;
+					} else {
+						temp.name = "Key";
+					}
+
+					temp.transform.SetParent(_.stuff.transform);
+					// the key color
+					Color stuffColor = Color.white;
+					if ( stuff[i].r != null && stuff[i].g != null && stuff[i].b != null ) {
+						stuffColor = new Color(stuff[i].r, stuff[i].g, stuff[i].b);
+					}
+					temp.GetComponent<SpriteRenderer>().color = stuffColor;
 				}
-				temp.transform.SetParent(_.stuff.transform);
-				// the key color
-				Color stuffColor = Color.white;
-				if ( stuff[i].r != null && stuff[i].g != null && stuff[i].b != null ) {
-					stuffColor = new Color(stuff[i].r, stuff[i].g, stuff[i].b);
-				}
-				temp.GetComponent<SpriteRenderer>().color = stuffColor;
 				break;
 			case (byte)PrefabObjectTypes.LionBoss:
 				temp = GameObject.Instantiate(

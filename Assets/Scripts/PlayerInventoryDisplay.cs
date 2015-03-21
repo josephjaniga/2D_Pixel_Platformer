@@ -18,7 +18,6 @@ public class PlayerInventoryDisplay : MonoBehaviour {
 
 		initInventoryDisplay();
 
-		
 	}
 
 	public void RedrawInventoryList(){
@@ -28,7 +27,7 @@ public class PlayerInventoryDisplay : MonoBehaviour {
 		for ( int i=0; i<inventoryList.Count; i++ ){
 			GameObject temp = Instantiate(InventoryItemContainerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 			temp.name = "Inventory_Item_Label_"+i;
-			temp.GetComponent<Text>().text = inventoryList[i];
+			temp.transform.Find("InventoryLabelText").GetComponent<Text>().text = inventoryList[i];
 			temp.transform.SetParent(transform);
 		}
 	}
@@ -49,7 +48,7 @@ public class PlayerInventoryDisplay : MonoBehaviour {
 		for ( int i=0; i<inventoryList.Count; i++ ){
 			GameObject temp = Instantiate(InventoryItemContainerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 			temp.name = "Inventory_Item_Label_"+i;
-			temp.GetComponent<Text>().text = inventoryList[i];
+			temp.transform.Find("InventoryLabelText").GetComponent<Text>().text = inventoryList[i];
 			temp.transform.SetParent(transform);
 		}
 		

@@ -10,7 +10,7 @@ public class JumpAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Player");
+		player = _.player;
 		if ( player == null ){
 			player = gameObject.transform.parent.gameObject;
 		}
@@ -21,6 +21,7 @@ public class JumpAttack : MonoBehaviour {
 		if ( gameObject.name == "JumpAttackBumper" && col.gameObject.tag == "Mob" && !playerMotion.isGrounded ){
 			col.gameObject.SendMessage("TakeDamage", JumpAttackDamageValue, SendMessageOptions.DontRequireReceiver);
 			player.SendMessage("Jump", false, SendMessageOptions.DontRequireReceiver);
+			player.SendMessage("PlayBumpClip", SendMessageOptions.DontRequireReceiver);
 		}
 	}
 

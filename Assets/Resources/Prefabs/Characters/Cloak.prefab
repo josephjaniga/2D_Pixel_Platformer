@@ -18,6 +18,8 @@ GameObject:
   - 114: {fileID: 11498952}
   - 114: {fileID: 11412628}
   - 114: {fileID: 11486496}
+  - 82: {fileID: 8267042}
+  - 114: {fileID: 11495588}
   m_Layer: 0
   m_Name: Cloak
   m_TagString: Player
@@ -34,7 +36,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 493102}
   - 61: {fileID: 6111760}
-  - 114: {fileID: 11442674}
+  - 114: {fileID: 11463362}
   m_Layer: 0
   m_Name: MeleeWeaponBumper
   m_TagString: Untagged
@@ -280,6 +282,75 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .050999999, y: 2.9000001}
+--- !u!82 &8267042
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113358}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 9999
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .000100010002
+      value: 1
+      inSlope: 0
+      outSlope: -1.00010002
+      tangentMode: 0
+    - time: 1
+      value: .991666675
+      inSlope: -1.00010002
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .783333361
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9536796
 Animator:
   serializedVersion: 3
@@ -334,18 +405,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   cm: {fileID: 0}
---- !u!114 &11442674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0803b33b2356c41ffaa02d323e19310e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionDamageValue: 1
 --- !u!114 &11448454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,6 +418,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   cm: {fileID: 0}
+--- !u!114 &11463362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4be4f1222584a428a109d8f1d49c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerDamageValue: 1
 --- !u!114 &11480026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: {fileID: 0}
   cm: {fileID: 0}
+  LastYVelocity: 0
 --- !u!114 &11486496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,6 +521,21 @@ MonoBehaviour:
   shouldKnockBack: 0
   shouldUseStartingPosition: 1
   targetPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &11495588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300b900e1127b4fffa7f7c609874bed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 0}
+  jumpSound: {fileID: 0}
+  bumpSound: {fileID: 0}
+  attackSound: {fileID: 0}
 --- !u!114 &11498952
 MonoBehaviour:
   m_ObjectHideFlags: 1

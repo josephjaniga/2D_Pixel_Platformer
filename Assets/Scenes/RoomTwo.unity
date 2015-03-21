@@ -128,7 +128,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9333623f0f494cb6bc080b7307b65c4, type: 2}
-  m_RootGameObject: {fileID: 1009581523}
   m_IsPrefabParent: 0
 --- !u!1 &1009581523
 GameObject:
@@ -161,11 +160,13 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   player: {fileID: 0}
   mobs: {fileID: 0}
-  canvas: {fileID: 0}
+  canvasOverlay: {fileID: 0}
+  canvasWorld: {fileID: 0}
   levelMapSystem: {fileID: 0}
   doors: {fileID: 0}
   levelManager: {fileID: 0}
   stuff: {fileID: 0}
+  chatManager: {fileID: 0}
   levelDisplayName: 
   levelMapFile: room_two
   startingPosition: {fileID: 1361748380}
