@@ -6,10 +6,13 @@ public class CloakAudioManager : MonoBehaviour {
 
 	public AudioSource audio;
 
+	// cloak player sounds
 	public AudioClip jumpSound;
 	public AudioClip bumpSound;
 	public AudioClip attackSound;
+	public AudioClip hurtSound;
 
+	// external sounds
 	public AudioClip itemPickUpSound;
 	public AudioClip doorSound;
 	public AudioClip redHeadDeathSound;
@@ -19,6 +22,7 @@ public class CloakAudioManager : MonoBehaviour {
 		jumpSound = Resources.Load<AudioClip>("SFX/Cloak/CloakJump");
 		bumpSound = Resources.Load<AudioClip>("SFX/Cloak/CloakBump");
 		attackSound = Resources.Load<AudioClip>("SFX/Cloak/CloakAttack");
+		hurtSound = Resources.Load<AudioClip>("SFX/Cloak/CloakHurt");
 		itemPickUpSound = Resources.Load<AudioClip>("SFX/PickUpItem");
 		doorSound = Resources.Load<AudioClip>("SFX/Door");
 		redHeadDeathSound = Resources.Load<AudioClip>("SFX/RedHead/RedHeadDeath");
@@ -41,13 +45,23 @@ public class CloakAudioManager : MonoBehaviour {
 	}
 	
 	public void PlayAttackClip(){
-		audio.clip = attackSound;
+		if ( _.playerInventory.canAttack ){
+			audio.clip = attackSound;
+			if ( audio.isPlaying ){
+				audio.Stop();
+			}
+			audio.Play();
+		}
+	}
+	
+	public void PlayHurtClip(){
+		audio.clip = hurtSound;
 		if ( audio.isPlaying ){
 			audio.Stop();
 		}
 		audio.Play();
 	}
-
+	
 	public void PlayItemPickUpClip(){
 		audio.clip = itemPickUpSound;
 		if ( audio.isPlaying ){

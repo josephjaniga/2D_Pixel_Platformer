@@ -4,16 +4,17 @@ using System.Collections;
 public static class _
 {
 	
-	private static GameObject 	_player;
-	private static GameObject 	_camera;
-	private static GameObject 	_canvasOverlay;
-	private static GameObject 	_canvasWorld;
-	private static GameObject   _mobsGroup;
-	private static GameObject	_levelMapSystem;
-	private static GameObject	_doorsGroup;
-	private static GameObject	_levelManager;
-	private static GameObject	_stuffGroup;
-	private static GameObject	_chatManager;
+	private static GameObject 		_player;
+	private static GameObject 		_camera;
+	private static GameObject 		_canvasOverlay;
+	private static GameObject 		_canvasWorld;
+	private static GameObject   	_mobsGroup;
+	private static GameObject		_levelMapSystem;
+	private static GameObject		_doorsGroup;
+	private static GameObject		_levelManager;
+	private static GameObject		_stuffGroup;
+	private static GameObject		_chatManager;
+	private static PlayerInventory	_playerInventory;
 
 	// player
 	public static GameObject player 
@@ -33,6 +34,7 @@ public static class _
 					}
 				}
 			}
+			_playerInventory = _player.GetComponent<PlayerInventory>();
 			return _player;
 		}
 		set { _player = value; }
@@ -190,6 +192,17 @@ public static class _
 			return _chatManager;
 		}
 		set { _chatManager = value; }
+	}
+
+	// player Inventory
+	public static PlayerInventory playerInventory
+	{
+		get {
+			if ( _playerInventory == null  ){
+				_playerInventory = _player.GetComponent<PlayerInventory>();
+			}
+			return _playerInventory;
+		}
 	}
 
 	

@@ -1,32 +1,26 @@
 fileFormatVersion: 2
-guid: 79003952723e84227acefb0aebe675a2
-timeCreated: 1426998306
+guid: 8cc639904e0d44249b8a38c7afa299e3
+timeCreated: 1426971541
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: cloak_idle_1
-    21300002: cloak_idle-2
-    21300004: cloak_idle_3
-    21300006: cloak_idle_4
-    21300008: cloak_4
-    21300010: cloak_5
-    21300012: cloak_walk_1
-    21300014: cloak_walk_2
-    21300016: cloak_walk_3
-    21300018: cloak_walk_4
-    21300020: cloak_walk_5
-    21300022: cloak_walk_6
-    21300024: cloak_Ascend
-    21300026: cloak_Descend
-    21300028: cloak_14
-    21300030: cloak_15
-    21300032: cloak_16
-    21300034: cloak_17
-    21300036: Cloak_Crouch
-    21300038: cloak_melee_1
-    21300040: cloak_melee_2
-    21300042: cloak_melee_3
-    21300044: cloak_melee_4
+    21300000: Dagger_Idle_1
+    21300002: dagger_idle_2
+    21300004: dagger_idle_3
+    21300006: dagger_idle_4
+    21300008: dagger_walk_1
+    21300010: dagger_walk_2
+    21300012: dagger_walk_3
+    21300014: dagger_walk_4
+    21300016: dagger_walk_5
+    21300018: dagger_walk_6
+    21300020: Dagger_Ascend
+    21300022: Dagger_Descend
+    21300024: Dagger_Crouch
+    21300026: Dagger_Attack_1
+    21300028: Dagger_Attack_2
+    21300030: Dagger_attack_3
+    21300032: Dagger_attack_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -50,7 +44,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -2
-  maxTextureSize: 1024
+  maxTextureSize: 2048
   textureSettings:
     filterMode: 0
     aniso: 16
@@ -72,7 +66,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: cloak_idle_1
+    - name: Dagger_Idle_1
       rect:
         serializedVersion: 2
         x: 0
@@ -82,7 +76,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_idle-2
+    - name: dagger_idle_2
       rect:
         serializedVersion: 2
         x: 32
@@ -92,7 +86,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_idle_3
+    - name: dagger_idle_3
       rect:
         serializedVersion: 2
         x: 64
@@ -102,7 +96,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_idle_4
+    - name: dagger_idle_4
       rect:
         serializedVersion: 2
         x: 96
@@ -112,7 +106,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_1
+    - name: dagger_walk_1
       rect:
         serializedVersion: 2
         x: 0
@@ -122,7 +116,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_2
+    - name: dagger_walk_2
       rect:
         serializedVersion: 2
         x: 32
@@ -132,7 +126,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_3
+    - name: dagger_walk_3
       rect:
         serializedVersion: 2
         x: 64
@@ -142,7 +136,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_4
+    - name: dagger_walk_4
       rect:
         serializedVersion: 2
         x: 96
@@ -152,7 +146,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_5
+    - name: dagger_walk_5
       rect:
         serializedVersion: 2
         x: 128
@@ -162,7 +156,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_6
+    - name: dagger_walk_6
       rect:
         serializedVersion: 2
         x: 160
@@ -172,7 +166,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_Ascend
+    - name: Dagger_Ascend
       rect:
         serializedVersion: 2
         x: 0
@@ -182,7 +176,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_Descend
+    - name: Dagger_Descend
       rect:
         serializedVersion: 2
         x: 32
@@ -192,7 +186,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Cloak_Crouch
+    - name: Dagger_Crouch
       rect:
         serializedVersion: 2
         x: 0
@@ -202,7 +196,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_1
+    - name: Dagger_Attack_1
       rect:
         serializedVersion: 2
         x: 0
@@ -212,7 +206,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_2
+    - name: Dagger_Attack_2
       rect:
         serializedVersion: 2
         x: 64
@@ -222,7 +216,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_3
+    - name: Dagger_attack_3
       rect:
         serializedVersion: 2
         x: 128
@@ -232,7 +226,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_4
+    - name: Dagger_attack_4
       rect:
         serializedVersion: 2
         x: 192

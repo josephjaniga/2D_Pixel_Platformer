@@ -1,32 +1,26 @@
 fileFormatVersion: 2
-guid: 79003952723e84227acefb0aebe675a2
-timeCreated: 1426998306
+guid: 5dd07380402544e1f86c6e071405b1f8
+timeCreated: 1426998242
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: cloak_idle_1
-    21300002: cloak_idle-2
-    21300004: cloak_idle_3
-    21300006: cloak_idle_4
-    21300008: cloak_4
-    21300010: cloak_5
-    21300012: cloak_walk_1
-    21300014: cloak_walk_2
-    21300016: cloak_walk_3
-    21300018: cloak_walk_4
-    21300020: cloak_walk_5
-    21300022: cloak_walk_6
-    21300024: cloak_Ascend
-    21300026: cloak_Descend
-    21300028: cloak_14
-    21300030: cloak_15
-    21300032: cloak_16
-    21300034: cloak_17
-    21300036: Cloak_Crouch
-    21300038: cloak_melee_1
-    21300040: cloak_melee_2
-    21300042: cloak_melee_3
-    21300044: cloak_melee_4
+    21300000: Boots_Idle_1
+    21300002: Boots_Idle_2
+    21300004: Boots_Idle_3
+    21300006: Boots_Idle_4
+    21300008: Boots_Walk_1
+    21300010: Boots_Walk_2
+    21300012: Boots_Walk_3
+    21300014: Boots_Walk_4
+    21300016: Boots_Walk_5
+    21300018: Boots_Walk_6
+    21300020: Boots_Ascend
+    21300022: Boots_Descend
+    21300024: Boots_Crouch
+    21300026: Boots_MeleeAttack_1
+    21300028: Boots_MeleeAttack_2
+    21300030: Boots_MeleeAttack_3
+    21300032: Boots_MeleeAttack_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -50,7 +44,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -2
-  maxTextureSize: 1024
+  maxTextureSize: 2048
   textureSettings:
     filterMode: 0
     aniso: 16
@@ -72,7 +66,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: cloak_idle_1
+    - name: Boots_Idle_1
       rect:
         serializedVersion: 2
         x: 0
@@ -82,7 +76,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_idle-2
+    - name: Boots_Idle_2
       rect:
         serializedVersion: 2
         x: 32
@@ -92,7 +86,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_idle_3
+    - name: Boots_Idle_3
       rect:
         serializedVersion: 2
         x: 64
@@ -102,7 +96,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_idle_4
+    - name: Boots_Idle_4
       rect:
         serializedVersion: 2
         x: 96
@@ -112,7 +106,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_1
+    - name: Boots_Walk_1
       rect:
         serializedVersion: 2
         x: 0
@@ -122,7 +116,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_2
+    - name: Boots_Walk_2
       rect:
         serializedVersion: 2
         x: 32
@@ -132,7 +126,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_3
+    - name: Boots_Walk_3
       rect:
         serializedVersion: 2
         x: 64
@@ -142,7 +136,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_4
+    - name: Boots_Walk_4
       rect:
         serializedVersion: 2
         x: 96
@@ -152,7 +146,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_5
+    - name: Boots_Walk_5
       rect:
         serializedVersion: 2
         x: 128
@@ -162,7 +156,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_walk_6
+    - name: Boots_Walk_6
       rect:
         serializedVersion: 2
         x: 160
@@ -172,7 +166,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_Ascend
+    - name: Boots_Ascend
       rect:
         serializedVersion: 2
         x: 0
@@ -182,7 +176,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_Descend
+    - name: Boots_Descend
       rect:
         serializedVersion: 2
         x: 32
@@ -192,7 +186,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Cloak_Crouch
+    - name: Boots_Crouch
       rect:
         serializedVersion: 2
         x: 0
@@ -202,7 +196,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_1
+    - name: Boots_MeleeAttack_1
       rect:
         serializedVersion: 2
         x: 0
@@ -212,7 +206,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_2
+    - name: Boots_MeleeAttack_2
       rect:
         serializedVersion: 2
         x: 64
@@ -222,7 +216,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_3
+    - name: Boots_MeleeAttack_3
       rect:
         serializedVersion: 2
         x: 128
@@ -232,7 +226,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cloak_melee_4
+    - name: Boots_MeleeAttack_4
       rect:
         serializedVersion: 2
         x: 192

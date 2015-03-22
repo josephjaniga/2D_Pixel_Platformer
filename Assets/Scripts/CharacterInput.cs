@@ -43,16 +43,20 @@ public class CharacterKeyboardInput : ICharacterInput
 			cm.isMovingRight = false;
 		
 		if ( Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftAlt) ){
+			// FIXME: making the assumption only the player is keyboard input controlled
 			if ( cm.isGrounded ){
-				_.player.SendMessage("PlayJumpClip", SendMessageOptions.DontRequireReceiver);
+				if ( _.playerInventory.canJump ){
+					_.player.SendMessage("PlayJumpClip", SendMessageOptions.DontRequireReceiver);
+					cm.isJumping = true;
+				}
 			}
-			cm.isJumping = true;
 		} else {
 			cm.isJumping = false;
 		}
 			
 		// if should attack
 		if ( !cm.isAttacking && Input.GetKey(KeyCode.LeftShift) ){
+			// FIXME: making the assumption only the player is keyboard input controlled
 			if ( Time.time > lastAttack + attackDurationTime ){
 				_.player.SendMessage("PlayAttackClip", SendMessageOptions.DontRequireReceiver);
 			}

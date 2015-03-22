@@ -83,6 +83,7 @@ public class CharacterHealth : MonoBehaviour {
 			}
 			if ( gameObject.name == "Player" ){
 				flicker(1f);
+				_.player.SendMessage("PlayHurtClip", SendMessageOptions.DontRequireReceiver);
 			} else {
 				flicker();
 			}
