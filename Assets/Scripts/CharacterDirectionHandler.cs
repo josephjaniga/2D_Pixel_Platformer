@@ -9,6 +9,8 @@ public class CharacterDirectionHandler : MonoBehaviour {
 	public bool defaultLeft = false;
 	public Vector3 defaultScale;
 	public Vector3 inverseScale;
+
+	public bool currentlyFacingRight = false;
 	
 	// Use this for initialization
 	void Awake () {
@@ -16,19 +18,32 @@ public class CharacterDirectionHandler : MonoBehaviour {
 		defaultScale = character.transform.localScale;
 		inverseScale = new Vector3(-defaultScale.x, defaultScale.y, defaultScale.z);
 		cm = character.GetComponent<CharacterMotion>();
+		if ( !defaultLeft ){
+			currentlyFacingRight = true;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		if ( !defaultLeft ){
-			if ( cm.isMovingLeft )	{ character.transform.localScale = inverseScale; }
-			if ( cm.isMovingRight )	{ character.transform.localScale = defaultScale; }
+			if ( cm.isMovingLeft )	{
+				character.transform.localScale = inverseScale;
+				currentlyFacingRight = false;
+			}
+			if ( cm.isMovingRight )	{
+				character.transform.localScale = defaultScale;
+				currentlyFacingRight = true;
+			}
 		} else {
 			if ( cm.isMovingRight )	{
 				character.transform.localScale = inverseScale;
+				currentlyFacingRight = false;
 			}
-			if ( cm.isMovingLeft )	{ character.transform.localScale = defaultScale; }
+			if ( cm.isMovingLeft )	{
+				character.transform.localScale = defaultScale;
+				currentlyFacingRight = true;
+			}
 		}
 
 	}
