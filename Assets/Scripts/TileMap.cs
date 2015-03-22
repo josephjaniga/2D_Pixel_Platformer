@@ -267,21 +267,39 @@ public class TileMap : MonoBehaviour {
 			Vector3 doorPosition = new Vector3(doors[i].xPosition, doors[i].yPosition, 0f) * scale;
 			Vector3 doorScale = new Vector3(doors[i].doorWidth, doors[i].doorHeight, 1f) * scale;
 			Color doorColor = new Color(doors[i].r, doors[i].g, doors[i].b);
-			temp = GameObject.Instantiate(
-				Resources.Load("Prefabs/Interactables/Door"), 
-				doorPosition,
-				Quaternion.identity
-				) as GameObject;
-			temp.name = "Door";
+			
+			switch( doors[i].style ){
+			default:
+			case "Empty":
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/EmptyDoor"), 
+					doorPosition,
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "EmptyDoor";
+				break;
+			case "Panel":
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/PanelDoor"), 
+					doorPosition,
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "PanelDoor";
+				break;
+			case "Temple":
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/TempleDoor"), 
+					doorPosition,
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "TempleDoor";
+				break;
+			}
+
 			temp.transform.SetParent(_.doors.transform);
 			temp.transform.localScale = doorScale;
 			temp.GetComponent<DoorTraverser>().doorInformation = doors[i];
-
-			// MAKE THE DOOR HERE
-			// Debug.Log ("Found a Door");
-
 			temp.GetComponent<SpriteRenderer>().color = doorColor;
-
 		}
 		
 	}

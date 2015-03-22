@@ -31,4 +31,6 @@
 	public bool isLocked;
 	public string itemRequired;
 
+	public string style;
+
 }

@@ -1,14 +1,15 @@
 fileFormatVersion: 2
 guid: e0bdf5cf6d46647f58c7573124a36a9b
-timeCreated: 1425834571
+timeCreated: 1427039787
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Interactables_0
-    21300002: Interactables_1
-    21300004: Interactables_2
-    21300006: Interactables_3
-    21300008: Interactables_4
+    21300000: Spikes
+    21300002: Meat
+    21300004: PanelDoor
+    21300006: PanelDoorFrame
+    21300008: Key
+    21300010: TempleDoor
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,7 +55,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Interactables_0
+    - name: Spikes
       rect:
         serializedVersion: 2
         x: 0
@@ -64,7 +65,7 @@ TextureImporter:
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Interactables_1
+    - name: Meat
       rect:
         serializedVersion: 2
         x: 16
@@ -74,7 +75,7 @@ TextureImporter:
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Interactables_2
+    - name: PanelDoor
       rect:
         serializedVersion: 2
         x: 32
@@ -84,7 +85,7 @@ TextureImporter:
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Interactables_3
+    - name: PanelDoorFrame
       rect:
         serializedVersion: 2
         x: 48
@@ -94,7 +95,7 @@ TextureImporter:
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Interactables_4
+    - name: Key
       rect:
         serializedVersion: 2
         x: 0
@@ -103,6 +104,16 @@ TextureImporter:
         height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempleDoor
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
