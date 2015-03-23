@@ -252,6 +252,15 @@ public class TileMap : MonoBehaviour {
 				temp.name = "LionBoss";
 				temp.transform.SetParent(_.mobs.transform);
 				break;
+			case (byte)PrefabObjectTypes.FallingTile:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/AnimatedTiles/FallingTile"), 
+					stuffPosition, 
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "FallingTile";
+				temp.transform.SetParent(_.stuff.transform);
+				break;
 			}
 
 		}

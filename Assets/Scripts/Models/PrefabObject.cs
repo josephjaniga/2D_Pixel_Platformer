@@ -19,5 +19,6 @@ public enum PrefabObjectTypes : byte {
 	Spike,
 	Meat,
 	Key,
-	LionBoss
+	LionBoss,
+	FallingTile
 }
