@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/A1_R1.unity
+  - enabled: 1
+    path: Assets/Scenes/A1_R2.unity
+  - enabled: 1
     path: Assets/Scenes/RoomOne.unity
   - enabled: 1
     path: Assets/Scenes/RoomTwo.unity
