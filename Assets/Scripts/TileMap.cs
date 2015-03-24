@@ -261,6 +261,15 @@ public class TileMap : MonoBehaviour {
 				temp.name = "FallingTile";
 				temp.transform.SetParent(_.stuff.transform);
 				break;
+			case (byte)PrefabObjectTypes.Boots:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/Boots"), 
+					stuffPosition, 
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "Boots";
+				temp.transform.SetParent(_.stuff.transform);
+				break;
 			}
 
 		}

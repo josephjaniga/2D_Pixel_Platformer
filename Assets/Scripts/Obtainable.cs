@@ -22,7 +22,6 @@ public class Obtainable : MonoBehaviour {
 	}
 
 	public void PickedUp(){
-
 		Destroy(gameObject);
 	}
 

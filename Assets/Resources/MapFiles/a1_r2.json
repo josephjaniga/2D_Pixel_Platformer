@@ -70,6 +70,7 @@
 		{"type":5, "xPosition":42, "yPosition":5},
 		{"type":5, "xPosition":52, "yPosition":5},
 		{"type":5, "xPosition":53, "yPosition":5},
-		{"type":5, "xPosition":54, "yPosition":5}
+		{"type":5, "xPosition":54, "yPosition":5},
+		{"type":6, "xPosition":59, "yPosition":6},
 	]
 }

@@ -78,8 +78,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: .00999999978
-  far clip plane: 1000
-  field of view: 29
+  far clip plane: 9999
+  field of view: 60
   orthographic: 0
   orthographic size: 6
   m_Depth: 100
@@ -153,8 +153,10 @@ MonoBehaviour:
   target: {fileID: 0}
   size: 12
   fixedZ: -10
+  motionConditional: .75
+  targetZ: -10
   fixedY: 12
-  shouldFixTarget: 0
+  shouldFixTarget: 1
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

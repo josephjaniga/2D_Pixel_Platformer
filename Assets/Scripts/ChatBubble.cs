@@ -9,7 +9,7 @@ public class ChatBubble : MonoBehaviour {
 
 	private float startTime;
 	private float fadeAfter = 1f;
-	private float lifeTime = 5f;
+	public float lifeTime = 5f;
 	private Color colorFG;
 	private Color colorBG;
 	private int fontSize = 12;

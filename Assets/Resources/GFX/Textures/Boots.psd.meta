@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5dd07380402544e1f86c6e071405b1f8
-timeCreated: 1426998242
+timeCreated: 1427169971
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -21,6 +21,7 @@ TextureImporter:
     21300028: Boots_MeleeAttack_2
     21300030: Boots_MeleeAttack_3
     21300032: Boots_MeleeAttack_4
+    21300034: Boots_Interactable
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -235,6 +236,16 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boots_Interactable
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 191
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

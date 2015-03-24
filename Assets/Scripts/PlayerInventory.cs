@@ -100,6 +100,16 @@ public class PlayerInventory : MonoBehaviour {
 		} else {
 			inventory.Add(itemName);
 			inventoryDisplay.SendMessage("RedrawInventoryList", SendMessageOptions.DontRequireReceiver);
+			if ( itemName == "Boots" ){
+				hasBoots = true;
+
+				// send a chat message
+				_.chatManager.GetComponent<ChatManager>().CreateChatMessage(
+					_.player.transform.position + new Vector3(0f, -1.25f, 0f),
+					"EARNED JUMP! [SPACEBAR]",
+					15f
+					);
+			}
 		}
 	}
 
