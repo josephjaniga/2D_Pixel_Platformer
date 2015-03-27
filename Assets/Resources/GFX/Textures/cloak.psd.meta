@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 79003952723e84227acefb0aebe675a2
-timeCreated: 1426998306
+timeCreated: 1427339556
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -27,6 +27,10 @@ TextureImporter:
     21300040: cloak_melee_2
     21300042: cloak_melee_3
     21300044: cloak_melee_4
+    21300046: Cloak_Death_1
+    21300048: Cloak_Death_2
+    21300050: Cloak_Death_3
+    21300052: Cloak_Death_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -238,6 +242,46 @@ TextureImporter:
         x: 192
         y: 96
         width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cloak_Death_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cloak_Death_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cloak_Death_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cloak_Death_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
