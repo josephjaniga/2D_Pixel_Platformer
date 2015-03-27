@@ -219,8 +219,8 @@ public class TileMap : MonoBehaviour {
 				break;
 			case (byte)PrefabObjectTypes.Key:
 				// if the player doesnt have this key, spawn it in the level
-				if ( !_.player.GetComponent<PlayerInventory>().hasItem(stuff[i].objectName) ){
-
+				if ( !_.player.GetComponent<PlayerInventory>().hasItem(stuff[i].objectName) )
+                {
 					temp = GameObject.Instantiate(
 						Resources.Load("Prefabs/Interactables/Key"), 
 						stuffPosition,
@@ -262,14 +262,19 @@ public class TileMap : MonoBehaviour {
 				temp.transform.SetParent(_.stuff.transform);
 				break;
 			case (byte)PrefabObjectTypes.Boots:
-				temp = GameObject.Instantiate(
-					Resources.Load("Prefabs/Interactables/Boots"), 
-					stuffPosition, 
-					Quaternion.identity
-					) as GameObject;
-				temp.name = "Boots";
-				temp.transform.SetParent(_.stuff.transform);
-				break;
+                // if the player doesnt have the boots, spawn it in the level
+                Debug.Log(stuff[i].objectName);
+                if (!_.player.GetComponent<PlayerInventory>().hasItem(stuff[i].objectName))
+                {
+                    temp = GameObject.Instantiate(
+                        Resources.Load("Prefabs/Interactables/Boots"),
+                        stuffPosition,
+                        Quaternion.identity
+                        ) as GameObject;
+                    temp.name = "Boots";
+                    temp.transform.SetParent(_.stuff.transform);
+                }
+                break;
 			}
 
 		}
@@ -321,5 +326,29 @@ public class TileMap : MonoBehaviour {
 		}
 		
 	}
+
+    public void ResetTileMap(string resetType = "hard")
+    {
+        Transform stuff = GameObject.Find("Stuff").transform;
+        Transform mobs = GameObject.Find("Mobs").transform;
+        Transform doors = GameObject.Find("Doors").transform;
+
+        switch (resetType)
+        {
+            default:
+            case "hard":
+                // wipe out all objects in the level
+                foreach (Transform child in stuff) { Destroy(child.gameObject); }
+                foreach (Transform child in mobs) { Destroy(child.gameObject); }
+                foreach (Transform child in doors) { Destroy(child.gameObject); }
+
+                // regenerate all objects
+                BuildDoors();
+                BuildStuff();
+                //TODO: make a build mobs function and split them out???
+
+                break;
+        }
+    }
 
 }

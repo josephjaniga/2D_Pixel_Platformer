@@ -20,11 +20,9 @@ public class ChatManager : MonoBehaviour {
 			) as GameObject;
 
 		temp.GetComponent<ChatBubble>().lifeTime = LifeTime;
-
 		temp.GetComponent<ChatBubble>().background.text = msg;
 		temp.GetComponent<ChatBubble>().foreground.text = msg;
-
-		temp.transform.parent = worldCanvas.transform;
+		temp.transform.SetParent(worldCanvas.transform);
 
 	}
 

@@ -100,7 +100,11 @@ public class LevelManager : MonoBehaviour {
 		// clear velocity
 		player.GetComponent<CharacterMotion>().ClearPhysics();
 
-		player.transform.position = startingPosition.position;
+        // FIXME: Reset the level objects from tilemap?
+        // TODO: should this be a full or partial reset
+        levelMapSystem.GetComponent<LevelMapSystem>().FG_map.ResetTileMap("hard");
+
+        player.transform.position = startingPosition.position;
 		playerCharacterHealth.currentHitsRemaining = playerCharacterHealth.totalHits;
 
 	}
