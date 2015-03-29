@@ -117,6 +117,7 @@
                 <li role="presentation"><a href="#BG" aria-controls="profile" role="tab" data-toggle="tab">BG</a></li>
                 <li role="presentation"><a href="#Preview" aria-controls="profile" role="tab" data-toggle="tab">PREVIEW</a></li>
                 <li role="presentation"><a href="#OUTPUT" aria-controls="messages" role="tab" data-toggle="tab">OUTPUT</a></li>
+                <li style="margin-top:6px">LOAD FILE: <input type="text" placeholder="a1_r1.json" ng-model="fName"/> <button ng-click="loadMap(fName)">GO!</button></li>
             </ul>
 
             <!-- Tab panes -->
@@ -244,7 +245,7 @@
 <!-- THIS STAYS LEFT ALIGNED BECAUSE OF PRE-FORMATTING -->
 <pre style="overflow: scroll;">
 {
-	"map.name": "{{map.name}}",
+	"name": "{{map.name}}",
 	"width": {{map.width}},
 	"height": {{map.height}},
 	"tileFG": [<div ng-repeat="mapRow in tileMapFG.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],

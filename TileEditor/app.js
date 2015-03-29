@@ -1,6 +1,6 @@
 var app = angular.module("TileMapEditor", []);
 
-    app.controller("TileMapCtrl", [ "$scope", function($scope){
+    app.controller("TileMapCtrl", ["$scope", "$http", function($scope, $http){
 
         /**
          * Sprite Sheet Information
@@ -54,6 +54,10 @@ var app = angular.module("TileMapEditor", []);
                 [16, 16, 16, 16]
             ]
         };
+
+        $scope.doors = [];
+
+        $scope.stuff = [];
 
         $scope.sizeChange = function (){
             $scope.tileMapFG.data = [];
@@ -148,6 +152,24 @@ var app = angular.module("TileMapEditor", []);
             }
         };
 
+        $scope.filePath = "/../Assets/Resources/MapFiles/";
+
+        $scope.loadMap = function(fileName){
+            $http.get($scope.filePath + fileName)
+                .then(function(res){
+                    console.log(res.data);
+                    $scope.gridScale = 1;
+                    $scope.map.name = res.data.name;
+                    $scope.map.height = res.data.height;
+                    $scope.map.width = res.data.width;
+                    $scope.sizeChange();
+                    $scope.tileMapFG.data = res.data.tileFG;
+                    $scope.tileMapBG.data = res.data.tileBG;
+                    $scope.tileMapDE.data = res.data.tileDE;
+                });
+        };
+
+        //$scope.loadMap("a1_r1.json");
 
     }]);
 

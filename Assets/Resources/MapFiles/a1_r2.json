@@ -1,5 +1,5 @@
 {
-	"map.name": "Snatch and Grab",
+	"name": "Snatch and Grab",
 	"width": 64,
 	"height": 16,
 	"tileFG": [
@@ -57,7 +57,6 @@
 [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,4,4,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,2,2,2,2,2]
 	],
 	"doors": [
-		/* temple door 1B */
 		{
 			"doorWidth":1,
 			"doorHeight":1,
@@ -66,11 +65,11 @@
 			"targetScene":"A1_R1",
 			"targetPositionX":48,
 			"targetPositionY":3,
-			"r":.8,
-			"g":.6,
-			"b":.1,
+			"r":0.8,
+			"g":0.6,
+			"b":0.1,
 			"style":"Temple"
-		},
+		}
 	],
 	"stuff": [
 		{"type":5, "xPosition":17, "yPosition":5},
@@ -86,6 +85,6 @@
 		{"type":5, "xPosition":52, "yPosition":5},
 		{"type":5, "xPosition":53, "yPosition":5},
 		{"type":5, "xPosition":54, "yPosition":5},
-		{"type":6, "xPosition":59, "yPosition":6, "objectName":"Boots"},
+		{"type":6, "xPosition":59, "yPosition":6, "objectName":"Boots"}
 	]
 }

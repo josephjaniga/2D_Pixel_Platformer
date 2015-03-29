@@ -57,7 +57,6 @@
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	],
 	"doors": [
-		/* temple door 1A */
 		{
 			"doorWidth":1,
 			"doorHeight":1,
@@ -66,12 +65,11 @@
 			"targetScene":"A1_R2",
 			"targetPositionX":3,
 			"targetPositionY":9,
-			"r":.8,
-			"g":.6,
-			"b":.1,
+			"r":0.8,
+			"g":0.6,
+			"b":0.1,
 			"style":"Temple"
 		},
-		/* temple door 1A */
 		{
 			"doorWidth":1,
 			"doorHeight":1,
@@ -80,13 +78,13 @@
 			"targetScene":"A1_R2",
 			"targetPositionX":3,
 			"targetPositionY":9,
-			"r":.8,
-			"g":.6,
-			"b":.1,
+			"r":0.8,
+			"g":0.6,
+			"b":0.1,
 			"style":"Temple"
-		},
+		}
 	],
 	"stuff": [
-		{"type":3, "xPosition":30, "yPosition":2, "objectName":"Temple Key", "r":1, "g":1, "b":0},
-	],
+		{"type":3, "xPosition":30, "yPosition":2, "objectName":"Temple Key", "r":1, "g":1, "b":0}
+	]
 }
