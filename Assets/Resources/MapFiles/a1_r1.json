@@ -57,15 +57,29 @@
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	],
 	"doors": [
-		/* temple door 1 */
+		/* temple door 1A */
 		{
 			"doorWidth":1,
 			"doorHeight":1,
 			"xPosition":50,
 			"yPosition":2,
 			"targetScene":"A1_R2",
-			"targetPositionX":2,
-			"targetPositionY":7,
+			"targetPositionX":3,
+			"targetPositionY":9,
+			"r":.8,
+			"g":.6,
+			"b":.1,
+			"style":"Temple"
+		},
+		/* temple door 1A */
+		{
+			"doorWidth":1,
+			"doorHeight":1,
+			"xPosition":50,
+			"yPosition":2,
+			"targetScene":"A1_R2",
+			"targetPositionX":3,
+			"targetPositionY":9,
 			"r":.8,
 			"g":.6,
 			"b":.1,

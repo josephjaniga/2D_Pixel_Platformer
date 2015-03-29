@@ -6,6 +6,9 @@ public class PlayerAnimator : MonoBehaviour {
 	// cloak animator
 	public Animator cloak_a;
 
+	// adventurer animator
+	public Animator adventurer_a;
+
 	// boots animators
 	public Animator boots_a;
 	
@@ -20,6 +23,7 @@ public class PlayerAnimator : MonoBehaviour {
 	void Start () {
 		cloak_a = GetComponent<Animator>();
 		dagger_a = gameObject.transform.Find("Dagger").GetComponent<Animator>();
+		adventurer_a = gameObject.transform.Find("Adventurer").GetComponent<Animator>();
 		boots_a = gameObject.transform.Find("Boots").GetComponent<Animator>();
 		cm = GetComponent<CharacterMotion>();
 	}
@@ -80,10 +84,13 @@ public class PlayerAnimator : MonoBehaviour {
 	public void setAllAnimators(string Parameter, bool Value){
 		// the player animator
 		cloak_a.SetBool(Parameter, Value);
+		// the player animator
+		adventurer_a.SetBool(Parameter, Value);
 		// the boots animator
 		boots_a.SetBool(Parameter, Value);
 		// the dagger animator
 		dagger_a.SetBool(Parameter, Value);
+
 	}
 
 
