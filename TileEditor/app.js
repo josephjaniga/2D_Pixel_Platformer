@@ -122,11 +122,6 @@ var app = angular.module("TileMapEditor", []);
                     maxX = ( x + parseInt($scope.brushSize) < $scope.map.width ) ? x + parseInt($scope.brushSize) : $scope.map.width - 1,
                     maxY = ( y + parseInt($scope.brushSize) < $scope.map.height ) ? y + parseInt($scope.brushSize) : $scope.map.height - 1;
 
-                //console.log("CLICKED AT " + x + ", " + y);
-                //console.log("brush size" + $scope.brushSize);
-                //console.log("X - min " + minX + ", max " + maxX);
-                //console.log("Y - min " + minY + ", max " + maxY);
-
                 if (rel === "bg") {
                     for (var i = minY; i <= maxY; i++ ){
                         for(var j = minX; j <= maxX; j++ ){
@@ -166,6 +161,8 @@ var app = angular.module("TileMapEditor", []);
                     $scope.tileMapFG.data = res.data.tileFG;
                     $scope.tileMapBG.data = res.data.tileBG;
                     $scope.tileMapDE.data = res.data.tileDE;
+                    $scope.doors = res.data.doors;
+                    $scope.stuff = res.data.stuff;
                 });
         };
 

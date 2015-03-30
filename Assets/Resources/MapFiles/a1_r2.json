@@ -72,19 +72,19 @@
 		}
 	],
 	"stuff": [
-		{"type":5, "xPosition":17, "yPosition":5},
-		{"type":5, "xPosition":18, "yPosition":5},
-		{"type":5, "xPosition":26, "yPosition":5},
-		{"type":5, "xPosition":28, "yPosition":5},
-		{"type":5, "xPosition":29, "yPosition":5},
-		{"type":5, "xPosition":37, "yPosition":5},
-		{"type":5, "xPosition":38, "yPosition":5},
-		{"type":5, "xPosition":40, "yPosition":5},
-		{"type":5, "xPosition":41, "yPosition":5},
-		{"type":5, "xPosition":42, "yPosition":5},
-		{"type":5, "xPosition":52, "yPosition":5},
-		{"type":5, "xPosition":53, "yPosition":5},
-		{"type":5, "xPosition":54, "yPosition":5},
-		{"type":6, "xPosition":59, "yPosition":6, "objectName":"Boots"}
+		{"type":5, "xPosition":17, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":18, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":26, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":28, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":29, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":37, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":38, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":40, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":41, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":42, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":52, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":53, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":5, "xPosition":54, "yPosition":5, "r":1, "g":1, "b":1},
+		{"type":6, "xPosition":59, "yPosition":6, "objectName":"Boots", "r":1, "g":1, "b":1}
 	]
 }

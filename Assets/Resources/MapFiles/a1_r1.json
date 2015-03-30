@@ -69,19 +69,6 @@
 			"g":0.6,
 			"b":0.1,
 			"style":"Temple"
-		},
-		{
-			"doorWidth":1,
-			"doorHeight":1,
-			"xPosition":50,
-			"yPosition":2,
-			"targetScene":"A1_R2",
-			"targetPositionX":3,
-			"targetPositionY":9,
-			"r":0.8,
-			"g":0.6,
-			"b":0.1,
-			"style":"Temple"
 		}
 	],
 	"stuff": [

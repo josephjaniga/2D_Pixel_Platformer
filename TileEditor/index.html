@@ -115,9 +115,18 @@
                 <li role="presentation" class="active"><a href="#FG" aria-controls="home" role="tab" data-toggle="tab">FG</a></li>
                 <li role="presentation"><a href="#DE" aria-controls="profile" role="tab" data-toggle="tab">DE</a></li>
                 <li role="presentation"><a href="#BG" aria-controls="profile" role="tab" data-toggle="tab">BG</a></li>
-                <li role="presentation"><a href="#Preview" aria-controls="profile" role="tab" data-toggle="tab">PREVIEW</a></li>
+                <li role="presentation"><a href="#Preview" aria-controls="profile" role="tab" data-toggle="tab">PREVIEW + STUFF</a></li>
                 <li role="presentation"><a href="#OUTPUT" aria-controls="messages" role="tab" data-toggle="tab">OUTPUT</a></li>
-                <li style="margin-top:6px">LOAD FILE: <input type="text" placeholder="a1_r1.json" ng-model="fName"/> <button ng-click="loadMap(fName)">GO!</button></li>
+                <li style="margin-top:6px">
+                    LOAD FILE:
+                    <!--
+                    <input type="text" placeholder="a1_r1.json" ng-model="fName"/>
+                    -->
+                    <select ng-model="fName">
+                        <option value="a1_r1.json">a1_r1.json</option>
+                        <option value="a1_r2.json">a1_r2.json</option>
+                    </select>
+                    <button ng-click="loadMap(fName)">GO!</button></li>
             </ul>
 
             <!-- Tab panes -->
@@ -251,8 +260,8 @@
 	"tileFG": [<div ng-repeat="mapRow in tileMapFG.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
 	"tileDE": [<div ng-repeat="mapRow in tileMapDE.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
 	"tileBG": [<div ng-repeat="mapRow in tileMapBG.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
-	"doors": [ ],
-	"stuff": [ ]
+	"doors": [<div ng-repeat="door in doors track by $index">           { "doorWidth": {{door.doorWidth}}, "doorHeight": {{door.doorHeight}}, "xPosition": {{door.xPosition}}, "yPosition": {{door.yPosition}}, "targetScene": "{{door.targetScene}}", "targetPositionX": {{door.targetPositionX}}, "targetPositionY": {{door.targetPositionY}}, "r": {{door.r}}, "g": {{door.g}}, "b": {{door.b}}, "style": "{{door.style}}" }{{$last | commaNotLast}}</div>],
+	"stuff": [<div ng-repeat="thing in stuff track by $index">          { "type": {{thing.type}}, "xPosition": {{thing.xPosition}}, "yPosition": {{thing.yPosition}}, "objectName": "{{thing.objectName}}", "r": {{thing.r}}, "g": {{thing.g}}, "b": {{thing.b}} }{{$last | commaNotLast}}</div>]
 }</pre>
                 </div>
             </div>
