@@ -1,55 +1,5 @@
 var app = angular.module("TileMapEditor", []);
 
-    app.factory("PrefabObject", ["", function () {
-
-        var objectList = [
-                "RedHead",
-                "Spike",
-                "Meat",
-                "Key",
-                "LionBoss",
-                "FallingTile",
-                "Boots"
-            ];
-
-        return {
-            "nameToInteger": function (prefabObjectName) {
-                var objectInteger = 0;
-                switch(prefabObjectName){
-                    default:
-                    case "RedHead":
-                        objectInteger = 0;
-                        break;
-                    case "Spike":
-                        objectInteger = 1;
-                        break;
-                    case "Meat":
-                        objectInteger = 2;
-                        break;
-                    case "Key":
-                        objectInteger = 3;
-                        break;
-                    case "LionBoss":
-                        objectInteger = 4;
-                        break;
-                    case "FallingTile":
-                        objectInteger = 5;
-                        break;
-                    case "Boots":
-                        objectInteger = 6;
-                        break;
-                }
-                return objectInteger;
-            },
-            "integerToName": function (objectIndex) {
-                return objectList[objectIndex];
-            },
-            "objectList": function () {
-                return objectList;
-            }
-        };
-    }]);
-
     app.controller("TileMapCtrl", ["$scope", "$http", function($scope, $http){
 
         /**
@@ -61,7 +11,7 @@ var app = angular.module("TileMapEditor", []);
         $scope.spriteSheetWidth = 8;
         $scope.spriteSheetHeight = 4;
 
-        $scope.displayScale = 3;
+        $scope.displayScale = 2;
         $scope.gridScale = 4;
 
         $scope.getNumber = function(num) {
@@ -80,10 +30,10 @@ var app = angular.module("TileMapEditor", []);
 
         $scope.tileMapFG = {
             "data": [
-                [ 0, 0, 0, 13 ],
-                [ 13, 0, 0, 13 ],
-                [ 5, 0, 21, 5 ],
-                [ 2, 2, 2, 2 ]
+                [ 0,  0,  0, 13 ],
+                [ 13, 0,  0, 13 ],
+                [ 5,  0, 21,  5 ],
+                [ 2,  2,  2,  2 ]
             ]
         };
 
@@ -109,6 +59,16 @@ var app = angular.module("TileMapEditor", []);
 
         $scope.stuff = [];
 
+        $scope.prefabObjects = [
+            "RedHead",      // 0
+            "Spike",
+            "Meat",
+            "Key",
+            "LionBoss",
+            "FallingTile",
+            "Boots"
+        ];
+
         $scope.sizeChange = function (){
             $scope.tileMapFG.data = [];
             $scope.tileMapBG.data = [];
@@ -129,7 +89,7 @@ var app = angular.module("TileMapEditor", []);
         };
 
         /**
-         * Painting Data
+         * PAINTING MODULE
          */
 
         $scope.selected = "X";
@@ -154,7 +114,6 @@ var app = angular.module("TileMapEditor", []);
          * @param rel
          */
         $scope.paint = function(y, x, rel){
-
             if ( $scope.brushSize === "0" ) {
                 if (rel === "bg") {
                     $scope.tileMapBG.data[x][y] = $scope.selected;
@@ -166,7 +125,6 @@ var app = angular.module("TileMapEditor", []);
                     $scope.tileMapFG.data[x][y] = $scope.selected;
                 }
             } else {
-
                 var minX = ( x - parseInt($scope.brushSize) >= 0 ) ? ( x - parseInt($scope.brushSize) ) : 0,
                     minY = ( y - parseInt($scope.brushSize) >= 0 ) ? ( y - parseInt($scope.brushSize) ) : 0,
                     maxX = ( x + parseInt($scope.brushSize) < $scope.map.width ) ? x + parseInt($scope.brushSize) : $scope.map.width - 1,
@@ -193,9 +151,14 @@ var app = angular.module("TileMapEditor", []);
                         }
                     }
                 }
-
             }
         };
+
+
+        /**
+         * LOADING MODULE
+         * @type {string}
+         */
 
         $scope.filePath = "/../Assets/Resources/MapFiles/";
 
@@ -218,8 +181,144 @@ var app = angular.module("TileMapEditor", []);
 
         //$scope.loadMap("a1_r1.json");
 
+        /**
+         * HANDLING STUFF
+         */
+
+        $scope.thingTypeIndex = null;
+
+        $scope.activeCell = null;
+
+        $scope.displayCellDetail = function(x,y){
+
+            var thing = null,
+                thingIndex = null,
+                door = null,
+                doorIndex = null;
+
+            // iterate through doors and identify if this cell is occupied
+            for(var s=0; s<$scope.stuff.length; s++){
+                if ( $scope.stuff[s].xPosition == x && $scope.stuff[s].yPosition == y  ){
+                    thing = $scope.stuff[s];
+                    thingIndex = s;
+                }
+            }
+
+            // iterate through stuff and identify if this cell is occupied
+            for(var d=0; d<$scope.doors.length; d++){
+                if ( $scope.doors[d].xPosition == x && $scope.doors[d].yPosition == y  ){
+                    door = $scope.doors[d];
+                    doorIndex = d;
+                }
+            }
+
+            // display a modal window with cell information
+            $scope.activeCell = {
+                "x": x,
+                "y": y,
+                "thing": thing,
+                "thingIndex": thingIndex,
+                "door": door,
+                "doorIndex": doorIndex
+            };
+
+            if ( thing.type > -1 )
+                $scope.thingTypeIndex = thing.type;
+
+            // give ability to modify / delete or add stuff / doors from drop down menu
+
+        };
+
+        // close the active cell tab
+        $scope.deactivateCell = function(){
+            $scope.activeCell = null;
+            $scope.thingTypeIndex = null;
+        };
+
+        $scope.deleteContents = function(x, y){
+            if ( $scope.activeCell != null ){
+                if ( $scope.activeCell.thingIndex !== null && $scope.activeCell.thingIndex > -1 ){
+                    if ( $scope.stuff[$scope.activeCell.thingIndex].xPosition == x && $scope.stuff[$scope.activeCell.thingIndex].yPosition == y ){
+                        $scope.stuff.splice($scope.activeCell.thingIndex, 1);
+                    }
+                }
+
+                if ( $scope.activeCell.doorIndex !== null && $scope.activeCell.doorIndex > -1){
+                    if ( $scope.doors[$scope.activeCell.doorIndex].xPosition == x && $scope.doors[$scope.activeCell.doorIndex].yPosition == y ){
+                        $scope.doors.splice($scope.activeCell.doorIndex, 1);
+                    }
+                }
+                $scope.deactivateCell();
+            }
+        };
+
+        $scope.saveContents = function(x, y){
+            if ( $scope.activeCell != null ){
+                // check for element by XY
+
+                var thing = null,
+                    thingIndex = null,
+                    door = null,
+                    doorIndex = null;
+
+                // iterate through doors and identify if this cell is occupied
+                for(var s=0; s<$scope.stuff.length; s++){
+                    if ( $scope.stuff[s].xPosition == x && $scope.stuff[s].yPosition == y  ){
+                        thing = $scope.stuff[s];
+                        thingIndex = s;
+                    }
+                }
+
+                // iterate through stuff and identify if this cell is occupied
+                for(var d=0; d<$scope.doors.length; d++){
+                    if ( $scope.doors[d].xPosition == x && $scope.doors[d].yPosition == y  ){
+                        door = $scope.doors[d];
+                        doorIndex = d;
+                    }
+                }
+
+                // if NOT EMPTY update the data
+                if ( thing != null || door != null ){
+                    if ( thing != null ){
+                        $scope.stuff[thingIndex] = $scope.activeCell.thing;
+                    } else if ( door != null ){
+                        $scope.doors[doorIndex] = $scope.activeCell.door;
+                    }
+                } else { // ELSE ADD NEW ELEMENT
+                    if ( $scope.activeCell.thing != null ){
+                        $scope.activeCell.thing.xPosition = x;
+                        $scope.activeCell.thing.yPosition = y;
+                        $scope.stuff.push($scope.activeCell.thing);
+                    } else if ( $scope.activeCell.door != null ){
+                        $scope.activeCell.door.xPosition = x;
+                        $scope.activeCell.door.yPosition = y;
+                        $scope.stuff.push($scope.activeCell.door);
+                    }
+                }
+
+            }
+        };
+
+        $scope.updateActiveCellThingType = function(indexValue){
+            if ( $scope.activeCell.thing == null ){
+                $scope.activeCell.thing = {
+                        "type": indexValue,
+                        "xPosition": null,
+                        "yPosition": null,
+                        "objectName": null,
+                        "r": null,
+                        "g": null,
+                        "b": null
+                    };
+            } else {
+                $scope.activeCell.thing.type = indexValue;
+            }
+        };
+
+
     }]);
 
+    // if its not the last element in the array, add a comma after it
     app.filter('commaNotLast', function(){
         return	function(input){
             return input == 1 ? '' : ',';

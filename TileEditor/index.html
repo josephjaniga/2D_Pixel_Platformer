@@ -27,7 +27,75 @@
 </head>
 <body ng-app="TileMapEditor">
 
+
     <section ng-controller="TileMapCtrl">
+
+        <!-- Active Cell Popup -->
+        <div
+            ng-show="activeCell !== null"
+            style="position:fixed;
+            width:25%;
+            left:75%;
+            right:0%;
+            height:100%;
+            top:0%;
+            bottom:0%;
+            padding:25px 50px;
+            background:white;
+            box-shadow:-13px 13px 13px black;">
+
+            <button ng-click="deactivateCell()" style="float:right;">Close</button>
+
+            <h4>
+                Active Cell: ({{activeCell.x}}, {{activeCell.y}})
+            </h4>
+
+            <span style="color:white; background:darkslategray" ng-show="activeCell.thingIndex != null">stuff[ {{ activeCell.thingIndex }} ]</span>
+            <span style="color:white; background:darkslategray" ng-show="activeCell.doorIndex != null">doors[ {{ activeCell.doorIndex }} ]</span>
+            <br/>
+
+            <div style="border:1px solid black; padding:0px 5px;">
+                <h5>Door</h5>
+
+                <label>doorWidth</label>    <input type="text" ng-model="activeCell.door.doorWidth"/><br/>
+                <label>doorHeight</label>   <input type="text" ng-model="activeCell.door.doorHeight"/><br/>
+                <label>targetScene</label>  <input type="text" ng-model="activeCell.door.targetScene"/><br/>
+                <label>out X</label>        <input type="text" ng-model="activeCell.door.targetPositionX"/><br/>
+                <label>out Y</label>        <input type="text" ng-model="activeCell.door.targetPositionY"/><br/>
+                <label>r</label>            <input type="text" ng-model="activeCell.door.r"/><br/>
+                <label>g</label>            <input type="text" ng-model="activeCell.door.g"/><br/>
+                <label>b</label>            <input type="text" ng-model="activeCell.door.b"/><br/>
+                <label>style</label>        <input type="text" ng-model="activeCell.door.style"/><br/>
+                <label>x pos</label>        <input type="text" ng-model="activeCell.door.xPosition"/>
+                <label>y pos</label>        <input type="text" ng-model="activeCell.door.yPosition"/>
+            </div>
+
+            <div style="border:1px solid black; padding:0px 5px;">
+                <h5>Stuff</h5>
+
+                <label>type Name</label>
+
+                <select ng-model="thingTypeIndex" ng-change="updateActiveCellThingType(thingTypeIndex)">
+                    <option ng-repeat="item in prefabObjects track by $index" ng-value="$index">{{item}}</option>
+                </select>
+
+                <br/>
+
+                <label>type</label>         <input type="text" ng-model="activeCell.thing.type"/>
+                <label>objectName</label>   <input type="text" ng-model="activeCell.thing.objectName"/>
+                <label>r</label>            <input type="text" ng-model="activeCell.thing.r"/>
+                <label>g</label>            <input type="text" ng-model="activeCell.thing.g"/>
+                <label>b</label>            <input type="text" ng-model="activeCell.thing.b"/>
+                <label>x pos</label>        <input type="text" ng-model="activeCell.thing.xPosition"/>
+                <label>y pos</label>        <input type="text" ng-model="activeCell.thing.yPosition"/>
+            </div>
+
+            <br/>
+
+            <button ng-click="saveContents(activeCell.x, activeCell.y)" style="color:green; font-weight:bold;">Save</button>
+            <button ng-click="deleteContents(activeCell.x, activeCell.y)" style="color:red; font-weight:bold; float:right;">Delete</button>
+        </div>
+
 
         <!-- SETTINGS -->
         <div style="position:fixed; bottom:0px; left:0px; right:0px;">
@@ -79,10 +147,11 @@
                             background-size: {{ spriteSheetWidth * tileWidth * displayScale }}px {{spriteSheetHeight * tileHeight * displayScale}}px;
                             background-repeat: no-repeat;
                             text-align:center;
-                            font-size: {{displayScale * tileHeight * .8 }}px;
+                            font-size: {{displayScale * tileHeight * .7 }}px;
                             font-weight: bold;
-                            color:white;
-                            text-shadow: 3px 3px 1px black, 3px 3px 5px black, 3px 3px 10px black;">
+                            color: white;
+                            text-shadow: 1px 1px 1px black, 1px 1px 5px black, 3px 3px 10px black;
+                            border:1px solid black;">
                         {{ (spriteSheetHeight - 1 - $parent.$index) * spriteSheetWidth + $index }}
                     </div>
                 </div>
@@ -179,7 +248,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="BG">
                     <h1>BG</h1>
-                    <table class="grid">
+                    <table class="grid" style="pointer-events: none !important;">
                         <tr ng-repeat="mapRow in tileMapBG.data track by $index">
                             <td ng-repeat="tile in mapRow track by $index"
                                 ng-click="paint($parent.$index, $index, 'bg')"
@@ -203,18 +272,93 @@
                 <div role="tabpanel" class="tab-pane" id="Preview">
                     <h1>Preview</h1>
                     <div style="position:relative;">
+
+                        <!-- the ACTIVE CELL -->
+                        <div class="preview grid"
+                             style="
+                                position:absolute;
+                                top:0px;
+                                z-index:3;
+                                width:{{ map.width * tileWidth * gridScale + 'px'}};
+                                height:{{ map.height * tileWidth * gridScale + 'px'}};
+                                position:absolute;
+                                pointer-events:none;">
+                            <div ng-show="activeCell != null"
+                                 class="activeCell"
+                                 style="
+                                    position:absolute;
+                                    left: {{tileWidth * gridScale * activeCell.x + 'px' }};
+                                    bottom: {{tileWidth * gridScale * activeCell.y +'px' }};
+                                    width: {{tileWidth * gridScale + 'px'}};
+                                    height: {{tileHeight * gridScale + 'px'}};
+                                    background: rgba(0,122,0,0.3);
+                                    border:{{gridScale+'px'}} dashed #00ff00;">
+
+                            </div>
+                        </div>
+
+                        <!-- the STUFF -->
+                        <div class="preview grid"
+                             style="
+                                position:absolute;
+                                top:0px;
+                                z-index:2;
+                                width:{{ map.width * tileWidth * gridScale + 'px'}};
+                                height:{{ map.height * tileWidth * gridScale + 'px'}};
+                                position:absolute;
+                                pointer-events:none;">
+                            <div ng-repeat="thing in stuff"
+                                 class="thing-id-{{$index}}"
+                                 style="
+                                    position:absolute;
+                                    left: {{tileWidth * gridScale * thing.xPosition + 'px' }};
+                                    bottom: {{tileWidth * gridScale * thing.yPosition +'px' }};
+                                    width: {{tileWidth * gridScale + 'px'}};
+                                    height: {{tileHeight * gridScale + 'px'}};
+                                    background:red;
+                                    border:1px solid black;">
+
+                            </div>
+                        </div>
+
+                        <!-- the DOORS -->
+                        <div class="preview grid"
+                             style="
+                                position:absolute;
+                                top:0px;
+                                z-index:1;
+                                width:{{ map.width * tileWidth * gridScale + 'px'}};
+                                height:{{ map.height * tileWidth * gridScale + 'px'}};
+                                position:absolute;
+                                pointer-events:none;">
+                            <div ng-repeat="door in doors"
+                                 class="door-id-{{$index}}"
+                                 style="
+                                    position:absolute;
+                                    left: {{tileWidth * gridScale * door.xPosition + 'px' }};
+                                    bottom: {{tileWidth * gridScale * door.yPosition +'px' }};
+                                    width: {{tileWidth * gridScale * door.doorWidth  + 'px'}};
+                                    height: {{tileHeight * gridScale * door.doorHeight * 2 + 'px'}};
+                                    background:yellow;
+                                    border:1px solid black;">
+
+                            </div>
+                        </div>
+
                         <table class="preview grid" style="position:absolute; top:0px; z-index:-1;">
                             <tr ng-repeat="mapRow in tileMapFG.data track by $index">
                                 <td ng-repeat="tile in mapRow track by $index"
                                     style="
-                            cursor:pointer;
-                            overflow:hidden;
-                            background: url(tiles.png);
-                            width: {{tileWidth * gridScale + 'px'}};
-                            height: {{tileHeight * gridScale + 'px'}};
-                            background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
-                            background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
-                            background-repeat: no-repeat;">
+                                    cursor:pointer;
+                                    overflow:hidden;
+                                    background: url(tiles.png);
+                                    width: {{tileWidth * gridScale + 'px'}};
+                                    height: {{tileHeight * gridScale + 'px'}};
+                                    background-position: {{ - (tile % spriteSheetWidth) * tileWidth * gridScale }}px -{{ ( spriteSheetHeight - 1 - Math.floor(tile/spriteSheetWidth)) * tileHeight * gridScale }}px;
+                                    background-size: {{ spriteSheetWidth * tileWidth * gridScale }}px {{spriteSheetHeight * tileHeight * gridScale}}px;
+                                    background-repeat: no-repeat;"
+                                    class="preview-cell-{{$index}}-{{map.height - $parent.$index - 1}}"
+                                    ng-click="displayCellDetail($index, (map.height - $parent.$index - 1) )">
                                 </td>
                             </tr>
                         </table>
