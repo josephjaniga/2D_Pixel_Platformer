@@ -69,6 +69,7 @@ var app = angular.module("TileMapEditor", []);
             "Boots"
         ];
 
+
         $scope.sizeChange = function (){
             $scope.tileMapFG.data = [];
             $scope.tileMapBG.data = [];
@@ -160,11 +161,21 @@ var app = angular.module("TileMapEditor", []);
          * @type {string}
          */
 
+        $scope.fileList = [];
+
+        $http.get("api/mapFileList.php")
+            .then(function(res){
+                console.log(res.data);
+                $scope.fileList = res.data;
+            });
+
         $scope.filePath = "/../Assets/Resources/MapFiles/";
 
         $scope.loadMap = function(fileName){
             $http.get($scope.filePath + fileName)
                 .then(function(res){
+                    $scope.doors = [];
+                    $scope.stuff = [];
                     console.log(res.data);
                     $scope.gridScale = 1;
                     $scope.map.name = res.data.name;
@@ -221,6 +232,12 @@ var app = angular.module("TileMapEditor", []);
                 "door": door,
                 "doorIndex": doorIndex
             };
+
+
+
+            if ( $scope.activeCell.thing == null ){
+                $scope.activeCell.thing = { "type": 0, "xPosition": x, "yPosition": y, "objectName": "", "r":1, "g":1, "b":1 };
+            }
 
             if ( thing.type > -1 )
                 $scope.thingTypeIndex = thing.type;

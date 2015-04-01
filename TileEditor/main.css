@@ -58,3 +58,36 @@ label{
     text-align:right;
     padding:0px 10px;
 }
+
+
+.RedHead{
+     background: url(img/RedHead.png);
+ }
+.Spike{
+    background: url(img/Spike.png);
+}
+.Meat{
+    background: url(img/Meat.png);
+}
+.Key{
+    background: url(img/Key.png);
+}
+.LionBoss{
+    background: url(img/LionBoss.png);
+}
+.FallingTile{
+     background: url(img/FallingTile.png);
+}
+.Boots{
+    background: url(img/Boots.png);
+}
+
+.RedHead,
+.Spike,
+.Meat,
+.Key,
+.LionBoss,
+.FallingTile,
+.Boots{
+    background-size:100% 100%;
+}

@@ -27,7 +27,6 @@
 </head>
 <body ng-app="TileMapEditor">
 
-
     <section ng-controller="TileMapCtrl">
 
         <!-- Active Cell Popup -->
@@ -40,22 +39,22 @@
             height:100%;
             top:0%;
             bottom:0%;
-            padding:25px 50px;
+            padding:25px 12px;
             background:white;
             box-shadow:-13px 13px 13px black;">
 
             <button ng-click="deactivateCell()" style="float:right;">Close</button>
 
-            <h4>
+            <h3>
                 Active Cell: ({{activeCell.x}}, {{activeCell.y}})
-            </h4>
+            </h3>
 
             <span style="color:white; background:darkslategray" ng-show="activeCell.thingIndex != null">stuff[ {{ activeCell.thingIndex }} ]</span>
             <span style="color:white; background:darkslategray" ng-show="activeCell.doorIndex != null">doors[ {{ activeCell.doorIndex }} ]</span>
             <br/>
 
-            <div style="border:1px solid black; padding:0px 5px;">
-                <h5>Door</h5>
+            <div style="border:1px solid black; padding:0px 5px; background:{{ (activeCell.door == null) ? 'pink' : '' }};">
+                <h4>Door <button ng-click="activeCell.door = null;" style="font-size:14px; font-weight:bold; float:right;">Clear Door</button></h4>
 
                 <label>doorWidth</label>    <input type="text" ng-model="activeCell.door.doorWidth"/><br/>
                 <label>doorHeight</label>   <input type="text" ng-model="activeCell.door.doorHeight"/><br/>
@@ -66,12 +65,12 @@
                 <label>g</label>            <input type="text" ng-model="activeCell.door.g"/><br/>
                 <label>b</label>            <input type="text" ng-model="activeCell.door.b"/><br/>
                 <label>style</label>        <input type="text" ng-model="activeCell.door.style"/><br/>
-                <label>x pos</label>        <input type="text" ng-model="activeCell.door.xPosition"/>
-                <label>y pos</label>        <input type="text" ng-model="activeCell.door.yPosition"/>
+                <label>x pos</label>        <input type="text" ng-model="activeCell.door.xPosition"/><br/>
+                <label>y pos</label>        <input type="text" ng-model="activeCell.door.yPosition"/><br/>
             </div>
 
-            <div style="border:1px solid black; padding:0px 5px;">
-                <h5>Stuff</h5>
+            <div style="border:1px solid black; padding:0px 5px; background:{{ (activeCell.thing == null) ? 'pink' : '' }};">
+                <h4>Stuff <button ng-click="activeCell.thing = null;" style="font-size:14px; font-weight:bold; float:right;">Clear Thing</button></h4>
 
                 <label>type Name</label>
 
@@ -81,13 +80,13 @@
 
                 <br/>
 
-                <label>type</label>         <input type="text" ng-model="activeCell.thing.type"/>
-                <label>objectName</label>   <input type="text" ng-model="activeCell.thing.objectName"/>
-                <label>r</label>            <input type="text" ng-model="activeCell.thing.r"/>
-                <label>g</label>            <input type="text" ng-model="activeCell.thing.g"/>
-                <label>b</label>            <input type="text" ng-model="activeCell.thing.b"/>
-                <label>x pos</label>        <input type="text" ng-model="activeCell.thing.xPosition"/>
-                <label>y pos</label>        <input type="text" ng-model="activeCell.thing.yPosition"/>
+                <label>type</label>         <input type="text" ng-model="activeCell.thing.type"/><br/>
+                <label>objectName</label>   <input type="text" ng-model="activeCell.thing.objectName"/><br/>
+                <label>r</label>            <input type="text" ng-model="activeCell.thing.r"/><br/>
+                <label>g</label>            <input type="text" ng-model="activeCell.thing.g"/><br/>
+                <label>b</label>            <input type="text" ng-model="activeCell.thing.b"/><br/>
+                <label>x pos</label>        <input type="text" ng-model="activeCell.thing.xPosition"/><br/>
+                <label>y pos</label>        <input type="text" ng-model="activeCell.thing.yPosition"/><br/>
             </div>
 
             <br/>
@@ -192,8 +191,9 @@
                     <input type="text" placeholder="a1_r1.json" ng-model="fName"/>
                     -->
                     <select ng-model="fName">
-                        <option value="a1_r1.json">a1_r1.json</option>
-                        <option value="a1_r2.json">a1_r2.json</option>
+                        <!--<option value="a1_r1.json">a1_r1.json</option>-->
+                        <!--<option value="a1_r2.json">a1_r2.json</option>-->
+                        <option ng-repeat="file in fileList" value="{{file}}">{{file}}</option>
                     </select>
                     <button ng-click="loadMap(fName)">GO!</button></li>
             </ul>
@@ -308,14 +308,13 @@
                                 position:absolute;
                                 pointer-events:none;">
                             <div ng-repeat="thing in stuff"
-                                 class="thing-id-{{$index}}"
+                                 class="thing-id-{{$index}} {{prefabObjects[thing.type]}}"
                                  style="
                                     position:absolute;
                                     left: {{tileWidth * gridScale * thing.xPosition + 'px' }};
                                     bottom: {{tileWidth * gridScale * thing.yPosition +'px' }};
                                     width: {{tileWidth * gridScale + 'px'}};
                                     height: {{tileHeight * gridScale + 'px'}};
-                                    background:red;
                                     border:1px solid black;">
 
                             </div>
@@ -404,9 +403,10 @@
 	"tileFG": [<div ng-repeat="mapRow in tileMapFG.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
 	"tileDE": [<div ng-repeat="mapRow in tileMapDE.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
 	"tileBG": [<div ng-repeat="mapRow in tileMapBG.data track by $index">		[<span ng-repeat="tile in mapRow track by $index">{{ tile }}{{$last | commaNotLast}}</span>]{{$last | commaNotLast}}</div>	],
-	"doors": [<div ng-repeat="door in doors track by $index">           { "doorWidth": {{door.doorWidth}}, "doorHeight": {{door.doorHeight}}, "xPosition": {{door.xPosition}}, "yPosition": {{door.yPosition}}, "targetScene": "{{door.targetScene}}", "targetPositionX": {{door.targetPositionX}}, "targetPositionY": {{door.targetPositionY}}, "r": {{door.r}}, "g": {{door.g}}, "b": {{door.b}}, "style": "{{door.style}}" }{{$last | commaNotLast}}</div>],
-	"stuff": [<div ng-repeat="thing in stuff track by $index">          { "type": {{thing.type}}, "xPosition": {{thing.xPosition}}, "yPosition": {{thing.yPosition}}, "objectName": "{{thing.objectName}}", "r": {{thing.r}}, "g": {{thing.g}}, "b": {{thing.b}} }{{$last | commaNotLast}}</div>]
-}</pre>
+	"doors": [<div ng-repeat="door in doors track by $index">               { "doorWidth": {{door.doorWidth}}, "doorHeight": {{door.doorHeight}}, "xPosition": {{door.xPosition}}, "yPosition": {{door.yPosition}}, "targetScene": "{{door.targetScene}}", "targetPositionX": {{door.targetPositionX}}, "targetPositionY": {{door.targetPositionY}}, "r": {{door.r}}, "g": {{door.g}}, "b": {{door.b}}, "style": "{{door.style}}" }{{$last | commaNotLast}}</div>],
+        "stuff": [<div ng-repeat="thing in stuff track by $index">              { "type": {{thing.type}}, "xPosition": {{thing.xPosition}}, "yPosition": {{thing.yPosition}}, "objectName": "{{thing.objectName}}", "r": {{thing.r}}, "g": {{thing.g}}, "b": {{thing.b}} }{{$last | commaNotLast}}</div>]
+}
+</pre>
                 </div>
             </div>
 
