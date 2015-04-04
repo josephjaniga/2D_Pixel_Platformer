@@ -223,6 +223,7 @@ var app = angular.module("TileMapEditor", []);
                 }
             }
 
+
             // display a modal window with cell information
             $scope.activeCell = {
                 "x": x,
@@ -234,9 +235,12 @@ var app = angular.module("TileMapEditor", []);
             };
 
 
-
             if ( $scope.activeCell.thing == null ){
                 $scope.activeCell.thing = { "type": 0, "xPosition": x, "yPosition": y, "objectName": "", "r":1, "g":1, "b":1 };
+            }
+
+            if ( $scope.activeCell.door == null ){
+                $scope.activeCell.door = { "style": "Empty", "xPosition": x, "yPosition": y, "r":1, "g":1, "b":1, "targetPositionX":1, "targetPositionY":1, "doorWidth":1, "doorHeight":1 };
             }
 
             if ( thing.type > -1 )
@@ -252,14 +256,12 @@ var app = angular.module("TileMapEditor", []);
             $scope.thingTypeIndex = null;
         };
 
-        $scope.deleteContents = function(x, y){
-            if ( $scope.activeCell != null ){
-                if ( $scope.activeCell.thingIndex !== null && $scope.activeCell.thingIndex > -1 ){
-                    if ( $scope.stuff[$scope.activeCell.thingIndex].xPosition == x && $scope.stuff[$scope.activeCell.thingIndex].yPosition == y ){
-                        $scope.stuff.splice($scope.activeCell.thingIndex, 1);
-                    }
-                }
+        /**
+         * THE DOORS
+         */
 
+        $scope.deleteDoor = function(x, y){
+            if ( $scope.activeCell != null ){
                 if ( $scope.activeCell.doorIndex !== null && $scope.activeCell.doorIndex > -1){
                     if ( $scope.doors[$scope.activeCell.doorIndex].xPosition == x && $scope.doors[$scope.activeCell.doorIndex].yPosition == y ){
                         $scope.doors.splice($scope.activeCell.doorIndex, 1);
@@ -269,22 +271,12 @@ var app = angular.module("TileMapEditor", []);
             }
         };
 
-        $scope.saveContents = function(x, y){
+        $scope.saveDoor = function(x, y){
             if ( $scope.activeCell != null ){
                 // check for element by XY
 
-                var thing = null,
-                    thingIndex = null,
-                    door = null,
+                var door = null,
                     doorIndex = null;
-
-                // iterate through doors and identify if this cell is occupied
-                for(var s=0; s<$scope.stuff.length; s++){
-                    if ( $scope.stuff[s].xPosition == x && $scope.stuff[s].yPosition == y  ){
-                        thing = $scope.stuff[s];
-                        thingIndex = s;
-                    }
-                }
 
                 // iterate through stuff and identify if this cell is occupied
                 for(var d=0; d<$scope.doors.length; d++){
@@ -295,26 +287,65 @@ var app = angular.module("TileMapEditor", []);
                 }
 
                 // if NOT EMPTY update the data
-                if ( thing != null || door != null ){
-                    if ( thing != null ){
-                        $scope.stuff[thingIndex] = $scope.activeCell.thing;
-                    } else if ( door != null ){
-                        $scope.doors[doorIndex] = $scope.activeCell.door;
-                    }
+                if ( door != null ){
+                    $scope.doors[doorIndex] = $scope.activeCell.door;
                 } else { // ELSE ADD NEW ELEMENT
-                    if ( $scope.activeCell.thing != null ){
-                        $scope.activeCell.thing.xPosition = x;
-                        $scope.activeCell.thing.yPosition = y;
-                        $scope.stuff.push($scope.activeCell.thing);
-                    } else if ( $scope.activeCell.door != null ){
+                    if ( $scope.activeCell.door != null ){
                         $scope.activeCell.door.xPosition = x;
                         $scope.activeCell.door.yPosition = y;
-                        $scope.stuff.push($scope.activeCell.door);
+                        $scope.doors.push($scope.activeCell.door);
                     }
                 }
 
             }
         };
+
+
+        /**
+         * THE STUFF
+         */
+
+
+        $scope.deleteThing = function(x, y){
+            if ( $scope.activeCell != null ){
+                if ( $scope.activeCell.thingIndex !== null && $scope.activeCell.thingIndex > -1 ){
+                    if ( $scope.stuff[$scope.activeCell.thingIndex].xPosition == x && $scope.stuff[$scope.activeCell.thingIndex].yPosition == y ){
+                        $scope.stuff.splice($scope.activeCell.thingIndex, 1);
+                    }
+                }
+                $scope.deactivateCell();
+            }
+        };
+
+        $scope.saveThing = function(x, y){
+            if ( $scope.activeCell != null ){
+                // check for element by XY
+
+                var thing = null,
+                    thingIndex = null;
+
+                // iterate through doors and identify if this cell is occupied
+                for(var s=0; s<$scope.stuff.length; s++){
+                    if ( $scope.stuff[s].xPosition == x && $scope.stuff[s].yPosition == y  ){
+                        thing = $scope.stuff[s];
+                        thingIndex = s;
+                    }
+                }
+
+                // if NOT EMPTY update the data
+                if ( thing != null ){
+                    $scope.stuff[thingIndex] = $scope.activeCell.thing;
+                } else { // ELSE ADD NEW ELEMENT
+                    if ( $scope.activeCell.thing != null ){
+                        $scope.activeCell.thing.xPosition = x;
+                        $scope.activeCell.thing.yPosition = y;
+                        $scope.stuff.push($scope.activeCell.thing);
+                    }
+                }
+
+            }
+        };
+
 
         $scope.updateActiveCellThingType = function(indexValue){
             if ( $scope.activeCell.thing == null ){

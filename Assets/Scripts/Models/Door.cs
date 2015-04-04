@@ -31,6 +31,11 @@
 	public bool isLocked;
 	public string itemRequired;
 
+	/*
+	 * Empty,
+	 * Panel,
+	 * Temple
+	 */
 	public string style;
 
 }

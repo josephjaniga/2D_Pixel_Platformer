@@ -51,7 +51,6 @@
 
             <span style="color:white; background:darkslategray" ng-show="activeCell.thingIndex != null">stuff[ {{ activeCell.thingIndex }} ]</span>
             <span style="color:white; background:darkslategray" ng-show="activeCell.doorIndex != null">doors[ {{ activeCell.doorIndex }} ]</span>
-            <br/>
 
             <div style="border:1px solid black; padding:0px 5px; background:{{ (activeCell.door == null) ? 'pink' : '' }};">
                 <h4>Door <button ng-click="activeCell.door = null;" style="font-size:14px; font-weight:bold; float:right;">Clear Door</button></h4>
@@ -68,6 +67,10 @@
                 <label>x pos</label>        <input type="text" ng-model="activeCell.door.xPosition"/><br/>
                 <label>y pos</label>        <input type="text" ng-model="activeCell.door.yPosition"/><br/>
             </div>
+
+            <button ng-click="saveDoor(activeCell.x, activeCell.y)" style="color:green; font-weight:bold;">Save Door</button>
+            <button ng-click="deleteDoor(activeCell.x, activeCell.y)" style="color:red; font-weight:bold; float:right;">Delete Door</button>
+            <br/><br/>
 
             <div style="border:1px solid black; padding:0px 5px; background:{{ (activeCell.thing == null) ? 'pink' : '' }};">
                 <h4>Stuff <button ng-click="activeCell.thing = null;" style="font-size:14px; font-weight:bold; float:right;">Clear Thing</button></h4>
@@ -89,10 +92,8 @@
                 <label>y pos</label>        <input type="text" ng-model="activeCell.thing.yPosition"/><br/>
             </div>
 
-            <br/>
-
-            <button ng-click="saveContents(activeCell.x, activeCell.y)" style="color:green; font-weight:bold;">Save</button>
-            <button ng-click="deleteContents(activeCell.x, activeCell.y)" style="color:red; font-weight:bold; float:right;">Delete</button>
+            <button ng-click="saveThing(activeCell.x, activeCell.y)" style="color:green; font-weight:bold;">Save Thing</button>
+            <button ng-click="deleteThing(activeCell.x, activeCell.y)" style="color:red; font-weight:bold; float:right;">Delete Thing</button>
         </div>
 
 

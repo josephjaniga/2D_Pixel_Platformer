@@ -47,7 +47,7 @@ public static class _
 			GameObject temp = GameObject.Find("MainCamera");
 			if ( _camera == null  ){
 				if ( temp == null  ){
-					temp = GameObject.Instantiate(Resources.Load("Prefabs/MainCamera"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/Tools/MainCamera"), Vector3.zero, Quaternion.identity) as GameObject;
 					temp.name = "MainCamera";
 					_camera = temp;
 				}
@@ -64,7 +64,7 @@ public static class _
 			GameObject temp = GameObject.Find("Canvas_Overlay");
 			if ( _canvasOverlay == null  ){
 				if ( temp == null  ){
-					temp = GameObject.Instantiate(Resources.Load("Prefabs/Canvas_Overlay"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/UI/Canvas_Overlay"), Vector3.zero, Quaternion.identity) as GameObject;
 					temp.name = "Canvas_Overlay";
 					_canvasOverlay = temp;
 				}
@@ -81,7 +81,7 @@ public static class _
 			GameObject temp = GameObject.Find("Canvas_World");
 			if ( _canvasWorld == null  ){
 				if ( temp == null  ){
-					temp = GameObject.Instantiate(Resources.Load("Prefabs/Canvas_World"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/UI/Canvas_World"), Vector3.zero, Quaternion.identity) as GameObject;
 					temp.name = "Canvas_World";
 					_canvasWorld = temp;
 				}
@@ -115,7 +115,7 @@ public static class _
 			GameObject temp = GameObject.Find("LevelMapSystem");
 			if ( _levelMapSystem == null  ){
 				if ( temp == null  ){
-					temp = GameObject.Instantiate(Resources.Load("Prefabs/LevelMapSystem"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/Tools/LevelMapSystem"), Vector3.zero, Quaternion.identity) as GameObject;
 					temp.name = "LevelMapSystem";
 					_levelMapSystem = temp;
 				}
@@ -183,7 +183,7 @@ public static class _
 			GameObject temp = GameObject.Find("ChatManager");
 			if ( _chatManager == null  ){
 				if ( temp == null  ){
-					temp = GameObject.Instantiate(Resources.Load("Prefabs/ChatManager"), Vector3.zero, Quaternion.identity) as GameObject;
+					temp = GameObject.Instantiate(Resources.Load("Prefabs/Tools/ChatManager"), Vector3.zero, Quaternion.identity) as GameObject;
 					temp.name = "ChatManager";
 					temp.transform.position = new Vector3(0f, 0f, -1f);
 					_chatManager = temp;

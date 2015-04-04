@@ -82,15 +82,6 @@ public class e01_a1_r2 : MonoBehaviour {
 			spinningDeathBall = Instantiate(prefab, _.player.transform.position + new Vector3(35f, 1.32f, 0f), Quaternion.identity) as GameObject;
 			spinningDeathBall.GetComponent<Animator>().SetBool("isRolling", true);
 
-
-			/*
-			 - Spawns the Spinning DeathBall at Y ground position off camera right
-			 - Triggers deathball to roll on collision course with the player
-			 - Collision will kill the player's adventurer
-     		 - disable player Adventurer sprite
-     	     - trigger after death animation
-     	     - Fire chat bubble message "Whfoof! Talk about squished, Brains everywhere!"  
-			*/
 		}
     }
 
