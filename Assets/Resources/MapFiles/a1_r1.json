@@ -73,9 +73,6 @@
 	],
 	"stuff": [
 		{ "type": 3, "xPosition": 30, "yPosition": 2, "objectName": "Temple Key", "r": 1, "g": 1, "b": 0 },
-		{ "type": 2, "xPosition": 11, "yPosition": 4, "objectName": "Red Meat", "r": 1, "g": 0, "b": 0 },
-		{ "type": 0, "xPosition": 9, "yPosition": 2, "objectName": "baddies", "r": 1, "g": 1, "b": 1 },
-		{ "type": 0, "xPosition": 5, "yPosition": 2, "objectName": "baddie 2", "r": 1, "g": 1, "b": 1 },
-		{ "type": 0, "xPosition": 49, "yPosition": 7, "objectName": "baddie 3", "r": 0, "g": 1, "b": 1 }
+		{ "type": 2, "xPosition": 11, "yPosition": 4, "objectName": "Red Meat", "r": 1, "g": 0, "b": 0 }
 	]
 }
