@@ -263,7 +263,6 @@ public class TileMap : MonoBehaviour {
 				break;
 			case (byte)PrefabObjectTypes.Boots:
                 // if the player doesnt have the boots, spawn it in the level
-                Debug.Log(stuff[i].objectName);
                 if (!_.player.GetComponent<PlayerInventory>().hasItem(stuff[i].objectName))
                 {
                     temp = GameObject.Instantiate(

@@ -14,8 +14,8 @@ public class CameraDolly : MonoBehaviour {
 
 	public bool shouldFixTarget = false;
 
-	private Quaternion rightRotationTarget = Quaternion.Euler(0f, 16f, 0f);
-	private Quaternion leftRotationTarget = Quaternion.Euler(0f, -16f, 0f);
+	private Quaternion rightRotationTarget = Quaternion.Euler(0f, 8f, 0f);
+	private Quaternion leftRotationTarget = Quaternion.Euler(0f, -8f, 0f);
 
 	void Start(){
 

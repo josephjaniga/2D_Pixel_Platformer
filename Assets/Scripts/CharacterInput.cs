@@ -14,6 +14,7 @@ public interface ICharacterInput
 {
 	void Start();
 	void Update();
+	void inputLock(bool lockStatus = false);
 }
 
 public class CharacterKeyboardInput : ICharacterInput
@@ -24,6 +25,8 @@ public class CharacterKeyboardInput : ICharacterInput
 	private float attackDurationTime = .48f;
 	private float attackCompleteTime = 0f;
 
+	private bool inputLocked = false;
+
 	public void Start(){}
 
 	public CharacterKeyboardInput(CharacterMotion parentMotion){
@@ -32,37 +35,41 @@ public class CharacterKeyboardInput : ICharacterInput
 	
 	public void Update(){
 
-		if ( Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) )
-			cm.isMovingLeft = true;
-		else 
-			cm.isMovingLeft = false;
-		
-		if ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) )
-			cm.isMovingRight = true;
-		else 
-			cm.isMovingRight = false;
-		
-		if ( Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftAlt) ){
-			// FIXME: making the assumption only the player is keyboard input controlled
-			if ( cm.isGrounded ){
-				if ( _.playerInventory.canJump ){
-					_.player.SendMessage("PlayJumpClip", SendMessageOptions.DontRequireReceiver);
-					cm.isJumping = true;
-				}
-			}
-		} else {
-			cm.isJumping = false;
-		}
+		if ( !inputLocked ){
+
+			if ( Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) )
+				cm.isMovingLeft = true;
+			else 
+				cm.isMovingLeft = false;
 			
-		// if should attack
-		if ( !cm.isAttacking && Input.GetKey(KeyCode.LeftShift) ){
-			// FIXME: making the assumption only the player is keyboard input controlled
-			if ( Time.time > lastAttack + attackDurationTime ){
-				_.player.SendMessage("PlayAttackClip", SendMessageOptions.DontRequireReceiver);
+			if ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) )
+				cm.isMovingRight = true;
+			else 
+				cm.isMovingRight = false;
+			
+			if ( Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftAlt) ){
+				// FIXME: making the assumption only the player is keyboard input controlled
+				if ( cm.isGrounded ){
+					if ( _.playerInventory.canJump ){
+						_.player.SendMessage("PlayJumpClip", SendMessageOptions.DontRequireReceiver);
+						cm.isJumping = true;
+					}
+				}
+			} else {
+				cm.isJumping = false;
 			}
-			lastAttack = Time.time;
-			attackCompleteTime = Time.time + attackDurationTime;
-			cm.isAttacking = true;
+			
+			// if should attack
+			if ( !cm.isAttacking && Input.GetKey(KeyCode.LeftShift) ){
+				// FIXME: making the assumption only the player is keyboard input controlled
+				if ( Time.time > lastAttack + attackDurationTime ){
+					_.player.SendMessage("PlayAttackClip", SendMessageOptions.DontRequireReceiver);
+				}
+				lastAttack = Time.time;
+				attackCompleteTime = Time.time + attackDurationTime;
+				cm.isAttacking = true;
+			}
+
 		}
 
 		// if the attack animation should end
@@ -71,6 +78,9 @@ public class CharacterKeyboardInput : ICharacterInput
 		}
 		
 	}
+
+	public void inputLock(bool lockStatus = false){ inputLocked = lockStatus; }
+
 }
 
 public class CharacterTouchInput : ICharacterInput
@@ -112,6 +122,8 @@ public class CharacterTouchInput : ICharacterInput
 			cm.isJumping = false;
 		
 	}
+
+	public void inputLock(bool inputStatus = false){ }
 	
 }
 
@@ -185,6 +197,8 @@ public class RandomAI : ICharacterInput
 		cm.isMovingRight = false;
 		cm.isJumping = false;
 	}
+
+	public void inputLock(bool inputStatus = false){}
 }
 
 public class DumbJumpAI : ICharacterInput
@@ -201,6 +215,7 @@ public class DumbJumpAI : ICharacterInput
 		cm.isMovingLeft = false;
 		cm.isMovingRight = false;
 	}
+	public void inputLock(bool inputStatus = false){ }
 }
 
 public class BlankAI : ICharacterInput
@@ -213,6 +228,7 @@ public class BlankAI : ICharacterInput
 		cm.isMovingRight = false;
 	}
 	public void Update(){}
+	public void inputLock(bool inputStatus=false) {}
 }
 
 public class LionBossAI : ICharacterInput
@@ -287,4 +303,6 @@ public class LionBossAI : ICharacterInput
 		cm.isMovingRight = false;
 		cm.isJumping = false;
 	}
+
+	public void inputLock(bool inputStatus = false){}
 }

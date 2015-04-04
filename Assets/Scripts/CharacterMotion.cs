@@ -151,4 +151,12 @@ public class CharacterMotion : MonoBehaviour
 		rightLocked	= false;
 	}
 
+	public void StopAllMotion(){
+		isMovingLeft = false;
+		isMovingRight = false;
+		isJumping = false;
+		ClearBlockers();
+		ClearPhysics();
+	}
+
 }

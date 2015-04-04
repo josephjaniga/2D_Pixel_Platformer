@@ -73,7 +73,6 @@ public class TileData : MonoBehaviour {
 			FileName = path + "/" + levelFileName;
 		}
 
-		Debug.Log (FileName);
 		string t;
 		//TextAsset mapDataFile = Resources.Load<TextAsset>(FileName) as TextAsset;
 		Object mapDataFile = Resources.Load(FileName);

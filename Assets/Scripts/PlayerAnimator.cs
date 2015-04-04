@@ -82,14 +82,19 @@ public class PlayerAnimator : MonoBehaviour {
 	}
 
 	public void setAllAnimators(string Parameter, bool Value){
-		// the player animator
-		cloak_a.SetBool(Parameter, Value);
-		// the player animator
-		adventurer_a.SetBool(Parameter, Value);
-		// the boots animator
-		boots_a.SetBool(Parameter, Value);
-		// the dagger animator
-		dagger_a.SetBool(Parameter, Value);
+
+		if ( Parameter == "isKilled" ){
+			cloak_a.SetTrigger(Parameter);
+		} else {
+			// the player animator
+			cloak_a.SetBool(Parameter, Value);
+			// the player animator
+			adventurer_a.SetBool(Parameter, Value);
+			// the boots animator
+			boots_a.SetBool(Parameter, Value);
+			// the dagger animator
+			dagger_a.SetBool(Parameter, Value);
+		}
 
 	}
 
