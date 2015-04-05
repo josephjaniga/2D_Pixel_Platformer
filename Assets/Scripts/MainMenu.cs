@@ -3,6 +3,6 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 	public void StartGame(){
-		Application.LoadLevel("RoomOne");
+		Application.LoadLevel("A1_R1");
 	}
 }
