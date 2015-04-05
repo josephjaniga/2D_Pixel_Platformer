@@ -21,5 +21,7 @@ public enum PrefabObjectTypes : byte {
 	Key,
 	LionBoss,
 	FallingTile,
-	Boots
+	Boots,
+	Dagger,
+	Crate
 }

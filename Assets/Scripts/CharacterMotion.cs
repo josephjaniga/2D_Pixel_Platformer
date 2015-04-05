@@ -14,7 +14,7 @@ public class CharacterMotion : MonoBehaviour
 
 	// running & jumping
 	public float runSpeed = 105f;
-	public float jumpForce= 500f;
+	public float jumpForce= 550f;
 	private float MAX_Y_VELOCITY = 300f;
 
 	private Vector2 acceleration 	= new Vector2(0f, 0f);
@@ -114,6 +114,11 @@ public class CharacterMotion : MonoBehaviour
 		} else {
 			GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -GetComponent<Rigidbody2D>().velocity.y);
 		}
+	}
+
+
+	public void Bounce(){
+		GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -GetComponent<Rigidbody2D>().velocity.y * 1.1f);
 	}
 
 	/**

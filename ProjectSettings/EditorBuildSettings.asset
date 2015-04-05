@@ -10,8 +10,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/A1_R2.unity
   - enabled: 1
-    path: Assets/Scenes/RoomOne.unity
+    path: Assets/Scenes/A1_R3.unity
   - enabled: 1
-    path: Assets/Scenes/RoomTwo.unity
+    path: Assets/Scenes/A1_R4.unity
   - enabled: 1
-    path: Assets/Scenes/RoomThree.unity
+    path: Assets/Scenes/A1_R5.unity
+  - enabled: 1
+    path: Assets/Scenes/A1_R6.unity
+  - enabled: 1
+    path: Assets/Scenes/A1_R7.unity

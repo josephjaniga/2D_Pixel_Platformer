@@ -35,9 +35,9 @@ public class CameraDolly : MonoBehaviour {
 			if ( shouldFixTarget ){
 
 				if ( _.player.GetComponent<CharacterMotion>().isMovingLeft || _.player.GetComponent<CharacterMotion>().isMovingRight ){
-					motionConditional = 2f;
+					motionConditional = 3f;
 				} else {
-					motionConditional = .75f;
+					motionConditional = 1.5f;
 				}
 
 				targetZ = Mathf.Lerp (transform.position.z, fixedZ * motionConditional, 5f * Time.deltaTime);

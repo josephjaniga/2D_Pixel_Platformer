@@ -249,7 +249,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="BG">
                     <h1>BG</h1>
-                    <table class="grid" style="pointer-events: none !important;">
+                    <table class="grid">
                         <tr ng-repeat="mapRow in tileMapBG.data track by $index">
                             <td ng-repeat="tile in mapRow track by $index"
                                 ng-click="paint($parent.$index, $index, 'bg')"

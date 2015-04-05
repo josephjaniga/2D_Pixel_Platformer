@@ -60,7 +60,8 @@ public class CharacterHealth : MonoBehaviour {
 					_.player.SendMessage("PlayRedHeadDeathClip", SendMessageOptions.DontRequireReceiver);
 				}
 
-				Destroy(gameObject);
+
+				gameObject.SendMessage("Die", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 		
@@ -107,6 +108,10 @@ public class CharacterHealth : MonoBehaviour {
 
 	public void resetColor(){
 		GetComponent<Renderer>().material.color = Color.white;
+	}
+
+	public void Die(){
+		Destroy(gameObject);
 	}
 
 }

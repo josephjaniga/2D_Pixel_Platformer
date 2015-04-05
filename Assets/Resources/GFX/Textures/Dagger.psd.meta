@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8cc639904e0d44249b8a38c7afa299e3
-timeCreated: 1426971541
+timeCreated: 1428195702
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -21,6 +21,7 @@ TextureImporter:
     21300028: Dagger_Attack_2
     21300030: Dagger_attack_3
     21300032: Dagger_attack_4
+    21300034: Dagger_Interactable
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -235,6 +236,16 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dagger_Interactable
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 113
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

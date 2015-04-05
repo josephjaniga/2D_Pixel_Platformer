@@ -46,6 +46,7 @@ public class e01_a1_r2 : MonoBehaviour {
         if (_.playerInventory.hasBoots && eventFiredCount == 0)
         {
             isEventActive = true;
+			GameObject.Find ("StartingPosition").transform.position = new Vector3(88.5f, 10.25f, 0f);
         } else {
 			isEventActive = false;
 		}

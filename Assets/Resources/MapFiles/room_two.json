@@ -57,19 +57,7 @@
 [8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]
 	],
 	"doors": [
-		/* blue door 2 */
-		{
-			"doorWidth":1,
-			"doorHeight":1,
-			"xPosition":1,
-			"yPosition":1,
-			"targetScene":"RoomOne",
-			"targetPositionX":95,
-			"targetPositionY":5,
-			"r":0.15,
-			"g":0.35,
-			"b":1.0
-		},
+		{ "doorWidth":1, "doorHeight":1, "xPosition":1, "yPosition":1, "targetScene":"RoomOne", "targetPositionX":95, "targetPositionY":5, "r":0, "g":0, "b":1 }
 	],
 	"stuff": [
 		{"type":0, "xPosition":15, "yPosition":3},
@@ -79,6 +67,6 @@
 		{"type":0, "xPosition":75, "yPosition":6},
 		{"type":0, "xPosition":67, "yPosition":6},
 		{"type":2, "xPosition":77, "yPosition":2},
-		{"type":3, "xPosition":98, "yPosition":2, "objectName":"Yellow Key", "r":1, "g":1, "b":0},
+		{"type":3, "xPosition":98, "yPosition":2, "objectName":"Yellow Key", "r":1, "g":1, "b":0}
 	]
 }

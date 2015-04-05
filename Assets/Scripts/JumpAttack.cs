@@ -20,7 +20,7 @@ public class JumpAttack : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col){
 		if ( gameObject.name == "JumpAttackBumper" && col.gameObject.tag == "Mob" && !playerMotion.isGrounded ){
 			col.gameObject.SendMessage("TakeDamage", JumpAttackDamageValue, SendMessageOptions.DontRequireReceiver);
-			player.SendMessage("Jump", false, SendMessageOptions.DontRequireReceiver);
+			player.SendMessage("Bounce", false, SendMessageOptions.DontRequireReceiver);
 			player.SendMessage("PlayBumpClip", SendMessageOptions.DontRequireReceiver);
 		}
 	}

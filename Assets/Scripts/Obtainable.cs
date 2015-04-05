@@ -23,6 +23,7 @@ public class Obtainable : MonoBehaviour {
 
 	public void PickedUp(){
 		Destroy(gameObject);
+		_.player.SendMessage("ClearBlockers", SendMessageOptions.DontRequireReceiver);
 	}
 
 }

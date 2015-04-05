@@ -274,17 +274,39 @@ public class TileMap : MonoBehaviour {
                     temp.transform.SetParent(_.stuff.transform);
                 }
                 break;
+			case (byte)PrefabObjectTypes.Dagger:
+				// if the player doesnt have the boots, spawn it in the level
+				if (!_.player.GetComponent<PlayerInventory>().hasItem(stuff[i].objectName))
+				{
+					temp = GameObject.Instantiate(
+						Resources.Load("Prefabs/Interactables/Dagger"),
+						stuffPosition,
+						Quaternion.identity
+						) as GameObject;
+					temp.name = "Dagger";
+					temp.transform.SetParent(_.stuff.transform);
+				}
+				break;
+			case (byte)PrefabObjectTypes.Crate:
+				temp = GameObject.Instantiate(
+					Resources.Load("Prefabs/Interactables/Crate"), 
+					stuffPosition, 
+					Quaternion.identity
+					) as GameObject;
+				temp.name = "Crate";
+				temp.transform.SetParent(_.stuff.transform);
+				break;
 			}
-
+			
 		}
-
+		
 	}
-
+	
 	public void BuildDoors() {
 		
 		Door[] doors = td.doors;
 		for (int i=0; i<doors.Length; i++){
-
+			
 			GameObject temp;
 			Vector3 doorPosition = new Vector3(doors[i].xPosition, doors[i].yPosition, 0f) * scale;
 			Vector3 doorScale = new Vector3(doors[i].doorWidth, doors[i].doorHeight, 1f) * scale;

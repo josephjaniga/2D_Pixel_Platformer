@@ -18,11 +18,14 @@ public class PlayerInventory : MonoBehaviour {
 	public bool hasBoots = false;
 
 	// active items
-	public bool hasDagger = true;
+	public bool hasDagger = false;
 	
 	// abilities
 	public bool canAttack = false;
 	public bool canJump = false;
+
+
+	public bool canWeaponCycle = true;
 
 	void Start(){
 		inventoryDisplay = GameObject.Find("PlayerInventoryDisplay");
@@ -31,7 +34,7 @@ public class PlayerInventory : MonoBehaviour {
 	void Update(){
 
 		// tab cycle through Hands
-		if ( Input.GetKeyDown(KeyCode.Tab) ){
+		if ( canWeaponCycle && Input.GetKeyDown(KeyCode.Tab) ){
 			int current = (int)carrying;
 			int length = Hands.GetNames(typeof(Hands)).Length;
 			current++;
@@ -109,6 +112,19 @@ public class PlayerInventory : MonoBehaviour {
 					"EARNED JUMP! [SPACEBAR]",
 					15f
 					);
+			}
+
+			if ( itemName == "Dagger" ){
+				hasDagger = true;
+				
+				// send a chat message
+				_.chatManager.GetComponent<ChatManager>().CreateChatMessage(
+					_.player.transform.position + new Vector3(0f, -1.25f, 0f),
+					"EARNED WEAPON ATTACK! [LEFT SHIFT]",
+					15f
+					);
+
+				carryItem(Hands.Dagger);
 			}
 		}
 	}

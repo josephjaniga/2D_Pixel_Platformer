@@ -1,5 +1,5 @@
 {
-	"map.name": "RoomThree",
+	"map.name": "The Lair",
 	"width": 100,
 	"height": 16,
 	"tileFG": [
@@ -57,13 +57,12 @@
 [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 	],
 	"doors": [
-		/* yellow door 2 */
 		{
 			"doorWidth":1,
 			"doorHeight":1,
 			"xPosition":98,
 			"yPosition":2,
-			"targetScene":"RoomOne",
+			"targetScene":"A1_R5",
 			"targetPositionX":4,
 			"targetPositionY":3,
 			"r":1,
@@ -72,6 +71,6 @@
 		}
 	],
 	"stuff":[
-		{"type":4, "xPosition":85, "yPosition":9},
+		{"type":4, "xPosition":85, "yPosition":9}
 	]
 }
