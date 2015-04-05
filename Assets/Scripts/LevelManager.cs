@@ -52,6 +52,11 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void Update (){
+
+		if ( Input.GetKey(KeyCode.Escape) ){
+			Application.Quit();
+		}
+
 		if ( player.transform.localPosition.y < -10f ){
 			PlayerDeath();
 		}

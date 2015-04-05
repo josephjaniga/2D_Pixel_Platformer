@@ -700,8 +700,8 @@ MonoBehaviour:
   inventory: []
   inventoryDisplay: {fileID: 0}
   carrying: 0
-  hasBoots: 1
-  hasDagger: 1
+  hasBoots: 0
+  hasDagger: 0
   canAttack: 0
   canJump: 0
   canWeaponCycle: 1
