@@ -94,7 +94,7 @@ public class BossHealthDisplay : MonoBehaviour {
 			SetHealth(ch.currentHitsRemaining);
 		}
 
-		if ( bossExists && ch.currentHitsRemaining <= 0 ){
+		if ( bossExists && GameObject.Find("LionBoss") == null ){
 			bossExists = false;
 			Application.LoadLevel("TheEnd");
 		}
