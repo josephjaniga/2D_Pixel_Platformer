@@ -62,12 +62,13 @@
 			"doorHeight":1,
 			"xPosition":98,
 			"yPosition":2,
-			"targetScene":"A1_R5",
-			"targetPositionX":4,
-			"targetPositionY":3,
+			"targetScene":"A1_R6",
+			"targetPositionX":7,
+			"targetPositionY":18,
 			"r":1,
-			"g":1,
-			"b":0
+			"g":0,
+			"b":1,
+			"style":"Panel"
 		}
 	],
 	"stuff":[

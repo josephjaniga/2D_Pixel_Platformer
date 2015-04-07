@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Timers;
 
 public class Obtainable : MonoBehaviour {
 	
@@ -16,13 +17,18 @@ public class Obtainable : MonoBehaviour {
 					col.gameObject.transform.position + new Vector3(0f, 2.25f, 0f),
 					"Picked Up the " + gameObject.name + "!"
 				);
-
-			_.player.SendMessage("ClearBlockers", SendMessageOptions.DontRequireReceiver);
 		}
+
+		_.player.SendMessage("ClearBlockers", SendMessageOptions.DontRequireReceiver);
 	}
 
 	public void PickedUp(){
 		Destroy(gameObject);
+		Invoke ("Cleary", .25f);
+	}
+
+	public void Cleary()
+	{
 		_.player.SendMessage("ClearBlockers", SendMessageOptions.DontRequireReceiver);
 	}
 

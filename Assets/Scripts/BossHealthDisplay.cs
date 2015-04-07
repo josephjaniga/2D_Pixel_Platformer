@@ -14,7 +14,51 @@ public class BossHealthDisplay : MonoBehaviour {
 
 	private bool initialized = false;
 	private bool shouldInitialize = false;
-	
+
+	private bool bossExists = false;
+
+	void Start() {
+
+		if ( character == null ){
+			
+			// check for bosses to show health
+			foreach( Transform mob in _.mobs.transform ){
+				if ( mob.name.Contains("Boss") ){
+					character = mob.gameObject;
+				}
+			}
+			
+			if ( character == null ) {
+				foreach ( Transform child in gameObject.transform ){
+					Destroy(child.gameObject);
+				}
+				initialized = false;
+				shouldInitialize = false;
+			}
+			
+		} else {
+
+			shouldInitialize = true;
+			
+		}
+		
+		if ( !initialized && shouldInitialize ){
+			initHealthDisplay();
+			initialized = true;
+		}
+		
+		if ( initialized ){
+			SetHealth(ch.currentHitsRemaining);
+		}
+
+		if ( character != null ){
+			bossExists = true;
+		} else {
+			bossExists = false;
+		}
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -36,7 +80,7 @@ public class BossHealthDisplay : MonoBehaviour {
 			}
 
 		} else {
-
+		
 			shouldInitialize = true;
 
 		}
@@ -48,6 +92,11 @@ public class BossHealthDisplay : MonoBehaviour {
 		
 		if ( initialized ){
 			SetHealth(ch.currentHitsRemaining);
+		}
+
+		if ( bossExists && ch.currentHitsRemaining <= 0 ){
+			bossExists = false;
+			Application.LoadLevel("TheEnd");
 		}
 
 	}

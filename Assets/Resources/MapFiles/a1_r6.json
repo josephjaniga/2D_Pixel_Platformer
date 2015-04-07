@@ -82,7 +82,7 @@
 	],
 	"doors": [
 		{ "doorWidth": 1, "doorHeight": 1, "xPosition": 4, "yPosition": 16, "targetScene": "A1_R7", "targetPositionX": 97, "targetPositionY": 3, "r": 1, "g": 0, "b": 1, "style": "Panel" },
-		{ "doorWidth": 1, "doorHeight": 1, "xPosition": 27, "yPosition": 16, "targetScene": "A1_R5", "targetPositionX": 1, "targetPositionY": 1, "r": 1, "g": 1, "b": 0, "style": "Panel" }
+		{ "doorWidth": 1, "doorHeight": 1, "xPosition": 27, "yPosition": 16, "targetScene": "A1_R5", "targetPositionX": 4, "targetPositionY": 4, "r": 1, "g": 1, "b": 0, "style": "Panel" }
 	],
     "stuff": [
 		{ "type": 7, "xPosition": 14, "yPosition": 12, "objectName": "Dagger", "r": 1, "g": 1, "b": 1 },

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Timers;
 using System.Collections;
 using Newtonsoft.Json;
 
@@ -67,6 +68,9 @@ public class CharacterMotion : MonoBehaviour
 		}
 
 		characterInput.Start();
+
+		InvokeRepeating("ClearBlockers", .5f, .25f);
+
 	}
 
 	// Update is called once per frame
